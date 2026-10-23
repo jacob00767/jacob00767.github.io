@@ -1,0 +1,248 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex">
+<title>Leeza Toma Hair</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Young+Serif&family=Sora:wght@300;400;600&display=swap">
+<style>
+/* Layout: an extension specialist's portfolio. Hair-strand lines as the one ornament, extensions first, full price list after. */
+:root {
+  --bg: #f3f1f4;
+  --surface: #ffffff;
+  --ink: #1e2233;
+  --muted: #62657a;
+  --rule: #dedbe3;
+  --gold: #9a6a33;
+  --gold-soft: #f1e7da;
+  --on-ink: #ffffff;
+  --font-display: "Young Serif", Georgia, serif;
+  --font-body: "Sora", system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #12141d; --surface: #1b1e2a; --ink: #eceef5; --muted: #a3a7b8;
+    --rule: #2d3142; --gold: #d9a86c; --gold-soft: #2c2620; --on-ink: #12141d;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #12141d; --surface: #1b1e2a; --ink: #eceef5; --muted: #a3a7b8;
+  --rule: #2d3142; --gold: #d9a86c; --gold-soft: #2c2620; --on-ink: #12141d;
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+img { max-width: 100%; }
+body { margin: 0; background: var(--bg); color: var(--ink); font-family: var(--font-body); font-size: 16px; font-weight: 300; line-height: 1.7; }
+b, strong { font-weight: 600; }
+.wrap {
+  max-width: 1020px; margin: 0 auto;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+h1, h2, h3 { font-family: var(--font-display); font-weight: 400; margin: 0; line-height: 1.08; text-wrap: balance; }
+p { margin: 0; }
+a { color: inherit; }
+:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; }
+
+.concept { font-size: 12.5px; text-align: center; color: var(--muted); border-bottom: 1px solid var(--rule); }
+.concept .wrap { padding-block: 8px; }
+
+header .wrap { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px; padding-block: 18px; }
+.logo { font-family: var(--font-display); font-size: 24px; }
+.logo span { color: var(--gold); }
+.btn {
+  display: inline-block; font: 600 14.5px/1 var(--font-body); padding: 15px 22px; border-radius: 4px; letter-spacing: 0.02em;
+  text-decoration: none; border: 1.5px solid var(--ink); color: var(--ink); background: transparent;
+}
+.btn.ink { background: var(--ink); color: var(--on-ink); }
+.btn:hover { transform: translateY(-1px); }
+
+.hero { position: relative; overflow: hidden; }
+.strands { position: absolute; inset: 0 0 0 auto; width: 46%; pointer-events: none; }
+.strands svg { width: 100%; height: 100%; }
+.strands path { fill: none; stroke: var(--gold); stroke-width: 1.2; opacity: 0.55; }
+.hero .wrap { position: relative; padding-block: 52px 64px; }
+.eyebrow { font-size: 12.5px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); }
+.hero h1 { font-size: clamp(46px, 8vw, 92px); margin-block: 16px 22px; max-width: 12ch; }
+.hero .lede { font-size: 18px; color: var(--muted); max-width: 30em; }
+.actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 28px; }
+
+section.band .wrap { padding-block: 60px; border-top: 1px solid var(--rule); }
+.head { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: end; gap: 12px; margin-bottom: 26px; }
+.head h2 { font-size: clamp(34px, 5vw, 52px); }
+.head p { color: var(--muted); max-width: 32em; }
+
+.methods { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; }
+.method { background: var(--surface); border: 1px solid var(--rule); border-radius: 6px; padding: 28px; min-width: 0; }
+.method .tag { display: inline-block; font-size: 12px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold); background: var(--gold-soft); padding: 5px 10px; border-radius: 3px; margin-bottom: 14px; }
+.method h3 { font-size: 30px; margin-bottom: 10px; }
+.method p { color: var(--muted); }
+.method ul { margin: 14px 0 0; padding-left: 18px; color: var(--muted); }
+.consult { margin-top: 20px; padding: 18px 22px; border-left: 3px solid var(--gold); background: var(--surface); }
+
+.prices { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 48px; }
+.pgroup { min-width: 0; margin-bottom: 26px; }
+.pgroup h3 { font-family: var(--font-body); font-size: 12.5px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold); padding-bottom: 8px; border-bottom: 1px solid var(--ink); }
+.row { display: flex; justify-content: space-between; gap: 16px; padding-block: 11px; border-bottom: 1px solid var(--rule); }
+.row .price { font-variant-numeric: tabular-nums; white-space: nowrap; font-weight: 600; }
+.note { color: var(--muted); font-size: 14px; }
+
+.gallery { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
+.ph { aspect-ratio: 3 / 4; max-width: 100%; border-radius: 6px; border: 1.5px dashed var(--rule); display: grid; place-items: center; padding: 12px; text-align: center; color: var(--muted); font-size: 14px; background: var(--surface); }
+
+.visit { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; align-items: start; }
+.visit dl { display: grid; grid-template-columns: auto 1fr; gap: 12px 20px; margin: 0; }
+.visit dt { color: var(--muted); }
+.visit dd { margin: 0; }
+.selectable { user-select: all; }
+.panel { background: var(--surface); border: 1px solid var(--rule); border-radius: 6px; padding: 26px; min-width: 0; }
+.panel h3 { font-size: 28px; }
+
+footer .wrap { padding-block: 26px 40px; border-top: 1px solid var(--rule); display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; color: var(--muted); font-size: 13.5px; }
+
+@media (max-width: 820px) {
+  .strands { width: 70%; opacity: 0.5; }
+  .methods, .prices, .visit { grid-template-columns: 1fr; }
+  .gallery { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (prefers-reduced-motion: reduce) { .btn:hover { transform: none; } }
+</style>
+</head>
+<body>
+
+<div class="concept"><div class="wrap">Website concept prepared for Leeza Toma · not her official site</div></div>
+
+<header>
+  <div class="wrap">
+    <span class="logo">Leeza Toma <span>Hair</span></span>
+    <a class="btn ink" href="https://salonlofts.com/leeza_toma" target="_blank" rel="noopener">Book</a>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="strands" aria-hidden="true">
+    <svg viewBox="0 0 400 600" preserveAspectRatio="none">
+      <path d="M60 0 C 120 150, 20 300, 110 600"/>
+      <path d="M110 0 C 170 160, 70 310, 160 600"/>
+      <path d="M160 0 C 220 170, 120 320, 210 600"/>
+      <path d="M210 0 C 270 150, 170 330, 260 600"/>
+      <path d="M260 0 C 320 160, 220 310, 310 600"/>
+      <path d="M310 0 C 370 170, 270 320, 360 600"/>
+      <path d="M360 0 C 420 150, 320 300, 410 600"/>
+    </svg>
+  </div>
+  <div class="wrap">
+    <div class="eyebrow">Master stylist · Extension specialist</div>
+    <h1>Length, volume, and a seamless blend.</h1>
+    <p class="lede">Hand-tied and tape-in extensions, color and cuts by Leeza Toma, in a private studio at Salon Lofts Hoffman Estates.</p>
+    <div class="actions">
+      <a class="btn ink" href="https://salonlofts.com/leeza_toma" target="_blank" rel="noopener">Book a consultation</a>
+      <a class="btn" href="#prices">View prices</a>
+    </div>
+  </div>
+</section>
+
+<section class="band" id="extensions">
+  <div class="wrap">
+    <div class="head">
+      <h2>Extensions</h2>
+      <p>Two methods, matched to your hair, your lifestyle and how long you want them to last.</p>
+    </div>
+    <div class="methods">
+      <div class="method">
+        <span class="tag">Hand-tied</span>
+        <h3>Hand-tied wefts</h3>
+        <p>Rows of fine wefts sewn onto a small beaded track. Lies flat, moves naturally and adds serious volume.</p>
+        <ul><li>Best for full, even volume</li><li>Moved up as your hair grows</li></ul>
+      </div>
+      <div class="method">
+        <span class="tag">Tape-in</span>
+        <h3>Tape-in extensions</h3>
+        <p>Thin, lightweight panels placed close to the root. Quick to install and comfortable to wear.</p>
+        <ul><li>Great for fine hair</li><li>Reusable at each move-up</li></ul>
+      </div>
+    </div>
+    <p class="consult"><b>Every extension client starts with a consultation.</b> Leeza color-matches your hair and recommends the method and amount, and your quote is set before the install.</p>
+  </div>
+</section>
+
+<section class="band" id="prices">
+  <div class="wrap">
+    <div class="head">
+      <h2>Prices</h2>
+      <p>Starting prices from Leeza's booking page. Extensions are quoted at your consultation.</p>
+    </div>
+    <div class="prices">
+      <div class="pgroup">
+        <h3>Cut &amp; style</h3>
+        <div class="row"><span>Women's cut &amp; style</span><span class="price">from $65</span></div>
+        <div class="row"><span>Men's cut &amp; style</span><span class="price">from $35</span></div>
+        <div class="row"><span>Children's cut &amp; style</span><span class="price">$35 – $45</span></div>
+      </div>
+      <div class="pgroup">
+        <h3>Color</h3>
+        <div class="row"><span>Color retouch &amp; style</span><span class="price">from $85</span></div>
+        <div class="row"><span>All-over color &amp; style</span><span class="price">from $105</span></div>
+        <div class="row"><span>Men's color</span><span class="price">from $50</span></div>
+      </div>
+      <div class="pgroup">
+        <h3>Highlights</h3>
+        <div class="row"><span>Partial highlights &amp; style</span><span class="price">from $125</span></div>
+        <div class="row"><span>Full highlights &amp; style</span><span class="price">from $160</span></div>
+        <div class="row"><span>Balayage &amp; style</span><span class="price">from $250</span></div>
+      </div>
+      <div class="pgroup">
+        <h3>Keratin</h3>
+        <div class="row"><span>Express keratin, cut &amp; style</span><span class="price">from $200</span></div>
+        <div class="row"><span>Full keratin, cut &amp; style</span><span class="price">from $300</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="band" id="work">
+  <div class="wrap">
+    <div class="head">
+      <h2>Before &amp; after</h2>
+      <p>On the finished site, this shows Leeza's own extension transformations.</p>
+    </div>
+    <div class="gallery">
+      <div class="ph">Hand-tied volume</div>
+      <div class="ph">Tape-in length</div>
+      <div class="ph">Balayage blend</div>
+    </div>
+  </div>
+</section>
+
+<section class="band" id="visit">
+  <div class="wrap visit">
+    <div>
+      <div class="head" style="margin-bottom:16px"><h2>The studio</h2></div>
+      <dl>
+        <dt>Studio</dt><dd>Loft 18, Salon Lofts<br>977 N Roselle Rd, Hoffman Estates, IL 60169</dd>
+        <dt>Call or text</dt><dd class="selectable">(773) 405-1913</dd>
+        <dt>Hours</dt><dd>By appointment</dd>
+      </dl>
+    </div>
+    <div class="panel">
+      <h3>Thinking about extensions?</h3>
+      <p style="color:var(--muted);margin-block:8px 20px">Start with a consultation. Leeza will match your color and talk through the options with you.</p>
+      <a class="btn ink" href="https://salonlofts.com/leeza_toma" target="_blank" rel="noopener">Book a consultation</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span>Leeza Toma Hair · Hoffman Estates, IL</span>
+    <span>Concept site</span>
+  </div>
+</footer>
+
+</body>
+</html>

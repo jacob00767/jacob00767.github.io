@@ -1,0 +1,234 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex">
+<title>Salon Eros Concept</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,500;1,6..96,400;1,6..96,500&family=Figtree:wght@400;500;600&display=swap">
+<style>
+/* Layout: an appointment card. A large italic name, a price list set like a salon menu board, one berry accent. */
+:root {
+  --bg: #f7f2f3;
+  --surface: #ffffff;
+  --ink: #2a1a21;
+  --muted: #6e5a62;
+  --rule: #e4d6da;
+  --berry: #8a2248;
+  --berry-soft: #f1dfe5;
+  --on-berry: #ffffff;
+  --font-display: "Bodoni Moda", "Didot", "Bodoni 72", Georgia, serif;
+  --font-body: "Figtree", system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #1b1216; --surface: #241a1f; --ink: #f3e9ec; --muted: #b9a3ab;
+    --rule: #3a2b32; --berry: #e07da0; --berry-soft: #3a2029; --on-berry: #1b1216;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #1b1216; --surface: #241a1f; --ink: #f3e9ec; --muted: #b9a3ab;
+  --rule: #3a2b32; --berry: #e07da0; --berry-soft: #3a2029; --on-berry: #1b1216;
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+img { max-width: 100%; }
+[hidden] { display: none !important; }
+body { margin: 0; background: var(--bg); color: var(--ink); font-family: var(--font-body); font-size: 16px; line-height: 1.6; }
+.wrap {
+  max-width: 1040px; margin: 0 auto;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+h1, h2, h3 { margin: 0; font-weight: 500; text-wrap: balance; }
+p { margin: 0; }
+a { color: inherit; }
+:focus-visible { outline: 2px solid var(--berry); outline-offset: 3px; }
+
+.concept { background: var(--berry-soft); color: var(--ink); font-size: 13px; text-align: center; }
+.concept .wrap { padding-block: 8px; }
+
+header .wrap { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px; padding-block: 20px; }
+.logo { font-family: var(--font-display); font-style: italic; font-size: 26px; letter-spacing: 0.01em; }
+nav { display: flex; flex-wrap: wrap; align-items: center; gap: 22px; font-size: 14.5px; }
+nav a { text-decoration: none; color: var(--muted); }
+nav a:hover { color: var(--ink); }
+
+.btn {
+  display: inline-block; font: 600 15px/1 var(--font-body); padding: 14px 22px; border-radius: 999px;
+  text-decoration: none; border: 1.5px solid var(--berry); color: var(--berry); background: transparent;
+}
+.btn.solid { background: var(--berry); color: var(--on-berry); }
+.btn:hover { filter: brightness(1.06); }
+nav .btn { padding: 10px 18px; font-size: 14px; color: var(--on-berry); }
+
+.hero .wrap { padding-block: 48px 64px; display: grid; grid-template-columns: 1.3fr 1fr; gap: 48px; align-items: end; }
+.kicker { font-size: 12.5px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--berry); font-weight: 600; }
+.hero h1 { font-family: var(--font-display); font-size: clamp(54px, 9vw, 112px); line-height: 0.95; margin-block: 14px 22px; }
+.hero h1 i { color: var(--berry); }
+.hero .lede { font-size: 18px; color: var(--muted); max-width: 32em; }
+.actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 28px; }
+
+.card { background: var(--surface); border: 1px solid var(--rule); border-radius: 18px; padding: 26px; min-width: 0; }
+.card h3 { font-family: var(--font-display); font-style: italic; font-size: 26px; margin-bottom: 14px; }
+.card dl { display: grid; grid-template-columns: auto 1fr; gap: 10px 18px; margin: 0; font-size: 15px; }
+.card dt { color: var(--muted); }
+.card dd { margin: 0; }
+.selectable { user-select: all; }
+
+section.band .wrap { padding-block: 64px; border-top: 1px solid var(--rule); }
+.head { display: flex; flex-wrap: wrap; align-items: end; justify-content: space-between; gap: 14px; margin-bottom: 30px; }
+.head h2 { font-family: var(--font-display); font-size: clamp(38px, 5.5vw, 60px); line-height: 1; }
+.head h2 i { color: var(--berry); }
+.head p { color: var(--muted); max-width: 30em; }
+
+.menu { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 56px; }
+.menu h3 { font-size: 12.5px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--berry); font-weight: 600; padding-bottom: 8px; border-bottom: 1px solid var(--ink); margin-bottom: 4px; }
+.group { min-width: 0; margin-bottom: 28px; }
+.row { display: flex; align-items: baseline; gap: 10px; padding-block: 11px; border-bottom: 1px solid var(--rule); }
+.row .name { font-weight: 500; }
+.row .time { color: var(--muted); font-size: 13.5px; }
+.row .dots { flex: 1; border-bottom: 1px dotted var(--rule); transform: translateY(-4px); min-width: 12px; }
+.row .price { font-variant-numeric: tabular-nums; white-space: nowrap; }
+.menu-note { color: var(--muted); font-size: 14px; }
+
+.gallery { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; }
+.ph {
+  aspect-ratio: 4 / 5; max-width: 100%; border-radius: 14px; border: 1.5px dashed var(--rule);
+  background: var(--berry-soft); display: grid; place-items: center; text-align: center; padding: 12px;
+  color: var(--muted); font-size: 13.5px;
+}
+
+.visit { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: start; }
+.hours { width: 100%; border-collapse: collapse; font-variant-numeric: tabular-nums; }
+.hours td { padding: 10px 0; border-bottom: 1px solid var(--rule); }
+.hours td:last-child { text-align: right; }
+.small { color: var(--muted); font-size: 13.5px; margin-top: 12px; }
+
+footer .wrap { padding-block: 28px 44px; border-top: 1px solid var(--rule); display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; color: var(--muted); font-size: 13.5px; }
+footer .logo { font-size: 20px; color: var(--ink); }
+
+@media (max-width: 860px) {
+  .hero .wrap, .visit { grid-template-columns: 1fr; }
+  .menu { grid-template-columns: 1fr; }
+  .gallery { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  nav a:not(.btn) { display: none; }
+}
+</style>
+</head>
+<body>
+
+<div class="concept"><div class="wrap">Website concept prepared for Salon Eros · not the salon's official site</div></div>
+
+<header>
+  <div class="wrap">
+    <span class="logo">Salon Eros</span>
+    <nav aria-label="Main">
+      <a href="#services">Services</a>
+      <a href="#work">Our work</a>
+      <a href="#visit">Visit</a>
+      <a class="btn solid" href="https://square.site/book/5KYM5PRZKTH9P/salon-eros-hoffman-estates-il" target="_blank" rel="noopener">Book now</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    <div>
+      <div class="kicker">Hair salon · Hoffman Estates</div>
+      <h1>Color, cuts <i>&amp; care.</i></h1>
+      <p class="lede">Haircuts, color, highlights, blowouts, keratin treatments and brows on Barrington Road. Appointments only, so your stylist's attention stays on you.</p>
+      <div class="actions">
+        <a class="btn solid" href="https://square.site/book/5KYM5PRZKTH9P/salon-eros-hoffman-estates-il" target="_blank" rel="noopener">Book an appointment</a>
+        <a class="btn" href="#services">View services</a>
+      </div>
+    </div>
+    <aside class="card" aria-label="Salon details">
+      <h3>Find us</h3>
+      <dl>
+        <dt>Address</dt><dd>1171 N. Barrington Rd, Unit B<br>Hoffman Estates, IL 60169</dd>
+        <dt>Phone</dt><dd class="selectable">(847) 284-4737</dd>
+        <dt>Booking</dt><dd>By appointment, online or by phone</dd>
+      </dl>
+    </aside>
+  </div>
+</section>
+
+<section class="band" id="services">
+  <div class="wrap">
+    <div class="head">
+      <h2>The <i>menu</i></h2>
+      <p>Prices from the salon's booking page. Color is priced by hair length and thickness, so your stylist confirms it at the appointment.</p>
+    </div>
+    <div class="menu">
+      <div class="group">
+        <h3>Hair</h3>
+        <div class="row"><span class="name">Haircut</span><span class="dots"></span><span class="price">See booking</span></div>
+        <div class="row"><span class="name">Color &amp; highlights</span><span class="dots"></span><span class="price">By length</span></div>
+        <div class="row"><span class="name">Blowout</span><span class="dots"></span><span class="price">See booking</span></div>
+        <div class="row"><span class="name">Keratin treatment</span><span class="time">5 hr</span><span class="dots"></span><span class="price">$450</span></div>
+        <div class="row"><span class="name">Olaplex add-on</span><span class="time">with color</span><span class="dots"></span><span class="price">$45</span></div>
+      </div>
+      <div class="group">
+        <h3>Brows &amp; extras</h3>
+        <div class="row"><span class="name">Brow tint</span><span class="time">20 min</span><span class="dots"></span><span class="price">$20</span></div>
+        <div class="row"><span class="name">Neck wax</span><span class="time">15 min</span><span class="dots"></span><span class="price">$20</span></div>
+        <div class="row"><span class="name">Scalp massage</span><span class="time">15 min</span><span class="dots"></span><span class="price">$35</span></div>
+        <div class="row"><span class="name">Makeup</span><span class="dots"></span><span class="price">See booking</span></div>
+      </div>
+    </div>
+    <p class="menu-note">The full live menu, with every service and open time, is on the <a href="https://square.site/book/5KYM5PRZKTH9P/salon-eros-hoffman-estates-il" target="_blank" rel="noopener">booking page</a>.</p>
+  </div>
+</section>
+
+<section class="band" id="work">
+  <div class="wrap">
+    <div class="head">
+      <h2>Our <i>work</i></h2>
+      <p>On the finished site, this gallery shows the salon's own before-and-after photos.</p>
+    </div>
+    <div class="gallery">
+      <div class="ph">Color transformation</div>
+      <div class="ph">Highlights</div>
+      <div class="ph">Keratin smoothing</div>
+      <div class="ph">Cut &amp; blowout</div>
+    </div>
+  </div>
+</section>
+
+<section class="band" id="visit">
+  <div class="wrap visit">
+    <div>
+      <div class="head" style="margin-bottom:18px"><h2>Visit</h2></div>
+      <table class="hours" aria-label="Hours">
+        <tr><td>Monday</td><td>10 am – 7 pm</td></tr>
+        <tr><td>Tuesday</td><td>Closed</td></tr>
+        <tr><td>Wednesday – Friday</td><td>10 am – 7 pm</td></tr>
+        <tr><td>Saturday</td><td>10 am – 5 pm</td></tr>
+        <tr><td>Sunday</td><td>9 am – 2 pm</td></tr>
+      </table>
+      <p class="small">Appointments only. Hours shown as listed online.</p>
+    </div>
+    <div class="card">
+      <h3>Ready for your next appointment?</h3>
+      <p style="color:var(--muted);margin-bottom:20px">Pick a service and a time online. You'll get a confirmation right away.</p>
+      <div class="actions" style="margin-top:0">
+        <a class="btn solid" href="https://square.site/book/5KYM5PRZKTH9P/salon-eros-hoffman-estates-il" target="_blank" rel="noopener">Book online</a>
+      </div>
+      <p class="small">Or call <span class="selectable">(847) 284-4737</span></p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span class="logo">Salon Eros</span>
+    <span>1171 N. Barrington Rd, Unit B · Hoffman Estates, IL 60169</span>
+  </div>
+</footer>
+</body>
+</html>

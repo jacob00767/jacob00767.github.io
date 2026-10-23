@@ -1,0 +1,304 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex">
+<title>Domenicas Home Refresh</title>
+<meta name="description" content="Domenicas Home Refresh: decluttering, organizing, cleaning and styling that makes your home feel new again. Refresh your home. Love your space.">
+<link rel="icon" href="logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cormorant+Garamond:wght@500;600&family=Montserrat:wght@400;500;600&display=swap">
+<style>
+/* Layout: matches the Domenicas logo. Script name, wide-spaced serif caps, small spaced sans for labels; lavender and deep purple on soft white,
+   with drawn lavender sprigs and the house roofline as recurring details. */
+:root {
+  --bg: #faf8fb;
+  --surface: #ffffff;
+  --ink: #2f2c33;
+  --muted: #6c6672;
+  --rule: #e7e1ec;
+  --purple: #6a3d9a;
+  --lavender: #b9a2d6;
+  --lavender-soft: #f1ebf7;
+  --sage: #7d9a7a;
+  --on-purple: #ffffff;
+  --font-script: "Great Vibes", "Brush Script MT", cursive;
+  --font-serif: "Cormorant Garamond", Georgia, serif;
+  --font-sans: "Montserrat", system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #17141b; --surface: #211c26; --ink: #f2eef6; --muted: #b3aabd; --rule: #352d3d;
+    --purple: #b993e6; --lavender: #8d72b0; --lavender-soft: #2a2232; --sage: #a3c2a0; --on-purple: #17141b;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #17141b; --surface: #211c26; --ink: #f2eef6; --muted: #b3aabd; --rule: #352d3d;
+  --purple: #b993e6; --lavender: #8d72b0; --lavender-soft: #2a2232; --sage: #a3c2a0; --on-purple: #17141b;
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+img { max-width: 100%; }
+html { scroll-behavior: smooth; }
+body { margin: 0; background: var(--bg); color: var(--ink); font-family: var(--font-sans); font-size: 16px; line-height: 1.7; }
+.wrap {
+  max-width: 1060px; margin: 0 auto;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+h1, h2, h3 { margin: 0; font-weight: 500; text-wrap: balance; }
+p { margin: 0; }
+a { color: inherit; }
+:focus-visible { outline: 2px solid var(--purple); outline-offset: 3px; }
+
+.label { font-family: var(--font-sans); font-size: 12px; font-weight: 600; letter-spacing: 0.24em; text-transform: uppercase; color: var(--purple); }
+.script { font-family: var(--font-script); font-weight: 400; color: var(--purple); line-height: 1; }
+.caps { font-family: var(--font-serif); text-transform: uppercase; letter-spacing: 0.22em; }
+.rule-title { display: flex; align-items: center; gap: 16px; justify-content: center; }
+.rule-title::before, .rule-title::after { content: ""; height: 1.5px; width: 56px; background: var(--purple); opacity: 0.7; }
+
+header .wrap { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px; padding-block: 14px; }
+.brand { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+.brand img { width: 52px; height: 52px; border-radius: 50%; }
+.brand .script { font-size: 32px; }
+.brand .caps { display: block; font-size: 11px; color: var(--ink); letter-spacing: 0.3em; margin-top: 2px; }
+nav { display: flex; flex-wrap: wrap; align-items: center; gap: 24px; font-size: 13px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; }
+nav a:not(.btn) { text-decoration: none; color: var(--muted); }
+nav a:not(.btn):hover { color: var(--purple); }
+
+.btn {
+  display: inline-block; font: 600 13px/1 var(--font-sans); letter-spacing: 0.16em; text-transform: uppercase;
+  padding: 16px 24px; border-radius: 999px; text-decoration: none; border: 1.5px solid var(--purple); color: var(--purple); background: transparent; cursor: pointer;
+}
+.btn.solid { background: var(--purple); color: var(--on-purple); }
+.btn:hover { transform: translateY(-1px); }
+nav .btn { padding: 12px 18px; }
+
+/* Hero */
+.hero { position: relative; overflow: hidden; }
+.hero::before { content: ""; position: absolute; inset: 0; background: radial-gradient(ellipse 60% 70% at 78% 40%, var(--lavender-soft), transparent 70%); pointer-events: none; }
+.hero .wrap { position: relative; display: grid; grid-template-columns: 1.15fr 1fr; gap: 40px; align-items: center; padding-block: 40px 72px; }
+.hero h1 { margin-block: 10px 6px; }
+.hero h1 .script { display: block; font-size: clamp(64px, 10vw, 118px); }
+.hero h1 .caps { display: block; font-size: clamp(26px, 3.6vw, 40px); color: var(--ink); margin-top: 6px; }
+.tagline { margin-top: 18px; font-size: 13px; letter-spacing: 0.26em; text-transform: uppercase; color: var(--muted); }
+.tagline b { color: var(--purple); font-weight: 600; }
+.lede { margin-top: 18px; font-size: 17px; color: var(--muted); max-width: 32em; }
+.actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 28px; }
+.logo-big { justify-self: center; width: min(420px, 100%); max-width: 100%; aspect-ratio: 1; border-radius: 50%; box-shadow: 0 30px 60px -30px rgba(106,61,154,0.45); }
+.logo-big img { width: 100%; height: 100%; border-radius: 50%; display: block; }
+
+.sprig { display: block; margin: 0 auto; width: 150px; height: auto; }
+
+section.band .wrap { padding-block: 72px; }
+section.alt { background: var(--surface); border-block: 1px solid var(--rule); }
+.head { text-align: center; margin-bottom: 40px; }
+.head h2 .script { font-size: clamp(48px, 7vw, 76px); }
+.head h2 .caps { display: block; font-size: 15px; color: var(--ink); margin-top: 8px; }
+.head p { color: var(--muted); max-width: 36em; margin: 14px auto 0; }
+
+.services { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; }
+.svc { background: var(--bg); border: 1px solid var(--rule); border-radius: 18px; padding: 28px; display: grid; grid-template-columns: auto 1fr; gap: 18px; align-items: start; min-width: 0; }
+.svc .icon { width: 54px; height: 54px; border-radius: 50%; background: var(--lavender-soft); display: grid; place-items: center; }
+.svc .icon svg { width: 28px; height: 28px; }
+.svc h3 { font-family: var(--font-serif); font-size: 26px; line-height: 1.15; }
+.svc p { color: var(--muted); font-size: 15px; margin-top: 6px; }
+
+.steps { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 28px; counter-reset: s; }
+.steps li { text-align: center; counter-increment: s; min-width: 0; }
+.steps li::before { content: counter(s); display: grid; place-items: center; width: 56px; height: 56px; margin: 0 auto 14px; border-radius: 50%; border: 1.5px solid var(--purple); color: var(--purple); font-family: var(--font-serif); font-size: 26px; }
+.steps h3 { font-family: var(--font-serif); font-size: 24px; }
+.steps p { color: var(--muted); font-size: 15px; margin-top: 6px; }
+
+.ba { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+.pair { border-radius: 18px; overflow: hidden; border: 1px solid var(--rule); background: var(--surface); min-width: 0; }
+.pair .halves { display: grid; grid-template-columns: 1fr 1fr; aspect-ratio: 4 / 3; max-width: 100%; }
+.pair .halves div { display: grid; place-items: center; font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted); }
+.pair .halves div:first-child { background: repeating-linear-gradient(45deg, var(--rule) 0 2px, transparent 2px 12px); }
+.pair .halves div:last-child { background: var(--lavender-soft); color: var(--purple); }
+.pair p { padding: 14px 16px; font-family: var(--font-serif); font-size: 20px; }
+
+.promise { text-align: center; max-width: 720px; margin: 0 auto; }
+.promise .script { font-size: clamp(40px, 6vw, 62px); }
+.promise p { color: var(--muted); font-size: 17px; margin-top: 14px; }
+
+.contact { display: grid; grid-template-columns: 1fr 1.2fr; gap: 40px; align-items: start; }
+.contact .intro p { color: var(--muted); margin-top: 12px; }
+.contact .intro .script { font-size: clamp(46px, 6vw, 66px); }
+form { background: var(--surface); border: 1px solid var(--rule); border-radius: 20px; padding: 26px; display: grid; grid-template-columns: 1fr 1fr; gap: 14px; min-width: 0; }
+form .full { grid-column: 1 / -1; }
+label { display: grid; gap: 6px; font-size: 12px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); min-width: 0; }
+input, select, textarea { font: 400 16px/1.4 var(--font-sans); color: var(--ink); background: var(--bg); border: 1px solid var(--rule); border-radius: 12px; padding: 12px 14px; width: 100%; letter-spacing: 0; text-transform: none; }
+textarea { min-height: 110px; resize: vertical; }
+.hp { position: absolute; left: -9999px; }
+
+footer { background: var(--surface); border-top: 1px solid var(--rule); }
+footer .wrap { padding-block: 34px 44px; display: grid; justify-items: center; gap: 10px; text-align: center; }
+footer .script { font-size: 40px; }
+footer .tagline { margin-top: 0; }
+footer small { color: var(--muted); font-size: 12px; }
+
+@media (max-width: 860px) {
+  nav a:not(.btn) { display: none; }
+  .hero .wrap, .contact { grid-template-columns: 1fr; }
+  .logo-big { width: min(300px, 80%); order: -1; }
+  .hero .wrap > div:first-child { text-align: center; }
+  .hero .actions { justify-content: center; }
+  .lede { margin-inline: auto; }
+  .services { grid-template-columns: 1fr; }
+  .steps, .ba { grid-template-columns: 1fr; }
+}
+@media (max-width: 520px) {
+  form { grid-template-columns: 1fr; }
+  .brand .script { font-size: 26px; }
+}
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } .btn:hover { transform: none; } }
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="sprig" viewBox="0 0 150 40">
+      <path d="M8 26 H142" stroke="currentColor" stroke-width="1.5" fill="none"/>
+      <g fill="currentColor">
+        <path d="M52 26 c-4 -10 2 -18 10 -20 c0 9 -4 16 -10 20z"/><path d="M62 26 c-2 -10 5 -17 13 -17 c-2 9 -7 15 -13 17z"/>
+        <path d="M74 26 c-1 -10 6 -16 14 -15 c-3 9 -8 14 -14 15z"/><path d="M86 26 c0 -9 8 -15 15 -13 c-3 8 -9 13 -15 13z"/>
+        <path d="M75 30 c-3 -3 -7 0 -4 3 l4 4 l4 -4 c3 -3 -1 -6 -4 -3z"/>
+      </g>
+    </symbol>
+  </defs>
+</svg>
+
+<header>
+  <div class="wrap">
+    <a class="brand" href="#top"><img src="logo.png" alt="" width="52" height="52"><span><span class="script">Domenicas</span><span class="caps">Home Refresh</span></span></a>
+    <nav aria-label="Main">
+      <a href="#services">Services</a>
+      <a href="#how">How it works</a>
+      <a class="btn solid" href="#contact">Free estimate</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+<section class="hero">
+  <div class="wrap">
+    <div>
+      <div class="label">Decluttering · Organizing · Cleaning · Styling</div>
+      <h1><span class="script">Domenicas</span><span class="caps">Home Refresh</span></h1>
+      <p class="tagline">Refresh your home. <b>Love your space.</b></p>
+      <p class="lede">Your home should feel calm the minute you walk in. Domenica clears the clutter, cleans, organizes and adds simple finishing touches, so your space feels fresh, cozy and truly yours again.</p>
+      <div class="actions">
+        <a class="btn solid" href="#contact">Get a free estimate</a>
+        <a class="btn" href="#services">See services</a>
+      </div>
+    </div>
+    <div class="logo-big"><img src="logo.png" alt="Domenicas Home Refresh logo"></div>
+  </div>
+</section>
+
+<section class="band alt" id="services">
+  <div class="wrap">
+    <div class="head">
+      <svg class="sprig" style="color:var(--purple)" aria-hidden="true"><use href="#sprig"/></svg>
+      <h2><span class="script">What I do</span><span class="caps rule-title">Services</span></h2>
+      <p>Every home is different. Pick one service or combine them for a full refresh.</p>
+    </div>
+    <div class="services">
+      <div class="svc">
+        <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="var(--purple)" stroke-width="1.6"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 10h18M9 4v16"/></svg></div>
+        <div><h3>Decluttering &amp; organizing</h3><p>Closets, pantries, garages and every drawer in between, sorted and set up so it stays that way.</p></div>
+      </div>
+      <div class="svc">
+        <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="var(--purple)" stroke-width="1.6"><path d="M12 3l1.8 4.2L18 9l-4.2 1.8L12 15l-1.8-4.2L6 9l4.2-1.8z"/><path d="M18 15l.8 1.7L20.5 17.5l-1.7.8L18 20l-.8-1.7L15.5 17.5l1.7-.8z"/></svg></div>
+        <div><h3>Deep cleaning</h3><p>Top-to-bottom cleaning that gets the spots everyday cleaning misses.</p></div>
+      </div>
+      <div class="svc">
+        <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="var(--purple)" stroke-width="1.6"><path d="M4 18h16M6 18v-5a2 2 0 012-2h8a2 2 0 012 2v5"/><path d="M8 11V8a4 4 0 018 0v3"/></svg></div>
+        <div><h3>Room refresh &amp; styling</h3><p>Rearranging, pillows, throws and small touches that make a room feel brand new without a remodel.</p></div>
+      </div>
+      <div class="svc">
+        <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="var(--purple)" stroke-width="1.6"><path d="M3 11l9-7 9 7"/><path d="M5 10v10h14V10"/><path d="M10 20v-5h4v5"/></svg></div>
+        <div><h3>Move-in &amp; move-out</h3><p>Start fresh in a new place, or leave your old one spotless.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="band" id="how">
+  <div class="wrap">
+    <div class="head">
+      <h2><span class="script">Simple &amp; stress-free</span><span class="caps rule-title">How it works</span></h2>
+    </div>
+    <ol class="steps">
+      <li><h3>Reach out</h3><p>Tell me about your space and what's bothering you about it.</p></li>
+      <li><h3>Free walkthrough</h3><p>We look at the space together and I give you a clear, upfront price.</p></li>
+      <li><h3>Enjoy your home</h3><p>I do the work. You come home to a space you love.</p></li>
+    </ol>
+  </div>
+</section>
+
+<section class="band alt">
+  <div class="wrap">
+    <div class="head">
+      <h2><span class="script">Before &amp; after</span><span class="caps rule-title">Recent refreshes</span></h2>
+      <p>Photos of real projects go here.</p>
+    </div>
+    <div class="ba">
+      <div class="pair"><div class="halves"><div>Before</div><div>After</div></div><p>Living room refresh</p></div>
+      <div class="pair"><div class="halves"><div>Before</div><div>After</div></div><p>Closet organization</p></div>
+      <div class="pair"><div class="halves"><div>Before</div><div>After</div></div><p>Kitchen &amp; pantry</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="band">
+  <div class="wrap promise">
+    <svg class="sprig" style="color:var(--purple)" aria-hidden="true"><use href="#sprig"/></svg>
+    <h2 class="script">A home that feels like you</h2>
+    <p>Life gets busy and spaces get away from us. I treat every home with care and respect, work around your schedule, and leave every room calmer than I found it.</p>
+  </div>
+</section>
+
+<section class="band alt" id="contact">
+  <div class="wrap contact">
+    <div class="intro">
+      <div class="label">Free estimate</div>
+      <h2 class="script">Let's refresh your space</h2>
+      <p>Send a few details and I'll get back to you to set up a free walkthrough.</p>
+    </div>
+    <form name="estimate" method="POST" action="/thanks.html" data-netlify="true" netlify-honeypot="website">
+      <input type="hidden" name="form-name" value="estimate">
+      <p class="hp"><label>Leave empty<input id="f-hp" name="website"></label></p>
+      <label>Name<input id="f-name" name="name" autocomplete="name" required></label>
+      <label>Phone<input id="f-phone" name="phone" type="tel" autocomplete="tel" required></label>
+      <label class="full">Email<input id="f-email" name="email" type="email" autocomplete="email"></label>
+      <label class="full">What can I help with?
+        <select id="f-service" name="service">
+          <option>Decluttering &amp; organizing</option><option>Deep cleaning</option><option>Room refresh &amp; styling</option><option>Move-in / move-out</option><option>Not sure yet</option>
+        </select>
+      </label>
+      <label class="full">Tell me about your space<textarea id="f-notes" name="notes" placeholder="Which rooms, how big, and what you'd like to change"></textarea></label>
+      <button class="btn solid full" type="submit">Request my free estimate</button>
+    </form>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span class="script">Domenicas</span>
+    <span class="caps" style="font-size:13px">Home Refresh</span>
+    <svg class="sprig" style="color:var(--purple)" aria-hidden="true"><use href="#sprig"/></svg>
+    <p class="tagline">Refresh your home. <b>Love your space.</b></p>
+    <small>© 2026 Domenicas Home Refresh</small>
+  </div>
+</footer>
+
+</body>
+</html>

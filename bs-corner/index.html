@@ -1,0 +1,605 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="robots" content="noindex">
+<title>B's Corner</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Neonderthaw&family=Bebas+Neue&family=Outfit:wght@300;400;600;800&display=swap">
+<style>
+/* Layout: a night at the corner bar. A neon sign that powers on over drifting bar-light bokeh, a ticker, a pint that fills as you scroll,
+   a burger that comes apart under your finger, a lit menu board, a fish-fry countdown, a photo wall and a lit-up hours card.
+   Dark by design: it's a bar at night. Amber neon for the brand, red neon for "open". */
+:root {
+  --bg: #0b0806;
+  --bg-2: #120d0a;
+  --panel: #18120e;
+  --panel-2: #211812;
+  --ink: #f7ecdc;
+  --muted: #b8a893;
+  --rule: #2e231b;
+  --amber: #ffb547;
+  --amber-hot: #ff8a1f;
+  --red: #ff4b3e;
+  --beer: #f2a72e;
+  --foam: #fff6e3;
+  --on-amber: #1a0f04;
+  --font-neon: "Neonderthaw", "Brush Script MT", cursive;
+  --font-head: "Bebas Neue", Impact, "Arial Narrow", sans-serif;
+  --font-body: "Outfit", system-ui, -apple-system, "Segoe UI", sans-serif;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { margin: 0; background: var(--bg); color: var(--ink); font-family: var(--font-body); font-size: 17px; line-height: 1.6; overflow-x: hidden; }
+.wrap {
+  max-width: 1120px; margin: 0 auto;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+h1, h2, h3 { margin: 0; font-weight: 400; text-wrap: balance; }
+h2, h3 { font-family: var(--font-head); letter-spacing: 0.02em; line-height: 0.95; }
+p { margin: 0; }
+a { color: inherit; }
+:focus-visible { outline: 2px solid var(--amber); outline-offset: 3px; }
+.eyebrow { font-size: 12.5px; font-weight: 800; letter-spacing: 0.3em; text-transform: uppercase; color: var(--amber); }
+.reveal { opacity: 1; transform: none; transition: opacity 0.8s ease, transform 0.8s cubic-bezier(.2,.8,.2,1); }
+.js .reveal.pre { opacity: 0; transform: translateY(28px); }
+
+/* Sample bar */
+.sample { position: relative; z-index: 5; background: linear-gradient(90deg, #2a1a0c, #3a240e, #2a1a0c); color: var(--ink); font-size: 13.5px; line-height: 1.45; border-bottom: 1px solid rgba(255,181,71,0.35); }
+.sample .wrap { padding-block: 10px; text-align: center; }
+.sample b { color: var(--amber); }
+.sample a { color: var(--amber); font-weight: 600; }
+
+/* Floating nav */
+.nav { position: fixed; z-index: 40; left: 50%; transform: translateX(-50%); top: calc(env(safe-area-inset-top, 0px) + 14px);
+  display: flex; align-items: center; gap: 6px; padding: 6px; border-radius: 999px;
+  background: rgba(20,14,10,0.72); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); border: 1px solid rgba(255,181,71,0.22);
+  box-shadow: 0 10px 40px -10px rgba(0,0,0,0.7); opacity: 0; pointer-events: none; transition: opacity 0.35s, transform 0.35s; }
+.nav.show { opacity: 1; pointer-events: auto; }
+.nav a { text-decoration: none; font-size: 13.5px; font-weight: 600; color: var(--muted); padding: 9px 14px; border-radius: 999px; white-space: nowrap; }
+.nav a:hover { color: var(--ink); }
+.nav .call { background: var(--amber); color: var(--on-amber); }
+.nav .brand { font-family: var(--font-neon); font-size: 26px; line-height: 1; color: var(--amber); text-shadow: 0 0 10px rgba(255,138,31,0.8); padding: 4px 12px 0; }
+
+/* ===== Hero ===== */
+.hero { position: relative; min-height: 100vh; min-height: 100svh; display: grid; place-items: center; overflow: hidden; isolation: isolate; }
+.hero canvas { position: absolute; inset: 0; width: 100%; height: 100%; z-index: -2; }
+.hero::before { content: ""; position: absolute; inset: 0; z-index: -3;
+  background:
+    radial-gradient(ellipse 70% 55% at 50% 42%, rgba(255,138,31,0.20), transparent 70%),
+    repeating-linear-gradient(0deg, transparent 0 34px, rgba(0,0,0,0.55) 34px 37px),
+    repeating-linear-gradient(90deg, transparent 0 74px, rgba(0,0,0,0.45) 74px 77px),
+    linear-gradient(#2a1710, #1a0e09 60%, #0b0806); }
+.hero::after { content: ""; position: absolute; inset: 0; z-index: -1; background: radial-gradient(ellipse at 50% 40%, transparent 30%, rgba(11,8,6,0.85) 85%), linear-gradient(transparent 70%, var(--bg)); pointer-events: none; }
+.hero-inner { text-align: center; padding: 70px max(16px, env(safe-area-inset-left, 0px)) 80px; }
+.neon-wrap { position: relative; display: inline-block; padding: 10px 40px 30px; }
+.neon { font-family: var(--font-neon); font-size: clamp(96px, min(20vw, 26vh), 230px); line-height: 0.9; color: #fff3e0; letter-spacing: 0.01em;
+  text-shadow: 0 0 4px #fff, 0 0 10px #ffd59a, 0 0 22px var(--amber), 0 0 46px var(--amber-hot), 0 0 90px var(--amber-hot), 0 0 140px #ff6a00;
+  transition: opacity 0.05s; }
+.neon .s { color: #ffe9e6; text-shadow: 0 0 4px #fff, 0 0 10px #ffb3ad, 0 0 22px var(--red), 0 0 46px var(--red), 0 0 90px #ff2a1a; }
+.neon-tube { position: absolute; left: 6%; right: 6%; bottom: 8px; height: 4px; border-radius: 4px; background: #ffd9a6;
+  box-shadow: 0 0 8px #fff, 0 0 18px var(--amber), 0 0 40px var(--amber-hot); }
+.js .neon.off, .js .neon-tube.off { opacity: 0.08; text-shadow: none; box-shadow: none; }
+.hero .kind { margin-top: 18px; font-family: var(--font-head); font-size: clamp(22px, 3.4vw, 34px); letter-spacing: 0.5em; padding-left: 0.5em; color: var(--ink); }
+.hero .sub { margin-top: 10px; color: var(--muted); font-size: 16px; letter-spacing: 0.08em; }
+.cta { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; margin-top: 34px; }
+.btn { display: inline-flex; align-items: center; gap: 10px; font: 800 14px/1 var(--font-body); letter-spacing: 0.12em; text-transform: uppercase; padding: 17px 24px; border-radius: 999px; text-decoration: none; border: 1.5px solid rgba(255,181,71,0.55); color: var(--ink); background: rgba(24,18,14,0.6); backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); cursor: pointer; }
+.btn.hot { background: linear-gradient(180deg, #ffc25f, var(--amber-hot)); border-color: transparent; color: var(--on-amber); box-shadow: 0 10px 40px -8px rgba(255,138,31,0.8); }
+.btn:hover { transform: translateY(-2px); }
+.open-pill { display: inline-flex; align-items: center; gap: 10px; margin-top: 26px; padding: 9px 16px; border-radius: 999px; border: 1px solid var(--rule); background: rgba(24,18,14,0.75); font-size: 13px; font-weight: 800; letter-spacing: 0.14em; text-transform: uppercase; }
+.open-pill .bulb { font-family: var(--font-neon); font-size: 24px; line-height: 0.8; letter-spacing: 0; text-transform: none; color: #555; }
+.open-pill.open .bulb { color: #ffe4e0; text-shadow: 0 0 6px #fff, 0 0 14px var(--red), 0 0 30px var(--red); animation: buzz 4s infinite; }
+@keyframes buzz { 0%, 92%, 100% { opacity: 1; } 93% { opacity: 0.4; } 94% { opacity: 1; } 96% { opacity: 0.6; } }
+.scroll-cue { position: absolute; left: 50%; bottom: 26px; transform: translateX(-50%); width: 26px; height: 42px; border: 1.5px solid rgba(247,236,220,0.4); border-radius: 14px; }
+.scroll-cue::after { content: ""; position: absolute; left: 50%; top: 8px; width: 4px; height: 8px; margin-left: -2px; border-radius: 2px; background: var(--amber); animation: cue 1.8s infinite; }
+@keyframes cue { 0% { transform: translateY(0); opacity: 1; } 80% { transform: translateY(14px); opacity: 0; } 100% { opacity: 0; } }
+
+/* ===== Ticker ===== */
+.ticker { border-block: 1px solid var(--rule); background: var(--bg-2); overflow: hidden; }
+.track { display: flex; width: max-content; animation: slide 38s linear infinite; }
+.track span { font-family: var(--font-head); font-size: 30px; letter-spacing: 0.06em; padding: 16px 26px; white-space: nowrap; color: var(--ink); }
+.track span:nth-child(even) { color: var(--amber); font-size: 20px; padding-inline: 4px; }
+@keyframes slide { to { transform: translateX(-50%); } }
+
+/* ===== The pour ===== */
+.pour { position: relative; }
+.pour .wrap { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 40px; align-items: center; padding-block: 110px; }
+.pour h2 { font-size: clamp(64px, 10vw, 140px); }
+.pour h2 em { font-style: normal; color: var(--amber); text-shadow: 0 0 30px rgba(255,138,31,0.45); }
+.pour p { color: var(--muted); font-size: 19px; margin-top: 22px; max-width: 30em; }
+.glass-box { position: relative; justify-self: center; width: min(300px, 70vw); max-width: 100%; aspect-ratio: 3 / 4.4; }
+.glass-box svg { width: 100%; height: 100%; display: block; overflow: visible; }
+.glass-glow { position: absolute; inset: 15% 10% 0; background: radial-gradient(ellipse at 50% 70%, rgba(255,167,46,0.35), transparent 70%); filter: blur(20px); z-index: -1; }
+
+/* ===== Favorites ===== */
+section.band .wrap { padding-block: 100px; }
+.head { text-align: center; margin-bottom: 46px; }
+.head h2 { font-size: clamp(56px, 8vw, 104px); margin-top: 12px; }
+.head p { color: var(--muted); max-width: 34em; margin: 14px auto 0; }
+.favs { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; perspective: 1000px; }
+.fav { position: relative; border-radius: 22px; padding: 26px; min-width: 0; background: linear-gradient(170deg, var(--panel-2), var(--panel)); border: 1px solid var(--rule);
+  transform-style: preserve-3d; transition: transform 0.2s ease, border-color 0.2s, box-shadow 0.3s; overflow: hidden; }
+.fav::before { content: ""; position: absolute; inset: 0; background: radial-gradient(500px circle at var(--mx, 50%) var(--my, 0%), rgba(255,181,71,0.16), transparent 50%); pointer-events: none; }
+.fav:hover { border-color: rgba(255,181,71,0.5); box-shadow: 0 30px 60px -30px rgba(255,138,31,0.45); }
+.fav .art { height: 220px; display: grid; place-items: center; transform: translateZ(40px); }
+.fav .art svg { width: 100%; max-width: 230px; height: 100%; overflow: visible; }
+.fav .tag { display: inline-block; font-size: 11.5px; font-weight: 800; letter-spacing: 0.2em; text-transform: uppercase; color: var(--amber); border: 1px solid rgba(255,181,71,0.45); padding: 5px 10px; border-radius: 999px; }
+.fav h3 { font-size: 48px; margin-block: 14px 8px; transform: translateZ(26px); }
+.fav p { color: var(--muted); }
+.fav .hint { position: absolute; right: 20px; top: 22px; font-size: 11.5px; color: var(--muted); letter-spacing: 0.12em; text-transform: uppercase; }
+/* Burger layers spread apart on hover/tap */
+.burger g { transition: transform 0.55s cubic-bezier(.3,1.5,.5,1); }
+.fav.open-burger .burger .l1 { transform: translateY(-34px) rotate(-4deg); }
+.fav.open-burger .burger .l2 { transform: translateY(-20px); }
+.fav.open-burger .burger .l3 { transform: translateY(-8px) rotate(2deg); }
+.fav.open-burger .burger .l5 { transform: translateY(14px); }
+/* Gyro cone turns */
+.cone { transform-origin: 115px 120px; animation: turn 6s linear infinite; }
+@keyframes turn { from { transform: scaleX(1); } 25% { transform: scaleX(0.82); } 50% { transform: scaleX(1); } 75% { transform: scaleX(0.82); } to { transform: scaleX(1); } }
+.steam path { stroke: rgba(247,236,220,0.35); stroke-width: 3; fill: none; stroke-linecap: round; animation: steam 3s ease-in-out infinite; }
+.steam path:nth-child(2) { animation-delay: 1s; } .steam path:nth-child(3) { animation-delay: 2s; }
+@keyframes steam { 0% { opacity: 0; transform: translateY(10px); } 40% { opacity: 1; } 100% { opacity: 0; transform: translateY(-16px); } }
+.fish .wave { animation: bob 2.6s ease-in-out infinite; }
+@keyframes bob { 50% { transform: translateY(-6px) rotate(-2deg); } }
+
+/* ===== Menu board ===== */
+.board { position: relative; border-radius: 18px; padding: 34px; background: radial-gradient(ellipse at 50% 0%, #1d2a22, #101712 70%);
+  border: 12px solid #3d2a1a; box-shadow: inset 0 0 0 2px #5c3f26, inset 0 0 80px rgba(0,0,0,0.6), 0 40px 80px -40px rgba(0,0,0,0.8); }
+.board::before { content: ""; position: absolute; inset: 0; border-radius: 6px; pointer-events: none; opacity: 0.18;
+  background-image: radial-gradient(rgba(255,255,255,0.4) 0.6px, transparent 0.6px); background-size: 5px 5px; }
+.board-title { text-align: center; font-family: var(--font-neon); font-size: clamp(54px, 8vw, 84px); line-height: 1; color: #eaf7ee; text-shadow: 0 0 2px #fff, 0 0 12px rgba(160,255,200,0.6); margin-bottom: 18px; }
+.tabs { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; margin-bottom: 26px; position: relative; }
+.tabs button { font: 800 13px/1 var(--font-body); letter-spacing: 0.14em; text-transform: uppercase; padding: 12px 18px; border-radius: 999px; border: 1px solid rgba(234,247,238,0.25); background: transparent; color: #cfe3d6; cursor: pointer; }
+.tabs button[aria-selected="true"] { background: var(--amber); border-color: var(--amber); color: var(--on-amber); }
+.items[hidden] { display: none; }
+.items { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 4px 48px; position: relative; animation: chalk 0.45s ease; }
+@keyframes chalk { from { opacity: 0; transform: translateY(8px); } }
+.item { display: flex; align-items: baseline; gap: 12px; padding-block: 16px; border-bottom: 1px dashed rgba(234,247,238,0.18); min-width: 0; }
+.item .name { font-family: var(--font-head); font-size: 32px; letter-spacing: 0.03em; line-height: 1; color: #f2f8f3; }
+.item .name small { display: block; font-family: var(--font-body); font-size: 14px; letter-spacing: 0; color: #a9c1b0; margin-top: 6px; }
+.item .leader { flex: 1; border-bottom: 2px dotted rgba(234,247,238,0.25); transform: translateY(-6px); min-width: 16px; }
+.item .price { font-family: var(--font-head); font-size: 30px; color: var(--amber); white-space: nowrap; }
+.menu-note { text-align: center; color: #a9c1b0; font-size: 14px; margin-top: 22px; position: relative; }
+
+/* ===== Fish fry ===== */
+.fry { position: relative; overflow: hidden; border-radius: 26px; padding: 54px 40px; text-align: center;
+  background: radial-gradient(ellipse at 50% 120%, rgba(255,138,31,0.35), transparent 60%), linear-gradient(160deg, #1c130d, #110c09); border: 1px solid rgba(255,181,71,0.35); }
+.fry .big { font-family: var(--font-head); font-size: clamp(110px, 20vw, 240px); line-height: 0.82; color: transparent; -webkit-text-stroke: 2px var(--amber); text-shadow: 0 0 40px rgba(255,138,31,0.25); }
+.fry h3 { font-size: clamp(40px, 6vw, 64px); margin-top: 6px; }
+.fry p { color: var(--muted); max-width: 32em; margin: 12px auto 0; }
+.count { display: inline-flex; gap: 10px; margin-top: 26px; }
+.count div { min-width: 86px; padding: 14px 10px; border-radius: 14px; background: rgba(11,8,6,0.65); border: 1px solid var(--rule); }
+.count b { display: block; font-family: var(--font-head); font-size: 46px; line-height: 1; color: var(--ink); font-variant-numeric: tabular-nums; }
+.count span { font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted); }
+.count-label { margin-top: 12px; font-size: 13px; font-weight: 800; letter-spacing: 0.2em; text-transform: uppercase; color: var(--amber); }
+
+/* ===== Photo wall ===== */
+.wall { display: flex; flex-wrap: wrap; justify-content: center; gap: 22px; padding-block: 10px; }
+.polaroid { width: min(230px, 42vw); max-width: 100%; background: #f4ece0; padding: 12px 12px 44px; border-radius: 4px; box-shadow: 0 18px 40px -16px rgba(0,0,0,0.8); transform: rotate(var(--r)); transition: transform 0.3s; position: relative; }
+.polaroid:hover { transform: rotate(0deg) scale(1.04); z-index: 2; }
+.polaroid::before { content: ""; position: absolute; left: 50%; top: -10px; width: 70px; height: 22px; margin-left: -35px; background: rgba(255,232,190,0.55); transform: rotate(-3deg); }
+.polaroid .pic { aspect-ratio: 1; max-width: 100%; background: radial-gradient(circle at 50% 40%, #3a2a1e, #1a120d); display: grid; place-items: center; color: #8d7a66; font-size: 13px; letter-spacing: 0.1em; text-transform: uppercase; }
+.polaroid .cap { position: absolute; left: 0; right: 0; bottom: 10px; text-align: center; font-family: var(--font-neon); font-size: 30px; line-height: 1; color: #3a2a1e; }
+
+/* ===== Visit ===== */
+.visit { display: grid; grid-template-columns: 1.05fr 0.95fr; gap: 20px; align-items: stretch; }
+.card { background: linear-gradient(170deg, var(--panel-2), var(--panel)); border: 1px solid var(--rule); border-radius: 22px; padding: 30px; min-width: 0; }
+.card h3 { font-size: 46px; margin-bottom: 18px; }
+.hrs { display: grid; gap: 8px; }
+.hr { display: flex; justify-content: space-between; gap: 12px; padding: 14px 16px; border-radius: 12px; border: 1px solid var(--rule); font-variant-numeric: tabular-nums; }
+.hr.today { border-color: rgba(255,181,71,0.6); background: rgba(255,181,71,0.08); box-shadow: 0 0 30px -12px rgba(255,138,31,0.6); }
+.hr.today span:first-child::after { content: "Today"; margin-left: 10px; font-size: 11px; font-weight: 800; letter-spacing: 0.16em; text-transform: uppercase; color: var(--on-amber); background: var(--amber); padding: 3px 7px; border-radius: 999px; vertical-align: 2px; }
+.small { color: var(--muted); font-size: 13.5px; margin-top: 14px; }
+.map { position: relative; height: 210px; max-width: 100%; border-radius: 14px; overflow: hidden; border: 1px solid var(--rule); margin-bottom: 20px; background: #120d0a; }
+.map svg { width: 100%; height: 100%; display: block; }
+.pin { position: absolute; left: 58%; top: 40%; transform: translate(-50%, -100%); text-align: center; }
+.pin span { display: block; font-family: var(--font-neon); font-size: 30px; line-height: 1; color: #fff3e0; text-shadow: 0 0 8px var(--amber), 0 0 20px var(--amber-hot); white-space: nowrap; }
+.pin i { display: block; width: 14px; height: 14px; margin: 6px auto 0; border-radius: 50%; background: var(--amber); box-shadow: 0 0 0 8px rgba(255,181,71,0.2), 0 0 20px var(--amber-hot); }
+.addr { font-size: 19px; }
+.phone { display: block; font-family: var(--font-head); font-size: 54px; line-height: 1; color: var(--amber); text-decoration: none; margin-block: 16px 20px; letter-spacing: 0.02em; }
+
+footer { border-top: 1px solid var(--rule); background: var(--bg-2); }
+footer .wrap { padding-block: 44px 54px; display: grid; justify-items: center; gap: 8px; text-align: center; color: var(--muted); font-size: 14px; }
+footer .sig { font-family: var(--font-neon); font-size: 64px; line-height: 1; color: #fff3e0; text-shadow: 0 0 6px var(--amber), 0 0 20px var(--amber-hot); }
+
+@media (max-width: 900px) {
+  .pour .wrap, .visit { grid-template-columns: 1fr; }
+  .pour .wrap { text-align: center; padding-block: 80px; }
+  .pour p { margin-inline: auto; }
+  .favs { grid-template-columns: 1fr; max-width: 520px; margin: 0 auto; }
+  .items { grid-template-columns: 1fr; }
+  .nav a.hide-sm { display: none; }
+}
+@media (max-width: 480px) {
+  .board { padding: 22px 16px; border-width: 8px; }
+  .item .name { font-size: 26px; }
+  .count div { min-width: 70px; }
+  .fry { padding: 40px 18px; }
+  .neon-wrap { padding: 10px 10px 26px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .track, .cone, .steam path, .fish .wave, .open-pill .bulb, .scroll-cue::after { animation: none; }
+  .reveal, .burger g, .fav, .polaroid { transition: none; }
+  .js .reveal.pre { opacity: 1; transform: none; }
+  .btn:hover { transform: none; }
+}
+</style>
+</head><body style="margin:0">
+
+<div class="sample"><div class="wrap"><b>This is a free sample</b> made for B's Corner by <a href="https://jacob00767.github.io" target="_blank" rel="noopener">JacobTheWebsiteGuy</a>. Every color, photo, word and section can be changed to fit exactly what you want.</div></div>
+
+<nav class="nav" id="nav" aria-label="Main">
+  <a class="brand" href="#top">B's Corner</a>
+  <a href="#menu" class="hide-sm">Menu</a>
+  <a href="#fishfry" class="hide-sm">Fish fry</a>
+  <a href="#visit">Visit</a>
+  <a class="call" href="tel:+18475190601">Call</a>
+</nav>
+
+<main id="top">
+<section class="hero" aria-label="B's Corner">
+  <canvas id="bokeh" aria-hidden="true"></canvas>
+  <div class="hero-inner">
+    <div class="neon-wrap">
+      <h1 class="neon" id="neon">B<span class="s">'</span>s Corner</h1>
+      <div class="neon-tube" id="tube" aria-hidden="true"></div>
+    </div>
+    <div class="kind">Bar &amp; Grill</div>
+    <p class="sub">Family owned · 1001 W Golf Rd · Hoffman Estates</p>
+    <div class="cta">
+      <a class="btn hot" href="#menu">See the menu</a>
+      <a class="btn" href="tel:+18475190601">Call (847) 519-0601</a>
+    </div>
+    <div class="open-pill" id="openPill"><span class="bulb">Open</span><span id="openText">Open daily</span></div>
+  </div>
+  <div class="scroll-cue" aria-hidden="true"></div>
+</section>
+
+<div class="ticker" aria-hidden="true">
+  <div class="track">
+    <span>Gyros off the rotisserie</span><span>✦</span><span>Pub burgers</span><span>✦</span><span>Friday fish fry</span><span>✦</span><span>Cold beer</span><span>✦</span><span>Greek pork chops</span><span>✦</span><span>Family owned</span><span>✦</span>
+    <span>Gyros off the rotisserie</span><span>✦</span><span>Pub burgers</span><span>✦</span><span>Friday fish fry</span><span>✦</span><span>Cold beer</span><span>✦</span><span>Greek pork chops</span><span>✦</span><span>Family owned</span><span>✦</span>
+  </div>
+</div>
+
+<section class="pour" id="pour">
+  <div class="wrap">
+    <div class="reveal">
+      <div class="eyebrow">Your corner bar</div>
+      <h2>Cold beer.<br><em>Hot gyros.</em><br>Good people.</h2>
+      <p>B's Corner is the family-owned bar and grill on Golf Road where the gyros come off the rotisserie, the burgers are big, and the regulars know your name. Pull up a stool.</p>
+    </div>
+    <div class="glass-box" aria-hidden="true">
+      <div class="glass-glow"></div>
+      <svg viewBox="0 0 300 440">
+        <defs>
+          <clipPath id="glassClip"><path d="M60 40 L240 40 L222 400 Q221 414 207 414 L93 414 Q79 414 78 400 Z"/></clipPath>
+          <linearGradient id="beerG" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="#ffc85e"/><stop offset="1" stop-color="#d9861a"/></linearGradient>
+          <linearGradient id="shine" x1="0" x2="1"><stop offset="0" stop-color="rgba(255,255,255,0)"/><stop offset=".5" stop-color="rgba(255,255,255,.35)"/><stop offset="1" stop-color="rgba(255,255,255,0)"/></linearGradient>
+        </defs>
+        <g clip-path="url(#glassClip)">
+          <rect id="beer" x="40" y="414" width="220" height="380" fill="url(#beerG)"/>
+          <g id="foam"><ellipse cx="150" cy="414" rx="120" ry="16" fill="#fff6e3"/><circle cx="90" cy="412" r="16" fill="#fff6e3"/><circle cx="130" cy="406" r="20" fill="#fff6e3"/><circle cx="175" cy="408" r="18" fill="#fff6e3"/><circle cx="212" cy="412" r="15" fill="#fff6e3"/></g>
+          <g id="bubbles" fill="rgba(255,248,230,0.75)"></g>
+        </g>
+        <path d="M60 40 L240 40 L222 400 Q221 414 207 414 L93 414 Q79 414 78 400 Z" fill="none" stroke="rgba(255,246,227,0.65)" stroke-width="5"/>
+        <rect x="88" y="60" width="16" height="320" rx="8" fill="url(#shine)" opacity=".55"/>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<section class="band" id="favorites">
+  <div class="wrap">
+    <div class="head reveal">
+      <div class="eyebrow">What people come back for</div>
+      <h2>House favorites</h2>
+    </div>
+    <div class="favs">
+      <article class="fav reveal">
+        <span class="tag">#1 pick</span>
+        <div class="art" aria-hidden="true">
+          <svg viewBox="0 0 230 220">
+            <g class="steam"><path d="M90 40 q-8 -14 0 -26"/><path d="M115 34 q-8 -14 0 -26"/><path d="M140 40 q-8 -14 0 -26"/></g>
+            <rect x="112" y="40" width="6" height="170" rx="3" fill="#9aa0a8"/>
+            <g class="cone"><path d="M80 62 Q115 50 150 62 L138 190 Q115 198 92 190 Z" fill="#8a4b25"/>
+            <path d="M84 80 Q115 70 146 80 M86 104 Q115 94 144 104 M89 128 Q115 118 141 128 M91 152 Q115 142 139 152 M93 174 Q115 166 137 174" stroke="#c7783c" stroke-width="5" fill="none" stroke-linecap="round"/></g>
+            <ellipse cx="115" cy="206" rx="70" ry="10" fill="#2a1d14"/>
+          </svg>
+        </div>
+        <h3>The gyros</h3>
+        <p>Carved fresh off the rotisserie. The dish regulars talk about most.</p>
+      </article>
+      <article class="fav reveal" id="burgerCard">
+        <span class="tag">Pub classic</span>
+        <span class="hint">Tap me</span>
+        <div class="art" aria-hidden="true">
+          <svg class="burger" viewBox="0 0 230 220">
+            <g class="l5"><rect x="35" y="166" width="160" height="30" rx="14" fill="#c9843c"/></g>
+            <g class="l4"><rect x="30" y="148" width="170" height="22" rx="11" fill="#5a2f1a"/></g>
+            <g class="l3"><path d="M30 142 L200 142 L188 154 L172 146 L156 156 L140 146 L124 156 L108 146 L92 156 L76 146 L60 156 L44 146 Z" fill="#f2b632"/></g>
+            <g class="l2"><path d="M34 126 q20 -12 40 0 q20 -12 40 0 q20 -12 40 0 q20 -12 42 0 L196 140 L34 140 Z" fill="#5fae4a"/><rect x="44" y="118" width="40" height="10" rx="5" fill="#e0483a"/><rect x="146" y="118" width="40" height="10" rx="5" fill="#e0483a"/></g>
+            <g class="l1"><path d="M30 116 Q30 50 115 50 Q200 50 200 116 Z" fill="#e09a45"/><g fill="#fff1c9"><ellipse cx="80" cy="76" rx="5" ry="3"/><ellipse cx="112" cy="66" rx="5" ry="3"/><ellipse cx="146" cy="78" rx="5" ry="3"/><ellipse cx="100" cy="94" rx="5" ry="3"/><ellipse cx="160" cy="98" rx="5" ry="3"/></g></g>
+            <ellipse cx="115" cy="206" rx="80" ry="9" fill="#2a1d14"/>
+          </svg>
+        </div>
+        <h3>The burgers</h3>
+        <p>Big pub burgers, from the Classic to the Texas and the Blackjack.</p>
+      </article>
+      <article class="fav reveal">
+        <span class="tag">Fridays</span>
+        <div class="art fish" aria-hidden="true">
+          <svg viewBox="0 0 230 220">
+            <ellipse cx="115" cy="190" rx="92" ry="16" fill="#e8e2d6"/><ellipse cx="115" cy="186" rx="80" ry="10" fill="#f6f1e7"/>
+            <g class="wave"><path d="M48 150 Q92 100 160 128 L186 106 L184 162 L160 150 Q92 182 48 150 Z" fill="#d99a3e"/>
+            <path d="M70 140 l10 -8 M92 136 l10 -8 M114 136 l10 -8 M136 140 l10 -8" stroke="#a96a22" stroke-width="5" stroke-linecap="round"/>
+            <circle cx="66" cy="144" r="4" fill="#3a2414"/></g>
+            <path d="M150 176 q6 -12 16 -4 q-2 10 -16 4z" fill="#f2e05a"/>
+          </svg>
+        </div>
+        <h3>Fish fry</h3>
+        <p>The Friday tradition. Come hungry and grab a seat at the bar.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="band" id="menu" style="padding-top:0">
+  <div class="wrap">
+    <div class="board reveal">
+      <div class="board-title">Today's Menu</div>
+      <div class="tabs" role="tablist" aria-label="Menu sections">
+        <button role="tab" id="t-greek" aria-selected="true" aria-controls="p-greek">Gyros &amp; Greek</button>
+        <button role="tab" id="t-burgers" aria-selected="false" aria-controls="p-burgers">Burgers</button>
+        <button role="tab" id="t-more" aria-selected="false" aria-controls="p-more">Sandwiches &amp; more</button>
+      </div>
+      <div class="items" role="tabpanel" id="p-greek" aria-labelledby="t-greek">
+        <div class="item"><span class="name">Gyros platter<small>Gyros carved fresh off the rotisserie</small></span><span class="leader"></span><span class="price">$18.95</span></div>
+        <div class="item"><span class="name">Greek pork chops<small>Seasoned and grilled, Greek style</small></span><span class="leader"></span><span class="price">$22.95</span></div>
+      </div>
+      <div class="items" role="tabpanel" id="p-burgers" aria-labelledby="t-burgers" hidden>
+        <div class="item"><span class="name">Classic pub burger<small>The one that started it all</small></span><span class="leader"></span><span class="price">$14.95</span></div>
+        <div class="item"><span class="name">Texas burger<small>Loaded and smoky</small></span><span class="leader"></span><span class="price">$16.95</span></div>
+        <div class="item"><span class="name">Blackjack burger<small>A house specialty</small></span><span class="leader"></span><span class="price">$16.95</span></div>
+        <div class="item"><span class="name">Patty melt<small>On grilled rye</small></span><span class="leader"></span><span class="price">Ask</span></div>
+      </div>
+      <div class="items" role="tabpanel" id="p-more" aria-labelledby="t-more" hidden>
+        <div class="item"><span class="name">Skirt steak sandwich<small>Grilled skirt steak on a roll</small></span><span class="leader"></span><span class="price">$19.95</span></div>
+        <div class="item"><span class="name">Friday fish fry<small>Every Friday</small></span><span class="leader"></span><span class="price">Ask</span></div>
+        <div class="item"><span class="name">Bar drinks<small>Beer, cocktails and more</small></span><span class="leader"></span><span class="price">At the bar</span></div>
+      </div>
+      <p class="menu-note">Sample prices from online listings. The finished site shows the full, current menu.</p>
+    </div>
+  </div>
+</section>
+
+<section class="band" id="fishfry" style="padding-top:0">
+  <div class="wrap">
+    <div class="fry reveal">
+      <div class="big">FRIDAY</div>
+      <h3>Fish fry night</h3>
+      <p>Start the weekend the Chicagoland way. Golden fish, a cold one, and the whole corner full of friends.</p>
+      <div class="count" id="count" aria-live="polite">
+        <div><b id="cd-d">0</b><span>Days</span></div>
+        <div><b id="cd-h">0</b><span>Hours</span></div>
+        <div><b id="cd-m">0</b><span>Min</span></div>
+      </div>
+      <div class="count-label" id="count-label">Until Friday doors open</div>
+    </div>
+  </div>
+</section>
+
+<section class="band" id="photos" style="padding-top:0">
+  <div class="wrap">
+    <div class="head reveal">
+      <div class="eyebrow">Inside the corner</div>
+      <h2>The photo wall</h2>
+      <p>On the finished site, these fill with real photos of the bar, the food and the regulars.</p>
+    </div>
+    <div class="wall">
+      <div class="polaroid" style="--r:-4deg"><div class="pic">Photo</div><div class="cap">the bar</div></div>
+      <div class="polaroid" style="--r:3deg"><div class="pic">Photo</div><div class="cap">gyros night</div></div>
+      <div class="polaroid" style="--r:-2deg"><div class="pic">Photo</div><div class="cap">burger time</div></div>
+      <div class="polaroid" style="--r:5deg"><div class="pic">Photo</div><div class="cap">fish fry</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="band" id="visit" style="padding-top:0">
+  <div class="wrap visit">
+    <div class="card reveal">
+      <h3>Hours</h3>
+      <div class="hrs" id="hrs">
+        <div class="hr" data-d="1"><span>Monday</span><span>12 pm – 11 pm</span></div>
+        <div class="hr" data-d="2"><span>Tuesday</span><span>12 pm – 11 pm</span></div>
+        <div class="hr" data-d="3"><span>Wednesday</span><span>12 pm – 11 pm</span></div>
+        <div class="hr" data-d="4"><span>Thursday</span><span>12 pm – 1 am</span></div>
+        <div class="hr" data-d="5"><span>Friday</span><span>12 pm – 1 am</span></div>
+        <div class="hr" data-d="6"><span>Saturday</span><span>12 pm – 1 am</span></div>
+        <div class="hr" data-d="0"><span>Sunday</span><span>11 am – 11 pm</span></div>
+      </div>
+      <p class="small">Hours as listed online. Call ahead on holidays.</p>
+    </div>
+    <div class="card reveal">
+      <div class="map" aria-hidden="true">
+        <svg viewBox="0 0 500 210" preserveAspectRatio="xMidYMid slice">
+          <rect width="500" height="210" fill="#120d0a"/>
+          <g stroke="#221912" stroke-width="2"><path d="M0 40H500M0 90H500M0 170H500M60 0V210M170 0V210M380 0V210M450 0V210"/></g>
+          <path d="M0 128 H500" stroke="#3a2a1d" stroke-width="18"/>
+          <path d="M296 0 V210" stroke="#2e2218" stroke-width="10"/>
+          <text x="12" y="122" fill="#8d7a66" font-family="Outfit, sans-serif" font-size="12" font-weight="800" letter-spacing="2">GOLF RD</text>
+          <text x="304" y="200" fill="#8d7a66" font-family="Outfit, sans-serif" font-size="11" font-weight="800" letter-spacing="2">STONEHEDGE DR</text>
+        </svg>
+        <div class="pin"><span>B's Corner</span><i></i></div>
+      </div>
+      <p class="addr">1001 W Golf Rd<br>Hoffman Estates, IL 60169</p>
+      <a class="phone" href="tel:+18475190601">(847) 519-0601</a>
+      <div class="cta" style="justify-content:flex-start;margin-top:0">
+        <a class="btn hot" href="https://www.google.com/maps/search/?api=1&amp;query=1001+W+Golf+Rd+Hoffman+Estates+IL+60169" target="_blank" rel="noopener">Get directions</a>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="sig">B's Corner</div>
+    <span>Bar &amp; Grill · 1001 W Golf Rd, Hoffman Estates, IL · (847) 519-0601</span>
+    <span>Sample site by <a href="https://jacob00767.github.io" target="_blank" rel="noopener">JacobTheWebsiteGuy</a></span>
+  </div>
+</footer>
+
+<script>
+(function () {
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  document.documentElement.classList.add('js');
+
+  /* ---------- Neon power-on sequence ---------- */
+  var neon = document.getElementById('neon'), tube = document.getElementById('tube');
+  if (!reduce) {
+    neon.classList.add('off'); tube.classList.add('off');
+    var seq = [180, 80, 120, 60, 300, 90, 70];
+    var t = 350;
+    seq.forEach(function (d, i) {
+      t += d;
+      setTimeout(function () { neon.classList.toggle('off', i % 2 === 1); tube.classList.toggle('off', i % 2 === 1); }, t);
+    });
+    setTimeout(function () { neon.classList.remove('off'); tube.classList.remove('off'); }, t + 120);
+    // An occasional flicker afterwards, like a real sign
+    setInterval(function () {
+      if (Math.random() < 0.35) { neon.style.opacity = 0.55; setTimeout(function () { neon.style.opacity = 1; }, 70); }
+    }, 3200);
+  }
+
+  /* ---------- Bokeh bar lights ---------- */
+  var cv = document.getElementById('bokeh'), ctx = cv.getContext('2d');
+  var lights = [], W = 0, H = 0, mx = 0, my = 0, dpr = Math.min(window.devicePixelRatio || 1, 2);
+  function size() {
+    W = cv.clientWidth; H = cv.clientHeight; cv.width = W * dpr; cv.height = H * dpr; ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    var n = Math.round(Math.min(46, W / 26));
+    lights = [];
+    for (var i = 0; i < n; i++) {
+      var warm = Math.random();
+      lights.push({ x: Math.random() * W, y: Math.random() * H * 0.9, r: 8 + Math.random() * 46, z: 0.2 + Math.random() * 0.8,
+        a: 0.05 + Math.random() * 0.16, s: 0.08 + Math.random() * 0.25, p: Math.random() * 6.28,
+        c: warm < 0.72 ? [255, 170 + Math.random() * 40, 70] : warm < 0.9 ? [255, 90, 60] : [255, 235, 200] });
+    }
+  }
+  function draw(now) {
+    ctx.clearRect(0, 0, W, H);
+    ctx.globalCompositeOperation = 'lighter';
+    for (var i = 0; i < lights.length; i++) {
+      var L = lights[i];
+      if (!reduce) { L.y -= L.s * L.z; L.p += 0.01; if (L.y < -60) { L.y = H + 60; L.x = Math.random() * W; } }
+      var x = L.x + mx * 22 * L.z + Math.sin(L.p) * 6, y = L.y + my * 14 * L.z;
+      var a = L.a * (0.75 + 0.25 * Math.sin(now / 900 + L.p));
+      var g = ctx.createRadialGradient(x, y, 0, x, y, L.r);
+      g.addColorStop(0, 'rgba(' + L.c[0] + ',' + (L.c[1] | 0) + ',' + L.c[2] + ',' + a + ')');
+      g.addColorStop(0.65, 'rgba(' + L.c[0] + ',' + (L.c[1] | 0) + ',' + L.c[2] + ',' + (a * 0.35) + ')');
+      g.addColorStop(1, 'rgba(0,0,0,0)');
+      ctx.fillStyle = g; ctx.beginPath(); ctx.arc(x, y, L.r, 0, 6.283); ctx.fill();
+    }
+    ctx.globalCompositeOperation = 'source-over';
+    if (!reduce && heroVisible) requestAnimationFrame(draw);
+  }
+  var heroVisible = true;
+  size(); requestAnimationFrame(draw);
+  window.addEventListener('resize', function () { size(); if (reduce) requestAnimationFrame(draw); });
+  window.addEventListener('pointermove', function (e) { mx = e.clientX / window.innerWidth - 0.5; my = e.clientY / window.innerHeight - 0.5; }, { passive: true });
+  if ('IntersectionObserver' in window) {
+    new IntersectionObserver(function (es) { var v = es[0].isIntersecting; if (v && !heroVisible && !reduce) { heroVisible = true; requestAnimationFrame(draw); } heroVisible = v; }).observe(cv);
+  }
+
+  /* ---------- Floating nav after the hero ---------- */
+  var nav = document.getElementById('nav');
+  function navCheck() { nav.classList.toggle('show', window.scrollY > window.innerHeight * 0.6); }
+  window.addEventListener('scroll', navCheck, { passive: true }); navCheck();
+
+  /* ---------- Reveal on scroll ---------- */
+  var rev = document.querySelectorAll('.reveal');
+  if ('IntersectionObserver' in window && !reduce) {
+    rev.forEach(function (el) { if (el.getBoundingClientRect().top > window.innerHeight) el.classList.add('pre'); });
+    var io = new IntersectionObserver(function (es) { es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.remove('pre'); io.unobserve(e.target); } }); }, { threshold: 0.15 });
+    rev.forEach(function (el) { io.observe(el); });
+  }
+
+  /* ---------- The pour: glass fills as the section scrolls through ---------- */
+  var beer = document.getElementById('beer'), foam = document.getElementById('foam'), bubbles = document.getElementById('bubbles'), pour = document.getElementById('pour');
+  for (var b = 0; b < 16; b++) {
+    var c = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+    c.setAttribute('r', 1.5 + Math.random() * 3); c.dataset.x = 85 + Math.random() * 130; c.dataset.o = Math.random(); c.dataset.s = 0.4 + Math.random() * 0.8;
+    bubbles.appendChild(c);
+  }
+  var level = 1, target = 1;
+  function pourTarget() {
+    var r = pour.getBoundingClientRect(), vh = window.innerHeight;
+    var p = (vh - r.top) / (vh + r.height * 0.4);
+    target = reduce ? 0.06 : Math.max(0.06, 1 - Math.min(1, Math.max(0, p * 1.35)) * 0.94);
+  }
+  function pourLoop(now) {
+    level += (target - level) * 0.08;
+    var top = 40 + level * 374; // 40 = brim, 414 = bottom
+    beer.setAttribute('y', top + 10);
+    foam.setAttribute('transform', 'translate(0,' + (top - 414 + 8) + ')');
+    var kids = bubbles.children;
+    for (var i = 0; i < kids.length; i++) {
+      var k = kids[i], span = 414 - top - 20;
+      var y = 414 - ((now / 1000 * 60 * k.dataset.s + k.dataset.o * 400) % Math.max(10, span));
+      k.setAttribute('cx', +k.dataset.x + Math.sin(now / 400 + i) * 2); k.setAttribute('cy', y);
+      k.style.opacity = span > 20 ? 1 : 0;
+    }
+    requestAnimationFrame(pourLoop);
+  }
+  window.addEventListener('scroll', pourTarget, { passive: true }); pourTarget(); requestAnimationFrame(pourLoop);
+
+  /* ---------- Card tilt + glow ---------- */
+  document.querySelectorAll('.fav').forEach(function (card) {
+    card.addEventListener('pointermove', function (e) {
+      var r = card.getBoundingClientRect(), x = e.clientX - r.left, y = e.clientY - r.top;
+      card.style.setProperty('--mx', x + 'px'); card.style.setProperty('--my', y + 'px');
+      if (!reduce && e.pointerType === 'mouse') card.style.transform = 'rotateY(' + ((x / r.width - 0.5) * 10) + 'deg) rotateX(' + (-(y / r.height - 0.5) * 10) + 'deg)';
+    });
+    card.addEventListener('pointerleave', function () { card.style.transform = ''; });
+  });
+  var bc = document.getElementById('burgerCard');
+  bc.addEventListener('pointerenter', function (e) { if (e.pointerType === 'mouse') bc.classList.add('open-burger'); });
+  bc.addEventListener('pointerleave', function (e) { if (e.pointerType === 'mouse') bc.classList.remove('open-burger'); });
+  bc.addEventListener('click', function () { bc.classList.toggle('open-burger'); });
+
+  /* ---------- Menu tabs ---------- */
+  var tabs = document.querySelectorAll('[role="tab"]');
+  tabs.forEach(function (t) {
+    t.addEventListener('click', function () {
+      tabs.forEach(function (o) { var on = o === t; o.setAttribute('aria-selected', String(on)); document.getElementById(o.getAttribute('aria-controls')).hidden = !on; });
+    });
+  });
+
+  /* ---------- Hours: open now + today ---------- */
+  var hrs = { 0: [11, 23], 1: [12, 23], 2: [12, 23], 3: [12, 23], 4: [12, 25], 5: [12, 25], 6: [12, 25] };
+  function fmt(x) { x = x % 24; return x === 0 ? '12 am' : x < 12 ? x + ' am' : x === 12 ? '12 pm' : (x - 12) + ' pm'; }
+  var now = new Date(), d = now.getDay(), h = now.getHours() + now.getMinutes() / 60, y = (d + 6) % 7, open = false, until = 0;
+  if (h >= hrs[d][0] && h < hrs[d][1]) { open = true; until = hrs[d][1]; }
+  else if (hrs[y][1] > 24 && h < hrs[y][1] - 24) { open = true; until = hrs[y][1]; }
+  var pill = document.getElementById('openPill'), ot = document.getElementById('openText');
+  if (open) { pill.classList.add('open'); ot.textContent = 'Now · until ' + fmt(until); }
+  else { var nd = h < hrs[d][0] ? d : (d + 1) % 7; ot.textContent = 'Closed · opens ' + (nd === d ? 'today' : 'tomorrow') + ' at ' + fmt(hrs[nd][0]); }
+  var todayRow = document.querySelector('.hr[data-d="' + d + '"]'); if (todayRow) todayRow.classList.add('today');
+
+  /* ---------- Fish fry countdown to Friday opening (noon) ---------- */
+  function tick() {
+    var n = new Date(), f = new Date(n);
+    var add = (5 - n.getDay() + 7) % 7;
+    f.setDate(n.getDate() + add); f.setHours(12, 0, 0, 0);
+    var label = document.getElementById('count-label');
+    var endFri = new Date(f); endFri.setHours(25, 0, 0, 0);
+    if (n.getDay() === 5 && n >= f && n < endFri) { label.textContent = "It's Friday. The fish fry is on."; ['cd-d', 'cd-h', 'cd-m'].forEach(function (id) { document.getElementById(id).textContent = '0'; }); return; }
+    if (f <= n) f.setDate(f.getDate() + 7);
+    var ms = f - n, dd = Math.floor(ms / 864e5), hh = Math.floor(ms % 864e5 / 36e5), mm = Math.floor(ms % 36e5 / 6e4);
+    document.getElementById('cd-d').textContent = dd; document.getElementById('cd-h').textContent = hh; document.getElementById('cd-m').textContent = mm;
+    label.textContent = 'Until Friday doors open';
+  }
+  tick(); setInterval(tick, 30000);
+})();
+</script>
+</body></html>

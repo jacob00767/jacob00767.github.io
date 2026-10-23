@@ -1,0 +1,260 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex">
+<title>Babylon Hair Salon Concept</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=Instrument+Sans:wght@400;500;600&display=swap">
+<style>
+/* Layout: a neighborhood barbershop. Barber-pole stripe as the one ornament, a chalkboard-style service list, hours up top. */
+:root {
+  --bg: #f5f6f8;
+  --surface: #ffffff;
+  --ink: #16213a;
+  --muted: #5a6478;
+  --rule: #d9dde5;
+  --red: #b3262e;
+  --navy: #1f3a6b;
+  --on-accent: #ffffff;
+  --font-display: "Bricolage Grotesque", "Arial Black", system-ui, sans-serif;
+  --font-body: "Instrument Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0f1524; --surface: #172036; --ink: #eef1f7; --muted: #a3acc0;
+    --rule: #2a3550; --red: #ef6b6f; --navy: #8fb0ea; --on-accent: #0f1524;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0f1524; --surface: #172036; --ink: #eef1f7; --muted: #a3acc0;
+  --rule: #2a3550; --red: #ef6b6f; --navy: #8fb0ea; --on-accent: #0f1524;
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+img { max-width: 100%; }
+[hidden] { display: none !important; }
+body { margin: 0; background: var(--bg); color: var(--ink); font-family: var(--font-body); font-size: 16px; line-height: 1.6; }
+.wrap {
+  max-width: 1060px; margin: 0 auto;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+h1, h2, h3 { font-family: var(--font-display); margin: 0; line-height: 1; text-wrap: balance; }
+p { margin: 0; }
+a { color: inherit; }
+:focus-visible { outline: 3px solid var(--navy); outline-offset: 2px; }
+
+.pole {
+  height: 10px;
+  background: repeating-linear-gradient(-45deg, var(--red) 0 14px, var(--surface) 14px 28px, var(--navy) 28px 42px, var(--surface) 42px 56px);
+}
+.concept { font-size: 13px; text-align: center; color: var(--muted); }
+.concept .wrap { padding-block: 8px; }
+
+header .wrap { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px; padding-block: 16px 20px; }
+.logo { font-family: var(--font-display); font-weight: 800; font-size: 26px; letter-spacing: -0.01em; }
+.logo small { display: block; font-family: var(--font-body); font-weight: 500; font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); }
+.btn {
+  display: inline-block; font: 600 15px/1 var(--font-body); padding: 14px 20px; border-radius: 8px;
+  text-decoration: none; border: 2px solid var(--ink); background: transparent; color: var(--ink);
+}
+.btn.red { background: var(--red); border-color: var(--red); color: var(--on-accent); }
+.btn:hover { transform: translateY(-1px); }
+
+.hero .wrap { display: grid; grid-template-columns: 1.4fr 1fr; gap: 40px; align-items: center; padding-block: 36px 60px; }
+.tagline { font-weight: 600; color: var(--red); letter-spacing: 0.04em; }
+.hero h1 { font-size: clamp(46px, 7.5vw, 88px); font-weight: 800; letter-spacing: -0.02em; margin-block: 12px 18px; }
+.hero .lede { font-size: 18px; color: var(--muted); max-width: 32em; }
+.actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 26px; }
+.phone-big { font-family: var(--font-display); font-weight: 600; font-size: 22px; user-select: all; }
+
+.today { background: var(--surface); border: 1px solid var(--rule); border-radius: 14px; overflow: hidden; min-width: 0; }
+.today .pole { height: 8px; }
+.today-body { padding: 22px; }
+.today h3 { font-size: 22px; margin-bottom: 12px; }
+.hours { width: 100%; border-collapse: collapse; font-variant-numeric: tabular-nums; font-size: 15px; }
+.hours td { padding: 8px 0; border-bottom: 1px solid var(--rule); }
+.hours td:last-child { text-align: right; }
+.hours tr.closed td { color: var(--muted); }
+.status { margin-top: 14px; font-weight: 600; font-size: 14.5px; }
+.status .dot { display: inline-block; width: 9px; height: 9px; border-radius: 50%; margin-right: 8px; background: var(--muted); }
+.status.open .dot { background: #2f9e5b; }
+
+section.band .wrap { padding-block: 60px; border-top: 1px solid var(--rule); }
+.head { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: end; gap: 12px; margin-bottom: 28px; }
+.head h2 { font-size: clamp(34px, 5vw, 52px); font-weight: 800; letter-spacing: -0.02em; }
+.head p { color: var(--muted); max-width: 30em; }
+
+.services { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; }
+.svc { background: var(--surface); border: 1px solid var(--rule); border-radius: 14px; padding: 24px; min-width: 0; }
+.svc h3 { font-size: 24px; margin-bottom: 14px; display: flex; align-items: center; gap: 10px; }
+.svc h3::before { content: ""; width: 14px; height: 14px; border-radius: 3px; background: var(--red); }
+.svc.salon h3::before { background: var(--navy); }
+.svc ul { list-style: none; margin: 0; padding: 0; }
+.svc li { padding: 10px 0; border-bottom: 1px solid var(--rule); }
+.svc li:last-child { border-bottom: 0; }
+.svc li span { color: var(--muted); font-size: 14px; display: block; }
+.note { margin-top: 16px; color: var(--muted); font-size: 14px; }
+
+.gallery { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; }
+.ph { aspect-ratio: 1; max-width: 100%; border-radius: 12px; border: 1.5px dashed var(--rule); background: var(--surface); display: grid; place-items: center; text-align: center; padding: 10px; color: var(--muted); font-size: 13.5px; }
+
+.family { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; }
+.family p { color: var(--muted); font-size: 17px; max-width: 34em; }
+.facts { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
+.fact { background: var(--surface); border: 1px solid var(--rule); border-radius: 12px; padding: 18px; min-width: 0; }
+.fact b { display: block; font-family: var(--font-display); font-size: 30px; line-height: 1.1; }
+.fact span { color: var(--muted); font-size: 13.5px; }
+
+footer .wrap { padding-block: 28px 40px; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; color: var(--muted); font-size: 14px; }
+
+@media (max-width: 840px) {
+  .hero .wrap, .family { grid-template-columns: 1fr; }
+  .services { grid-template-columns: 1fr; }
+  .gallery { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (prefers-reduced-motion: reduce) { .btn:hover { transform: none; } }
+</style>
+</head>
+<body>
+
+<div class="pole" aria-hidden="true"></div>
+<div class="concept"><div class="wrap">Website concept prepared for Babylon Hair Salon · not the salon's official site</div></div>
+
+<header>
+  <div class="wrap">
+    <div class="logo">Babylon Hair Salon<small>Barbershop &amp; salon · Hoffman Estates</small></div>
+    <span class="phone-big">(630) 635-2627</span>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    <div>
+      <div class="tagline">Family-owned since 2018</div>
+      <h1>Sharp fades. Fresh color. Fair prices.</h1>
+      <p class="lede">A neighborhood barbershop and hair salon on Hassell Road. Cuts and beard work for men and kids, plus color, balayage, blowouts and braiding.</p>
+      <div class="actions">
+        <a class="btn red" href="#visit">Hours &amp; directions</a>
+        <a class="btn" href="#services">See services</a>
+      </div>
+    </div>
+    <aside class="today" aria-label="Hours">
+      <div class="pole" aria-hidden="true"></div>
+      <div class="today-body">
+        <h3>Shop hours</h3>
+        <table class="hours">
+          <tr data-days="1,2,3,4,5"><td>Monday – Friday</td><td>10 am – 7 pm</td></tr>
+          <tr data-days="6"><td>Saturday</td><td>10 am – 6 pm</td></tr>
+          <tr class="closed" data-days="0"><td>Sunday</td><td>Closed</td></tr>
+        </table>
+        <p class="status" id="status"><span class="dot"></span><span id="status-text">Mon–Sat, 10 am</span></p>
+      </div>
+    </aside>
+  </div>
+</section>
+
+<section class="band" id="services">
+  <div class="wrap">
+    <div class="head">
+      <h2>Services</h2>
+      <p>Two chairs' worth of skills under one roof. Call for current prices.</p>
+    </div>
+    <div class="services">
+      <div class="svc">
+        <h3>Barber</h3>
+        <ul>
+          <li>Men's haircut<span>Scissor or clipper, finished with a line-up</span></li>
+          <li>Fades<span>Skin, low, mid and high</span></li>
+          <li>Beard trim<span>Shape-up and edge</span></li>
+          <li>Kids' cuts<span>Patient barbers, quick chairs</span></li>
+        </ul>
+      </div>
+      <div class="svc salon">
+        <h3>Salon</h3>
+        <ul>
+          <li>Women's cut &amp; style<span>Trims, layers and reshapes</span></li>
+          <li>Color &amp; balayage<span>Hand-painted, natural-looking dimension</span></li>
+          <li>Blow dry<span>Smooth, full finish</span></li>
+          <li>Braiding<span>Ask about styles and timing</span></li>
+        </ul>
+      </div>
+    </div>
+    <p class="note">On the finished site, each service shows its price and how long it takes.</p>
+  </div>
+</section>
+
+<section class="band" id="work">
+  <div class="wrap">
+    <div class="head">
+      <h2>Fresh from the chair</h2>
+      <p>This gallery fills with the shop's own photos.</p>
+    </div>
+    <div class="gallery">
+      <div class="ph">Skin fade</div>
+      <div class="ph">Beard line-up</div>
+      <div class="ph">Balayage</div>
+      <div class="ph">Braids</div>
+    </div>
+  </div>
+</section>
+
+<section class="band">
+  <div class="wrap family">
+    <div>
+      <div class="head" style="margin-bottom:16px"><h2>A family shop</h2></div>
+      <p>Babylon has been cutting hair in Hoffman Estates since 2018. It's the kind of place where the barber remembers how you like your fade and your kids look forward to their haircut.</p>
+    </div>
+    <div class="facts">
+      <div class="fact"><b>2018</b><span>Opened on Hassell Rd</span></div>
+      <div class="fact"><b>6</b><span>Days a week</span></div>
+      <div class="fact"><b>All</b><span>Ages welcome</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="band" id="visit">
+  <div class="wrap family">
+    <div>
+      <div class="head" style="margin-bottom:16px"><h2>Visit</h2></div>
+      <p>2330 Hassell Rd<br>Hoffman Estates, IL 60169</p>
+      <p style="margin-top:12px">Call <span class="phone-big" style="font-size:18px">(630) 635-2627</span></p>
+    </div>
+    <div class="actions" style="margin-top:0">
+      <a class="btn red" href="https://www.google.com/maps/search/?api=1&amp;query=2330+Hassell+Rd+Hoffman+Estates+IL+60169" target="_blank" rel="noopener">Get directions</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span>Babylon Hair Salon · 2330 Hassell Rd, Hoffman Estates, IL</span>
+    <span>Concept site</span>
+  </div>
+</footer>
+<div class="pole" aria-hidden="true"></div>
+
+<script>
+(function () {
+  // Live "open now" line based on the visitor's clock (Central Time assumed for the shop).
+  var now = new Date(), day = now.getDay(), h = now.getHours() + now.getMinutes() / 60;
+  var close = day === 0 ? null : (day === 6 ? 18 : 19);
+  var el = document.getElementById('status'), txt = document.getElementById('status-text');
+  if (close && h >= 10 && h < close) {
+    el.classList.add('open');
+    txt.textContent = 'Open now · until ' + (close - 12) + ' pm';
+  } else {
+    txt.textContent = 'Closed now · opens ' + (day === 6 && h >= 18 || day === 0 ? 'Monday' : (h < 10 ? 'today' : 'tomorrow')) + ' at 10 am';
+  }
+  document.querySelectorAll('.hours tr').forEach(function (tr) {
+    if (tr.dataset.days.split(',').indexOf(String(day)) > -1) tr.style.fontWeight = '600';
+  });
+})();
+</script>
+</body>
+</html>

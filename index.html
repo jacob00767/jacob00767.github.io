@@ -1,0 +1,409 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>JacobTheWebsiteGuy | Websites for Local Businesses in Hoffman Estates</title>
+<meta name="description" content="Fast, mobile-friendly websites for local businesses in Hoffman Estates and the Chicago northwest suburbs. Free mockup before you pay. Flat prices from $750.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:wght@500;700&family=Onest:wght@400;500;600&display=swap">
+<style>
+/* Layout: a local web designer's storefront. The hero shows a site being built inside a browser frame; flat prices up front; one green accent. */
+:root {
+  --bg: #f6f6f2;
+  --surface: #ffffff;
+  --ink: #15181c;
+  --muted: #5c6168;
+  --rule: #e0e1db;
+  --green: #0b6e4f;
+  --green-soft: #dcefe6;
+  --on-green: #ffffff;
+  --font-display: "Familjen Grotesk", system-ui, sans-serif;
+  --font-body: "Onest", system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #111416; --surface: #1a1e21; --ink: #eef0ee; --muted: #a2a8ad;
+    --rule: #2c3236; --green: #4fd1a1; --green-soft: #173229; --on-green: #0d1412;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #111416; --surface: #1a1e21; --ink: #eef0ee; --muted: #a2a8ad;
+  --rule: #2c3236; --green: #4fd1a1; --green-soft: #173229; --on-green: #0d1412;
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+img { max-width: 100%; }
+html { scroll-behavior: smooth; }
+body { margin: 0; background: var(--bg); color: var(--ink); font-family: var(--font-body); font-size: 17px; line-height: 1.6; }
+.wrap {
+  max-width: 1080px; margin: 0 auto;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+h1, h2, h3 { font-family: var(--font-display); font-weight: 700; margin: 0; line-height: 1.05; letter-spacing: -0.02em; text-wrap: balance; }
+p { margin: 0; }
+a { color: inherit; }
+:focus-visible { outline: 3px solid var(--green); outline-offset: 2px; }
+
+header .wrap { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px; padding-block: 18px; }
+.logo { font-family: var(--font-display); font-weight: 700; font-size: 21px; text-decoration: none; }
+.logo span { color: var(--green); }
+nav { display: flex; flex-wrap: wrap; align-items: center; gap: 22px; font-size: 15px; }
+nav a { text-decoration: none; color: var(--muted); }
+nav a:hover { color: var(--ink); }
+
+.btn {
+  display: inline-block; font: 600 16px/1 var(--font-body); padding: 16px 22px; border-radius: 10px;
+  text-decoration: none; border: 2px solid var(--ink); color: var(--ink); background: transparent; cursor: pointer;
+}
+.btn.green { background: var(--green); border-color: var(--green); color: var(--on-green); }
+.btn:hover { transform: translateY(-1px); }
+nav .btn { padding: 11px 16px; font-size: 14.5px; color: var(--on-green); }
+
+.hero { overflow-x: clip; }
+.hero .wrap { display: grid; grid-template-columns: 1.1fr 1fr; gap: 48px; align-items: center; padding-block: 40px 72px; }
+.eyebrow { font-size: 14px; font-weight: 600; color: var(--green); }
+.hero h1 { font-size: clamp(44px, 7vw, 80px); margin-block: 14px 20px; }
+.hero .lede { font-size: 19px; color: var(--muted); max-width: 30em; }
+.actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 28px; }
+.reassure { margin-top: 16px; font-size: 14.5px; color: var(--muted); }
+
+/* Browser frame with a page assembling inside it */
+.browser { background: var(--surface); border: 1px solid var(--rule); border-radius: 14px; overflow: hidden; box-shadow: 0 24px 48px -28px rgba(0,0,0,0.35); min-width: 0; }
+.bar { display: flex; align-items: center; gap: 6px; padding: 10px 12px; border-bottom: 1px solid var(--rule); }
+.bar i { width: 10px; height: 10px; border-radius: 50%; background: var(--rule); }
+.url { margin-left: 8px; flex: 1; font-size: 12.5px; color: var(--muted); background: var(--bg); border-radius: 6px; padding: 4px 10px; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
+.page { padding: 18px; display: grid; gap: 10px; }
+.blk { border-radius: 6px; background: var(--rule); height: 12px; transform-origin: left; animation: build 0.6s ease-out both; }
+.blk.h { height: 30px; width: 80%; background: var(--ink); }
+.blk.s { width: 60%; }
+.blk.btnb { width: 36%; height: 26px; background: var(--green); border-radius: 8px; }
+.tiles { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-top: 6px; }
+.tiles .blk { height: 56px; background: var(--green-soft); }
+.page > :nth-child(1) { animation-delay: 0.1s; }
+.page > :nth-child(2) { animation-delay: 0.25s; }
+.page > :nth-child(3) { animation-delay: 0.35s; }
+.page > :nth-child(4) { animation-delay: 0.5s; }
+.tiles .blk:nth-child(1) { animation-delay: 0.65s; }
+.tiles .blk:nth-child(2) { animation-delay: 0.75s; }
+.tiles .blk:nth-child(3) { animation-delay: 0.85s; }
+@keyframes build { from { transform: scaleX(0.2); opacity: 0.3; } to { transform: scaleX(1); opacity: 1; } }
+
+section.band .wrap { padding-block: 72px; border-top: 1px solid var(--rule); }
+.head { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: end; gap: 14px; margin-bottom: 32px; }
+.head h2 { font-size: clamp(34px, 5vw, 54px); }
+.head p { color: var(--muted); max-width: 32em; }
+
+.steps { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; counter-reset: step; }
+.steps li { counter-increment: step; background: var(--surface); border: 1px solid var(--rule); border-radius: 14px; padding: 22px; min-width: 0; }
+.steps li::before { content: counter(step); display: grid; place-items: center; width: 32px; height: 32px; border-radius: 50%; background: var(--green-soft); color: var(--green); font-family: var(--font-display); font-weight: 700; margin-bottom: 14px; }
+.steps h3 { font-size: 21px; margin-bottom: 6px; }
+.steps p { color: var(--muted); font-size: 15.5px; }
+
+.plans { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+.plan { background: var(--surface); border: 1px solid var(--rule); border-radius: 16px; padding: 26px; display: flex; flex-direction: column; gap: 14px; min-width: 0; }
+.plan.pick { border: 2px solid var(--green); }
+.plan .badge { align-self: flex-start; font-size: 12.5px; font-weight: 600; color: var(--green); background: var(--green-soft); padding: 4px 10px; border-radius: 999px; }
+.plan h3 { font-size: 24px; }
+.price { font-family: var(--font-display); font-size: 46px; font-weight: 700; letter-spacing: -0.03em; font-variant-numeric: tabular-nums; }
+.price small { font-size: 16px; color: var(--muted); font-weight: 500; letter-spacing: 0; }
+.plan .for { color: var(--muted); font-size: 15px; }
+.plan ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; font-size: 15.5px; }
+.plan li { display: flex; gap: 10px; }
+.plan li::before { content: ""; flex: none; width: 16px; height: 16px; margin-top: 4px; border-radius: 50%; background: var(--green-soft); box-shadow: inset 0 0 0 4px var(--green); }
+
+.fine { margin-top: 18px; color: var(--muted); font-size: 14.5px; }
+
+/* 3D hero: a desktop site, a phone and a notification floating at different depths, tilting with the pointer */
+.stage3d { perspective: 1100px; min-width: 0; padding: 24px 8px 40px; touch-action: pan-y; }
+.scene { position: relative; transform-style: preserve-3d; transform: rotateX(var(--rx, 8deg)) rotateY(var(--ry, -16deg)); transition: transform 0.25s ease-out; }
+.scene .browser { transform: translateZ(0); }
+.layer { position: absolute; transform-style: preserve-3d; }
+.phone {
+  width: 34%; right: -6%; bottom: -14%; transform: translateZ(90px);
+  background: var(--ink); border-radius: 22px; padding: 7px; box-shadow: 0 30px 50px -24px rgba(0,0,0,0.5);
+}
+.phone .screen { background: var(--surface); border-radius: 16px; padding: 14px 10px; display: grid; gap: 7px; aspect-ratio: 9 / 17; align-content: start; }
+.phone .blk { height: 8px; }
+.phone .blk.h { height: 18px; width: 90%; }
+.phone .blk.btnb { height: 18px; width: 70%; }
+.phone .tiles { grid-template-columns: 1fr 1fr; }
+.phone .tiles .blk { height: 40px; }
+.toast {
+  left: -8%; top: 16%; transform: translateZ(150px);
+  background: var(--surface); border: 1px solid var(--rule); border-radius: 14px; padding: 10px 14px;
+  display: flex; align-items: center; gap: 10px; font-size: 13.5px; box-shadow: 0 20px 40px -20px rgba(0,0,0,0.45); white-space: nowrap;
+}
+.toast .dot { width: 30px; height: 30px; border-radius: 50%; background: var(--green-soft); display: grid; place-items: center; color: var(--green); font-weight: 700; }
+.toast b { display: block; font-size: 13.5px; }
+.toast span { color: var(--muted); font-size: 12.5px; }
+.chip3d {
+  right: 4%; top: -9%; transform: translateZ(120px);
+  background: var(--green); color: var(--on-green); font-weight: 600; font-size: 13px; padding: 8px 12px; border-radius: 999px;
+  box-shadow: 0 16px 30px -16px rgba(0,0,0,0.5);
+}
+.shadow3d { position: absolute; left: 8%; right: 8%; bottom: -26px; height: 30px; border-radius: 50%; background: rgba(0,0,0,0.18); filter: blur(18px); transform: translateZ(-60px); }
+
+.work { display: grid; grid-template-columns: 1.2fr 1fr; gap: 32px; align-items: center; }
+.work .browser { box-shadow: none; }
+.shot { padding: 22px; display: grid; gap: 8px; }
+.shot .k { font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); }
+.shot .t { font-family: var(--font-display); font-size: 32px; font-weight: 700; line-height: 1; text-transform: uppercase; }
+.shot .r { display: flex; justify-content: space-between; border-bottom: 1px solid var(--rule); padding-block: 8px; font-size: 14px; }
+.work p { color: var(--muted); }
+.work h3 { font-size: 28px; margin-bottom: 10px; }
+
+.why { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 28px; }
+.why h3 { font-size: 22px; margin-bottom: 8px; }
+.why p { color: var(--muted); font-size: 16px; }
+
+.contact { display: grid; grid-template-columns: 1fr 1.1fr; gap: 40px; align-items: start; }
+.contact dl { display: grid; grid-template-columns: auto 1fr; gap: 12px 20px; margin: 22px 0 0; }
+.contact dt { color: var(--muted); }
+.contact dd { margin: 0; overflow-wrap: anywhere; }
+form { background: var(--surface); border: 1px solid var(--rule); border-radius: 16px; padding: 24px; display: grid; grid-template-columns: 1fr 1fr; gap: 14px; min-width: 0; }
+form .full { grid-column: 1 / -1; }
+label { display: grid; gap: 6px; font-size: 14px; font-weight: 600; min-width: 0; }
+input, select, textarea { font: 400 16px/1.4 var(--font-body); color: var(--ink); background: var(--bg); border: 1px solid var(--rule); border-radius: 10px; padding: 12px; width: 100%; }
+textarea { min-height: 110px; resize: vertical; }
+.hidden { position: absolute; left: -9999px; }
+
+footer .wrap { padding-block: 28px 44px; border-top: 1px solid var(--rule); display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; color: var(--muted); font-size: 14px; }
+
+@media (max-width: 900px) {
+  .hero .wrap, .work, .contact { grid-template-columns: 1fr; }
+  .steps { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .plans, .why { grid-template-columns: 1fr; }
+  nav a:not(.btn) { display: none; }
+  .stage3d { padding: 30px 28px 56px; }
+}
+@media (max-width: 520px) {
+  .steps { grid-template-columns: 1fr; }
+  form { grid-template-columns: 1fr; }
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .blk { animation: none; }
+  .btn:hover { transform: none; }
+  .scene { transition: none; }
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <a class="logo" href="#top">JacobThe<span>Website</span>Guy</a>
+    <nav aria-label="Main">
+      <a href="#how">How it works</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#work">Work</a>
+      <a class="btn green" href="#contact">Get a free mockup</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+<section class="hero">
+  <div class="wrap">
+    <div>
+      <div class="eyebrow">Web design in Hoffman Estates, IL</div>
+      <h1>Websites that bring local customers to your door.</h1>
+      <p class="lede">I build fast, mobile-friendly websites for salons, shops, restaurants and contractors across the northwest suburbs. You see a free mockup of your site before you pay anything.</p>
+      <div class="actions">
+        <a class="btn green" href="#contact">Get your free mockup</a>
+        <a class="btn" href="#pricing">See pricing</a>
+      </div>
+      <p class="reassure">Flat prices from $750 · Live in about a week · You own everything</p>
+    </div>
+    <div class="stage3d" id="stage3d" aria-hidden="true">
+      <div class="scene" id="scene">
+        <div class="shadow3d"></div>
+        <div class="browser">
+          <div class="bar"><i></i><i></i><i></i><span class="url">yourbusiness.com</span></div>
+          <div class="page">
+            <div class="blk h"></div>
+            <div class="blk s"></div>
+            <div class="blk"></div>
+            <div class="blk btnb"></div>
+            <div class="tiles"><div class="blk"></div><div class="blk"></div><div class="blk"></div></div>
+          </div>
+        </div>
+        <div class="layer phone">
+          <div class="screen page">
+            <div class="blk h"></div>
+            <div class="blk s"></div>
+            <div class="blk btnb"></div>
+            <div class="tiles"><div class="blk"></div><div class="blk"></div></div>
+          </div>
+        </div>
+        <div class="layer toast"><span class="dot">✓</span><span><b>New booking request</b><span>from your website · just now</span></span></div>
+        <div class="layer chip3d">Mobile-ready</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="band" id="how">
+  <div class="wrap">
+    <div class="head">
+      <h2>How it works</h2>
+      <p>No meetings full of jargon. You see your site first, then decide.</p>
+    </div>
+    <ol class="steps">
+      <li><h3>Free mockup</h3><p>I build a preview of your homepage using your real services and hours. It's yours to look at, free.</p></li>
+      <li><h3>50% deposit</h3><p>Like it? Pick a package and pay half to start. Work begins the same week.</p></li>
+      <li><h3>Review</h3><p>You get a private link to the finished site and request changes until it's right.</p></li>
+      <li><h3>Go live</h3><p>Pay the balance and your site goes live on your own domain, ready for Google.</p></li>
+    </ol>
+  </div>
+</section>
+
+<section class="band" id="pricing">
+  <div class="wrap">
+    <div class="head">
+      <h2>Simple, flat pricing</h2>
+      <p>One price, agreed up front. No hourly billing and no surprise charges.</p>
+    </div>
+    <div class="plans">
+      <div class="plan">
+        <h3>Starter</h3>
+        <div class="price">$750</div>
+        <p class="for">For new businesses and independent pros.</p>
+        <ul>
+          <li>One scrolling page</li>
+          <li>Mobile-friendly design</li>
+          <li>Contact form and click-to-call</li>
+          <li>Google Maps and hours</li>
+          <li>Live in about 5 business days</li>
+        </ul>
+      </div>
+      <div class="plan pick">
+        <span class="badge">Most popular</span>
+        <h3>Business</h3>
+        <div class="price">$1,500</div>
+        <p class="for">For established shops, salons and contractors.</p>
+        <ul>
+          <li>Up to 5 pages</li>
+          <li>Photo gallery or service menu</li>
+          <li>Google Business Profile setup</li>
+          <li>Local search basics</li>
+          <li>Live in 1–2 weeks</li>
+        </ul>
+      </div>
+      <div class="plan">
+        <h3>Pro</h3>
+        <div class="price">$2,500<small>+</small></div>
+        <p class="for">For businesses that book or sell online.</p>
+        <ul>
+          <li>Up to 10 pages</li>
+          <li>Online booking or payments</li>
+          <li>Everything in Business</li>
+          <li>3 rounds of revisions</li>
+          <li>Live in 2–4 weeks</li>
+        </ul>
+      </div>
+    </div>
+    <p class="fine">Pay by card or bank transfer: half to start, half at launch.</p>
+  </div>
+</section>
+
+<section class="band" id="work">
+  <div class="wrap work">
+    <div class="browser">
+      <div class="bar"><i></i><i></i><i></i><span class="url">jacob00767.github.io/higgins-creek-auto</span></div>
+      <div class="shot">
+        <span class="k">Repair order · how it works</span>
+        <span class="t">Fixed right. Priced up front.</span>
+        <div class="r"><span>Synthetic oil change</span><span>from $69</span></div>
+        <div class="r"><span>Brake pads, per axle</span><span>from $189</span></div>
+        <div class="r"><span>Check engine diagnosis</span><span>$99</span></div>
+      </div>
+    </div>
+    <div>
+      <h3>Sample: an auto repair shop</h3>
+      <p>A one-page site for a neighborhood mechanic, with a priced service menu, a seasonal car-care calendar for Chicagoland winters, hours and an appointment form. Every site is designed around the business, never a template.</p>
+      <div class="actions"><a class="btn" href="https://jacob00767.github.io/higgins-creek-auto/" target="_blank" rel="noopener">View the sample site</a></div>
+    </div>
+  </div>
+</section>
+
+<section class="band">
+  <div class="wrap">
+    <div class="head"><h2>Why work with me</h2></div>
+    <div class="why">
+      <div><h3>I'm local</h3><p>I live in Hoffman Estates. I can stop by your shop, and I know what people around here search for.</p></div>
+      <div><h3>You see it first</h3><p>You get a free mockup of your own site before you spend a dollar. No guessing what you're paying for.</p></div>
+      <div><h3>You own it</h3><p>Your domain, your content, your design. If you ever leave, I hand everything over.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="band" id="contact">
+  <div class="wrap contact">
+    <div>
+      <div class="head" style="margin-bottom:0"><h2>Get your free mockup</h2></div>
+      <p style="color:var(--muted);margin-top:14px">Tell me about your business and I'll send a preview of your new homepage within 3 business days.</p>
+      <dl>
+        <dt>Call or text</dt><dd>(910) 746-9082</dd>
+        <dt>Email</dt><dd>jacobthewebsiteguy@gmail.com</dd>
+        <dt>Based in</dt><dd>Hoffman Estates, IL</dd>
+      </dl>
+    </div>
+    <form name="mockup-request" method="POST" action="/thanks.html" data-netlify="true" netlify-honeypot="company-website">
+      <input type="hidden" name="form-name" value="mockup-request">
+      <p class="hidden"><label>Leave this empty<input name="company-website" id="f-hp"></label></p>
+      <label>Your name<input id="f-name" name="name" autocomplete="name" required></label>
+      <label>Business name<input id="f-business" name="business" required></label>
+      <label>Phone<input id="f-phone" name="phone" type="tel" autocomplete="tel"></label>
+      <label>Email<input id="f-email" name="email" type="email" autocomplete="email" required></label>
+      <label class="full">Type of business
+        <select id="f-type" name="type">
+          <option>Salon or barbershop</option><option>Nails, lashes or spa</option><option>Restaurant or café</option>
+          <option>Auto repair</option><option>Contractor or home services</option><option>Other</option>
+        </select>
+      </label>
+      <label class="full">Current website (if any)<input id="f-site" name="current-site" placeholder="Facebook page, booking link, or old site"></label>
+      <label class="full">Anything I should know?<textarea id="f-notes" name="notes"></textarea></label>
+      <button class="btn green full" type="submit">Request my free mockup</button>
+    </form>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 JacobTheWebsiteGuy · Hoffman Estates, IL</span>
+    <span>(910) 746-9082</span>
+  </div>
+</footer>
+
+<script>
+(function () {
+  // Tilt the 3D hero toward the pointer; drift gently on its own when idle.
+  var stage = document.getElementById('stage3d');
+  var scene = document.getElementById('scene');
+  if (!stage || !scene || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  var baseX = 8, baseY = -16, lastMove = 0;
+  function set(rx, ry) { scene.style.setProperty('--rx', rx + 'deg'); scene.style.setProperty('--ry', ry + 'deg'); }
+  function onMove(x, y) {
+    var r = stage.getBoundingClientRect();
+    var px = (x - r.left) / r.width - 0.5, py = (y - r.top) / r.height - 0.5;
+    set(baseX - py * 16, baseY + px * 26);
+    lastMove = performance.now();
+  }
+  window.addEventListener('pointermove', function (e) { onMove(e.clientX, e.clientY); }, { passive: true });
+  function idle(t) {
+    if (t - lastMove > 1800) set(baseX + Math.sin(t / 1700) * 4, baseY + Math.sin(t / 2300) * 9);
+    requestAnimationFrame(idle);
+  }
+  requestAnimationFrame(idle);
+})();
+</script>
+
+</body>
+</html>

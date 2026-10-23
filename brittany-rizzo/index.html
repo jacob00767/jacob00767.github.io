@@ -1,0 +1,226 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex">
+<title>Brittany Rizzo Hair</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Hanken+Grotesk:wght@400;500;700&display=swap">
+<style>
+/* Layout: a colorist's portfolio. The hero is a hand-painted color melt from root to ends; technique names as chips; prices by service. */
+:root {
+  --bg: #f7f5f3;
+  --surface: #ffffff;
+  --ink: #2a2124;
+  --muted: #6c6064;
+  --rule: #e4ddd9;
+  --honey: #b77a2e;
+  --honey-soft: #f4e7d5;
+  --on-ink: #ffffff;
+  --font-display: "Instrument Serif", Georgia, serif;
+  --font-body: "Hanken Grotesk", system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #161213; --surface: #1f191b; --ink: #f3ecee; --muted: #b0a3a7; --rule: #352c2f;
+    --honey: #e3a85f; --honey-soft: #3a2d1e; --on-ink: #161213;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #161213; --surface: #1f191b; --ink: #f3ecee; --muted: #b0a3a7; --rule: #352c2f;
+  --honey: #e3a85f; --honey-soft: #3a2d1e; --on-ink: #161213;
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+img { max-width: 100%; }
+body { margin: 0; background: var(--bg); color: var(--ink); font-family: var(--font-body); font-size: 16.5px; line-height: 1.65; }
+.wrap {
+  max-width: 1020px; margin: 0 auto;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+h1, h2, h3 { font-family: var(--font-display); font-weight: 400; margin: 0; line-height: 1.02; text-wrap: balance; }
+p { margin: 0; }
+a { color: inherit; }
+:focus-visible { outline: 2px solid var(--honey); outline-offset: 3px; }
+
+.concept { font-size: 13px; text-align: center; color: var(--muted); border-bottom: 1px solid var(--rule); }
+.concept .wrap { padding-block: 8px; }
+
+header .wrap { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px; padding-block: 18px; }
+.logo { font-family: var(--font-display); font-size: 28px; }
+.logo i { color: var(--honey); }
+.btn {
+  display: inline-block; font: 700 15px/1 var(--font-body); padding: 15px 22px; border-radius: 999px;
+  text-decoration: none; border: 1.5px solid var(--ink); color: var(--ink); background: transparent;
+}
+.btn.ink { background: var(--ink); color: var(--on-ink); }
+.btn:hover { transform: translateY(-1px); }
+
+.hero .wrap { display: grid; grid-template-columns: 1.2fr 1fr; gap: 44px; align-items: center; padding-block: 40px 64px; }
+.kicker { font-weight: 700; color: var(--honey); letter-spacing: 0.14em; text-transform: uppercase; font-size: 12.5px; }
+.hero h1 { font-size: clamp(54px, 9vw, 108px); margin-block: 12px 18px; }
+.hero h1 i { color: var(--honey); }
+.hero .lede { font-size: 18.5px; color: var(--muted); max-width: 30em; }
+.actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 26px; }
+
+/* Color melt: three painted strands blending root to ends */
+.melt { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); grid-template-rows: 1fr auto; gap: 12px; height: 400px; min-width: 0; }
+.strand { border-radius: 999px 999px 40px 40px; position: relative; overflow: hidden; }
+.strand::after { content: ""; position: absolute; inset: 0; background: repeating-linear-gradient(100deg, rgba(255,255,255,0.10) 0 3px, transparent 3px 9px); }
+.strand.a { background: linear-gradient(#3b2a22 0%, #5a3e2e 30%, #b98a5a 70%, #e8cfa5 100%); }
+.strand.b { background: linear-gradient(#2e221d 0%, #6b4a35 35%, #c99b66 75%, #f1dcb6 100%); margin-top: 30px; }
+.strand.c { background: linear-gradient(#3a2620 0%, #7a4c34 40%, #c4865a 78%, #e7b98b 100%); margin-top: 60px; }
+.melt-cap { grid-column: 1 / -1; font-size: 13px; color: var(--muted); text-align: center; }
+
+section.band .wrap { padding-block: 60px; border-top: 1px solid var(--rule); }
+.head { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: end; gap: 12px; margin-bottom: 26px; }
+.head h2 { font-size: clamp(40px, 6vw, 62px); }
+.head p { color: var(--muted); max-width: 30em; }
+
+.chips { display: flex; flex-wrap: wrap; gap: 10px; }
+.chip { background: var(--surface); border: 1px solid var(--rule); border-radius: 999px; padding: 10px 18px; font-family: var(--font-display); font-size: 22px; }
+.chip.hl { background: var(--honey-soft); border-color: transparent; }
+
+.prices { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 48px; }
+.pgroup { min-width: 0; margin-bottom: 24px; }
+.pgroup h3 { font-family: var(--font-body); font-size: 12.5px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--honey); padding-bottom: 8px; border-bottom: 1px solid var(--ink); }
+.row { display: flex; justify-content: space-between; gap: 16px; padding-block: 11px; border-bottom: 1px solid var(--rule); }
+.row .price { font-weight: 700; white-space: nowrap; font-variant-numeric: tabular-nums; }
+.certs { margin-top: 10px; padding: 18px 22px; background: var(--surface); border: 1px solid var(--rule); border-radius: 14px; color: var(--muted); }
+.certs b { color: var(--ink); }
+
+.gallery { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
+.ph { aspect-ratio: 3 / 4; max-width: 100%; border-radius: 14px; border: 1.5px dashed var(--rule); display: grid; place-items: center; padding: 12px; text-align: center; color: var(--muted); font-size: 14px; background: var(--surface); }
+
+.visit { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; align-items: start; }
+.visit dl { display: grid; grid-template-columns: auto 1fr; gap: 12px 20px; margin: 0; }
+.visit dt { color: var(--muted); }
+.visit dd { margin: 0; }
+.selectable { user-select: all; }
+.panel { background: var(--surface); border: 1px solid var(--rule); border-radius: 16px; padding: 26px; min-width: 0; }
+.panel h3 { font-size: 32px; }
+
+footer .wrap { padding-block: 26px 40px; border-top: 1px solid var(--rule); display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; color: var(--muted); font-size: 14px; }
+
+@media (max-width: 820px) {
+  .hero .wrap, .visit, .prices { grid-template-columns: 1fr; }
+  .melt { height: 260px; }
+  .gallery { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (prefers-reduced-motion: reduce) { .btn:hover { transform: none; } }
+</style>
+</head>
+<body>
+
+<div class="concept" style="background:var(--ink);color:var(--bg);border:0;font-size:14px;line-height:1.45"><div class="wrap" style="padding-block:12px"><b>This is a free sample</b> made for Brittany Rizzo by <a href="https://jacob00767.github.io" target="_blank" rel="noopener" style="color:inherit;font-weight:700">JacobTheWebsiteGuy</a>. Every color, photo, word and section can be changed to fit exactly what you want.</div></div>
+
+<header>
+  <div class="wrap">
+    <span class="logo">Brittany Rizzo <i>Hair</i></span>
+    <a class="btn ink" href="https://salonlofts.com/brittany_rizzo" target="_blank" rel="noopener">Book</a>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    <div>
+      <div class="kicker">Master stylist &amp; colorist</div>
+      <h1>Lived&#8209;in color, <i>blended by hand.</i></h1>
+      <p class="lede">Balayage, foilyage, babylights and color melts by Brittany Rizzo, plus hand-tied and tape-in extensions, in a private studio at Salon Lofts Hoffman Estates.</p>
+      <div class="actions">
+        <a class="btn ink" href="https://salonlofts.com/brittany_rizzo" target="_blank" rel="noopener">Book an appointment</a>
+        <a class="btn" href="#prices">See prices</a>
+      </div>
+    </div>
+    <div class="melt" aria-hidden="true">
+      <div class="strand a"></div><div class="strand b"></div><div class="strand c"></div>
+      <span class="melt-cap">Root to ends, no harsh lines</span>
+    </div>
+  </div>
+</section>
+
+<section class="band">
+  <div class="wrap">
+    <div class="head"><h2>Specialties</h2><p>The techniques Brittany is known for.</p></div>
+    <div class="chips">
+      <span class="chip hl">Balayage</span>
+      <span class="chip">Foilyage</span>
+      <span class="chip">Color melting</span>
+      <span class="chip">Babylights</span>
+      <span class="chip hl">Hand-tied extensions</span>
+      <span class="chip">Tape-ins</span>
+      <span class="chip">Keratin smoothing</span>
+    </div>
+  </div>
+</section>
+
+<section class="band" id="prices">
+  <div class="wrap">
+    <div class="head">
+      <h2>Prices</h2>
+      <p>Starting prices from Brittany's booking page. Color is confirmed at your appointment based on length and thickness.</p>
+    </div>
+    <div class="prices">
+      <div class="pgroup">
+        <h3>Color</h3>
+        <div class="row"><span>Balayage</span><span class="price">$275+</span></div>
+        <div class="row"><span>Balayage &amp; cut</span><span class="price">$330+</span></div>
+        <div class="row"><span>Full highlights, B3 &amp; glaze</span><span class="price">$195+</span></div>
+        <div class="row"><span>Full highlights, B3, glaze &amp; cut</span><span class="price">$250+</span></div>
+        <div class="row"><span>All-over color</span><span class="price">$147+</span></div>
+        <div class="row"><span>Color touch-up</span><span class="price">$83+</span></div>
+      </div>
+      <div class="pgroup">
+        <h3>Extensions</h3>
+        <div class="row"><span>Hand-tied sew-in wefts</span><span class="price">$260+</span></div>
+        <div class="row"><span>Tape-in extensions</span><span class="price">$200+</span></div>
+        <div class="row"><span>Individual tab placement</span><span class="price">$30+</span></div>
+        <p class="certs"><b>Certified</b> in keratin smoothing and in hand-tied sew-in extensions and placement.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="band" id="work">
+  <div class="wrap">
+    <div class="head"><h2>Before &amp; after</h2><p>On the finished site, this shows Brittany's own color work.</p></div>
+    <div class="gallery">
+      <div class="ph">Balayage</div>
+      <div class="ph">Babylights</div>
+      <div class="ph">Hand-tied extensions</div>
+    </div>
+  </div>
+</section>
+
+<section class="band" id="visit">
+  <div class="wrap visit">
+    <div>
+      <div class="head" style="margin-bottom:16px"><h2>The studio</h2></div>
+      <dl>
+        <dt>Studio</dt><dd>Loft 19, Salon Lofts<br>977 N Roselle Rd, Hoffman Estates, IL 60169</dd>
+        <dt>Call or text</dt><dd class="selectable">(847) 387-9759</dd>
+        <dt>Hours</dt><dd>By appointment</dd>
+      </dl>
+    </div>
+    <div class="panel">
+      <h3>Ready for new color?</h3>
+      <p style="color:var(--muted);margin-block:8px 20px">Book online, or text Brittany a photo of the look you want.</p>
+      <a class="btn ink" href="https://salonlofts.com/brittany_rizzo" target="_blank" rel="noopener">Book online</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span>Brittany Rizzo Hair · Hoffman Estates, IL</span>
+    <span>Sample site by <a href="https://jacob00767.github.io" target="_blank" rel="noopener">JacobTheWebsiteGuy</a></span>
+  </div>
+</footer>
+
+</body>
+</html>

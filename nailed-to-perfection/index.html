@@ -1,0 +1,227 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex">
+<title>Nailed to Perfection</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gloock&family=Karla:wght@400;500;700&display=swap">
+<style>
+/* Layout: a private nail studio. A row of polish swatches as the signature, a menu split by hands and feet, one teal accent. */
+:root {
+  --bg: #f6f4f1;
+  --surface: #ffffff;
+  --ink: #241f24;
+  --muted: #6b6168;
+  --rule: #e3ddd8;
+  --teal: #0e6b6b;
+  --on-teal: #ffffff;
+  --font-display: "Gloock", Georgia, "Times New Roman", serif;
+  --font-body: "Karla", system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #161314; --surface: #201c1e; --ink: #f2ecee; --muted: #b3a8ad;
+    --rule: #352e31; --teal: #5cc2bf; --on-teal: #161314;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #161314; --surface: #201c1e; --ink: #f2ecee; --muted: #b3a8ad;
+  --rule: #352e31; --teal: #5cc2bf; --on-teal: #161314;
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+img { max-width: 100%; }
+body { margin: 0; background: var(--bg); color: var(--ink); font-family: var(--font-body); font-size: 16.5px; line-height: 1.6; }
+.wrap {
+  max-width: 1000px; margin: 0 auto;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+h1, h2, h3 { font-family: var(--font-display); font-weight: 400; margin: 0; line-height: 1.05; text-wrap: balance; }
+p { margin: 0; }
+a { color: inherit; }
+:focus-visible { outline: 2px solid var(--teal); outline-offset: 3px; }
+
+.concept { font-size: 13px; text-align: center; color: var(--muted); border-bottom: 1px solid var(--rule); }
+.concept .wrap { padding-block: 8px; }
+
+header .wrap { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px; padding-block: 18px; }
+.logo { font-family: var(--font-display); font-size: 24px; }
+.where { color: var(--muted); font-size: 14px; }
+
+.btn {
+  display: inline-block; font: 700 15px/1 var(--font-body); padding: 15px 22px; border-radius: 10px;
+  text-decoration: none; border: 1.5px solid var(--ink); color: var(--ink); background: transparent;
+}
+.btn.teal { background: var(--teal); border-color: var(--teal); color: var(--on-teal); }
+.btn:hover { transform: translateY(-1px); }
+
+.hero .wrap { padding-block: 40px 56px; }
+.eyebrow { font-size: 13px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--teal); }
+.hero h1 { font-size: clamp(50px, 9vw, 104px); margin-block: 14px 20px; max-width: 11ch; }
+.hero .lede { font-size: 19px; color: var(--muted); max-width: 34em; }
+.actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 28px; }
+
+/* Polish swatches: the bottles' caps and color, lined up like a shelf */
+.swatches { display: flex; gap: 10px; margin-top: 44px; flex-wrap: wrap; }
+.sw { width: 46px; display: grid; justify-items: center; gap: 0; }
+.sw .cap { width: 18px; height: 22px; border-radius: 4px 4px 2px 2px; background: var(--ink); }
+.sw .bottle { width: 40px; height: 46px; border-radius: 10px 10px 14px 14px; background: var(--c); box-shadow: inset -6px -6px 0 rgba(0,0,0,0.12), inset 6px 6px 0 rgba(255,255,255,0.25); }
+.sw span { font-size: 11px; color: var(--muted); margin-top: 6px; text-align: center; line-height: 1.2; }
+
+section.band .wrap { padding-block: 60px; border-top: 1px solid var(--rule); }
+.head { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: end; gap: 12px; margin-bottom: 26px; }
+.head h2 { font-size: clamp(36px, 5.5vw, 56px); }
+.head p { color: var(--muted); max-width: 30em; }
+
+.menu { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; }
+.panel { background: var(--surface); border: 1px solid var(--rule); border-radius: 16px; padding: 26px; min-width: 0; }
+.panel h3 { font-size: 28px; margin-bottom: 8px; }
+.row { display: flex; align-items: baseline; gap: 12px; padding-block: 12px; border-bottom: 1px solid var(--rule); }
+.row:last-child { border-bottom: 0; }
+.row .name { font-weight: 500; min-width: 0; }
+.row .name small { display: block; color: var(--muted); font-size: 13.5px; font-weight: 400; }
+.row .fill { flex: 1; }
+.row .price { font-weight: 700; font-variant-numeric: tabular-nums; white-space: nowrap; }
+.note { margin-top: 16px; color: var(--muted); font-size: 14.5px; }
+
+.specialties { display: flex; flex-wrap: wrap; gap: 10px; }
+.chip { border: 1.5px solid var(--rule); border-radius: 999px; padding: 9px 16px; font-weight: 500; background: var(--surface); }
+
+.gallery { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; }
+.ph { aspect-ratio: 4 / 5; max-width: 100%; border-radius: 14px; border: 1.5px dashed var(--rule); display: grid; place-items: center; padding: 10px; text-align: center; color: var(--muted); font-size: 14px; background: var(--surface); }
+
+.contact { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; align-items: start; }
+.contact dl { display: grid; grid-template-columns: auto 1fr; gap: 12px 20px; margin: 0; }
+.contact dt { color: var(--muted); }
+.contact dd { margin: 0; overflow-wrap: anywhere; }
+.selectable { user-select: all; }
+
+footer .wrap { padding-block: 26px 40px; border-top: 1px solid var(--rule); display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; color: var(--muted); font-size: 14px; }
+
+@media (max-width: 820px) {
+  .menu, .contact { grid-template-columns: 1fr; }
+  .gallery { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (prefers-reduced-motion: reduce) { .btn:hover { transform: none; } }
+</style>
+</head>
+<body>
+
+<div class="concept"><div class="wrap">Website concept prepared for Nailed to Perfection · not the studio's official site</div></div>
+
+<header>
+  <div class="wrap">
+    <span class="logo">Nailed to Perfection</span>
+    <span class="where">Loft 17 · Salon Lofts Hoffman Estates</span>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    <div class="eyebrow">Private nail studio by Hue</div>
+    <h1>Nails done with patience.</h1>
+    <p class="lede">Dip powder, gel builder, acrylics and nail art in a quiet private loft. One client at a time, never rushed, in Hoffman Estates.</p>
+    <div class="actions">
+      <a class="btn teal" href="https://salonlofts.com/nailed_to_perfection" target="_blank" rel="noopener">Book an appointment</a>
+      <a class="btn" href="#menu">See the menu</a>
+    </div>
+    <div class="swatches" aria-hidden="true">
+      <div class="sw"><div class="cap"></div><div class="bottle" style="--c:#c8324f"></div><span>Classic red</span></div>
+      <div class="sw"><div class="cap"></div><div class="bottle" style="--c:#e8b4b8"></div><span>Ballet pink</span></div>
+      <div class="sw"><div class="cap"></div><div class="bottle" style="--c:#f2e6dc"></div><span>Milky white</span></div>
+      <div class="sw"><div class="cap"></div><div class="bottle" style="--c:#6b2d5c"></div><span>Plum</span></div>
+      <div class="sw"><div class="cap"></div><div class="bottle" style="--c:#0e6b6b"></div><span>Teal</span></div>
+      <div class="sw"><div class="cap"></div><div class="bottle" style="--c:#c9a66b"></div><span>Gold</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="band" id="menu">
+  <div class="wrap">
+    <div class="head">
+      <h2>Menu</h2>
+      <p>Prices from the studio's current booking page. Kids' prices are available for manicures and pedicures.</p>
+    </div>
+    <div class="menu">
+      <div class="panel">
+        <h3>Hands</h3>
+        <div class="row"><span class="name">Basic manicure<small>Shape, cuticle care, polish</small></span><span class="fill"></span><span class="price">$25</span></div>
+        <div class="row"><span class="name">No-chip manicure<small>Long-wear gel color</small></span><span class="fill"></span><span class="price">$40</span></div>
+        <div class="row"><span class="name">Dip powder<small>Strong, lightweight, lasting</small></span><span class="fill"></span><span class="price">$45</span></div>
+        <div class="row"><span class="name">Gel builder &amp; acrylics<small>Strength and length</small></span><span class="fill"></span><span class="price">See booking</span></div>
+      </div>
+      <div class="panel">
+        <h3>Feet</h3>
+        <div class="row"><span class="name">Basic pedicure<small>Soak, shape, polish</small></span><span class="fill"></span><span class="price">$35</span></div>
+        <div class="row"><span class="name">Sea salt pedicure<small>Exfoliating sea salt scrub</small></span><span class="fill"></span><span class="price">$40</span></div>
+        <div class="row"><span class="name">Jelly spa pedicure<small>Warm jelly soak</small></span><span class="fill"></span><span class="price">See booking</span></div>
+        <div class="row"><span class="name">Volcano spa pedicure<small>Bubbling mineral soak</small></span><span class="fill"></span><span class="price">See booking</span></div>
+      </div>
+    </div>
+    <p class="note">Every service and open time is on the <a href="https://salonlofts.com/nailed_to_perfection" target="_blank" rel="noopener">booking page</a>.</p>
+  </div>
+</section>
+
+<section class="band">
+  <div class="wrap">
+    <div class="head"><h2>Specialties</h2></div>
+    <div class="specialties">
+      <span class="chip">Dip powder</span>
+      <span class="chip">Gel builder</span>
+      <span class="chip">Acrylics</span>
+      <span class="chip">No-chip manicures</span>
+      <span class="chip">Nail art design</span>
+      <span class="chip">Spa pedicures</span>
+    </div>
+  </div>
+</section>
+
+<section class="band" id="work">
+  <div class="wrap">
+    <div class="head">
+      <h2>Recent sets</h2>
+      <p>On the finished site, this gallery shows Hue's own work.</p>
+    </div>
+    <div class="gallery">
+      <div class="ph">Dip powder</div>
+      <div class="ph">Nail art</div>
+      <div class="ph">Gel builder</div>
+      <div class="ph">Spa pedicure</div>
+    </div>
+  </div>
+</section>
+
+<section class="band" id="contact">
+  <div class="wrap contact">
+    <div>
+      <div class="head" style="margin-bottom:16px"><h2>Visit the loft</h2></div>
+      <dl>
+        <dt>Studio</dt><dd>Loft 17, Salon Lofts<br>977 N Roselle Rd, Hoffman Estates, IL 60169</dd>
+        <dt>Call or text</dt><dd class="selectable">(630) 402-1612</dd>
+        <dt>Email</dt><dd class="selectable">hue.tu@salonlofts.com</dd>
+        <dt>Hours</dt><dd>By appointment</dd>
+      </dl>
+    </div>
+    <div class="panel">
+      <h3>Ready for fresh nails?</h3>
+      <p style="color:var(--muted);margin-block:8px 20px">Pick your service and time online, or call to book.</p>
+      <a class="btn teal" href="https://salonlofts.com/nailed_to_perfection" target="_blank" rel="noopener">Book online</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span>Nailed to Perfection · Hoffman Estates, IL</span>
+    <span>Concept site</span>
+  </div>
+</footer>
+
+</body>
+</html>

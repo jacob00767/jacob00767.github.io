@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex">
+<title>Rosy's Beauty Salon</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Mulish:wght@400;700&display=swap">
+<style>
+/* Layout: a classic neighborhood beauty salon. A drawn rose as the hero art, rose and deep plum, a soft serif. */
+:root { --bg: #fcf7f7; --surface: #ffffff; --ink: #34202a; --muted: #6f5d66; --rule: #eedfe2; --accent: #c2405f; --accent-2: #f08fa5; --accent-soft: #fbe4e8; --on-accent: #ffffff; --leaf: #4f7a4a; --font-display: "DM Serif Display", Georgia, serif; --font-body: "Mulish", system-ui, -apple-system, "Segoe UI", sans-serif; }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) { --bg: #181114; --surface: #22181c; --ink: #f6ecef; --muted: #b9a8af; --rule: #3a2a30; --accent: #f07892; --accent-2: #f6aebd; --accent-soft: #3b2128; --on-accent: #181114; --leaf: #8cc085; color-scheme: dark; } }
+:root[data-theme="dark"] { --bg: #181114; --surface: #22181c; --ink: #f6ecef; --muted: #b9a8af; --rule: #3a2a30; --accent: #f07892; --accent-2: #f6aebd; --accent-soft: #3b2128; --on-accent: #181114; --leaf: #8cc085; color-scheme: dark; }
+* { box-sizing: border-box; }
+img { max-width: 100%; }
+body { margin: 0; background: var(--bg); color: var(--ink); font-family: var(--font-body); font-size: 16.5px; line-height: 1.6; }
+.wrap { max-width: 1040px; margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+h1, h2, h3 { font-family: var(--font-display); font-weight: 400; margin: 0; line-height: 1.04; text-wrap: balance; }
+p { margin: 0; }
+a { color: inherit; }
+:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+.sample { background: var(--ink); color: var(--bg); font-size: 14px; line-height: 1.45; }
+.sample .wrap { padding-block: 11px; }
+.sample a { color: inherit; font-weight: 700; }
+header .wrap { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px; padding-block: 18px; }
+.logo { font-family: var(--font-display); font-size: 28px; line-height: 1; }
+.logo small { display: block; font-family: var(--font-body); font-size: 12px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--accent); margin-top: 4px; }
+.btn { display: inline-block; font: 700 15.5px/1 var(--font-body); padding: 16px 22px; border-radius: 999px; text-decoration: none; border: 2px solid var(--ink); color: var(--ink); background: transparent; }
+.btn.solid { background: var(--accent); border-color: var(--accent); color: var(--on-accent); }
+.btn:hover { transform: translateY(-1px); }
+.hero .wrap { display: grid; grid-template-columns: 1.25fr 1fr; gap: 44px; align-items: center; padding-block: 40px 64px; }
+.kicker { font-weight: 700; color: var(--accent); letter-spacing: 0.12em; text-transform: uppercase; font-size: 13px; }
+.hero h1 { font-size: clamp(48px, 8vw, 92px); margin-block: 12px 18px; }
+.hero h1 em { font-style: italic; color: var(--accent); }
+.hero .lede { font-size: 18.5px; color: var(--muted); max-width: 32em; }
+.actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 26px; }
+.art { min-width: 0; }
+.art svg { width: 100%; height: auto; display: block; }
+section.band .wrap { padding-block: 60px; border-top: 1px solid var(--rule); }
+.head { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: end; gap: 12px; margin-bottom: 26px; }
+.head h2 { font-size: clamp(38px, 5.5vw, 58px); }
+.head p { color: var(--muted); max-width: 30em; }
+.services { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; }
+.svc { background: var(--surface); border: 1px solid var(--rule); border-radius: 16px; padding: 22px; min-width: 0; }
+.svc .who { font-size: 12px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent); }
+.svc h3 { font-size: 26px; margin-block: 6px 6px; }
+.svc p { color: var(--muted); font-size: 15px; }
+.note { margin-top: 16px; color: var(--muted); font-size: 14.5px; }
+.why { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 28px; }
+.why h3 { font-size: 24px; margin-bottom: 6px; }
+.why p { color: var(--muted); }
+.gallery { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; }
+.ph { aspect-ratio: 1; max-width: 100%; border-radius: 14px; border: 1.5px dashed var(--rule); display: grid; place-items: center; padding: 10px; text-align: center; color: var(--muted); font-size: 14px; background: var(--surface); }
+.visit { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; align-items: start; }
+.visit dl { display: grid; grid-template-columns: auto 1fr; gap: 12px 20px; margin: 0; }
+.visit dt { color: var(--muted); }
+.visit dd { margin: 0; }
+.panel { background: var(--accent-soft); border-radius: 18px; padding: 28px; min-width: 0; }
+.panel h3 { font-size: 32px; margin-bottom: 8px; }
+.panel p { color: var(--muted); margin-bottom: 20px; }
+.phone { font-family: var(--font-display); font-size: 30px; user-select: all; margin-bottom: 18px; }
+footer .wrap { padding-block: 26px 40px; border-top: 1px solid var(--rule); display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; color: var(--muted); font-size: 14px; }
+@media (max-width: 820px) { .hero .wrap, .visit { grid-template-columns: 1fr; } .services, .why { grid-template-columns: 1fr 1fr; } .gallery { grid-template-columns: repeat(2, minmax(0, 1fr)); } .art { max-width: 420px; } }
+@media (max-width: 520px) { .services, .why { grid-template-columns: 1fr; } }
+@media (prefers-reduced-motion: reduce) { .btn:hover { transform: none; } }
+</style>
+</head>
+<body>
+<div class="sample"><div class="wrap"><b>This is a free sample</b> made for Rosy's Beauty Salon by <a href="https://jacob00767.github.io" target="_blank" rel="noopener">JacobTheWebsiteGuy</a>. Every color, photo, word and section can be changed to fit exactly what you want.</div></div>
+<header><div class="wrap"><span class="logo">Rosy's Beauty Salon<small>Hanover Park, IL</small></span><a class="btn solid" href="tel:+18473183188">Call (847) 318-3188</a></div></header>
+<section class="hero"><div class="wrap">
+  <div>
+    <div class="kicker">Beauty salon on Barrington Road</div>
+    <h1>Beautiful hair, <em>done with care.</em></h1>
+    <p class="lede">Cuts, color, styling, perms, straightening and weaves in Hanover Park. A neighborhood salon where you can relax and leave feeling like yourself again.</p>
+    <div class="actions"><a class="btn solid" href="tel:+18473183188">Call to book</a><a class="btn" href="#services">See services</a></div>
+  </div>
+  <div class="art" aria-hidden="true"><svg viewBox="0 0 400 400"><circle cx="200" cy="200" r="180" fill="var(--accent-soft)"/>
+<g transform="translate(200 185)"><g fill="var(--accent)"><ellipse rx="70" ry="44" transform="rotate(-20)"/><ellipse rx="70" ry="44" transform="rotate(40)"/><ellipse rx="70" ry="44" transform="rotate(100)"/></g>
+<g fill="var(--accent-2)"><ellipse rx="44" ry="28" transform="rotate(10)"/><ellipse rx="44" ry="28" transform="rotate(70)"/><ellipse rx="44" ry="28" transform="rotate(130)"/></g>
+<circle r="18" fill="var(--ink)"/></g>
+<path d="M200 250 C 196 300, 206 330, 200 372" stroke="var(--leaf)" stroke-width="8" fill="none" stroke-linecap="round"/>
+<path d="M202 310 c 30 -26 64 -20 78 -8 c -26 14 -58 18 -78 8z" fill="var(--leaf)"/></svg></div>
+</div></section>
+<section class="band" id="services"><div class="wrap">
+  <div class="head"><h2>Services</h2><p>From a fresh cut to a whole new look.</p></div>
+  <div class="services"><div class="svc"><span class="who">Cut</span><h3>Women's haircut</h3><p>Trims, layers and new shapes.</p></div><div class="svc"><span class="who">Color</span><h3>Color &amp; styling</h3><p>Rich color and a polished finish.</p></div><div class="svc"><span class="who">Texture</span><h3>Perms</h3><p>Body, curl and movement.</p></div><div class="svc"><span class="who">Smooth</span><h3>Permanent straightening</h3><p>Sleek, frizz-free hair that lasts.</p></div><div class="svc"><span class="who">Length</span><h3>Hair weaves</h3><p>Added length and fullness.</p></div><div class="svc"><span class="who">Style</span><h3>Blowouts &amp; styling</h3><p>Ready for any occasion.</p></div></div>
+  <p class="note">On the finished site, every service shows its price and how long it takes.</p>
+</div></section>
+<section class="band"><div class="wrap">
+  <div class="head"><h2>Why clients love Rosy's</h2></div>
+  <div class="why"><div><h3>Personal</h3><p>Take your time and talk through the look you want.</p></div><div><h3>Full service</h3><p>Cuts, color, texture and weaves in one place.</p></div><div><h3>Close by</h3><p>On Barrington Road in Hanover Park.</p></div></div>
+</div></section>
+<section class="band" id="work"><div class="wrap">
+  <div class="head"><h2>Our work</h2><p>On the finished site, this gallery shows the salon's own photos.</p></div>
+  <div class="gallery"><div class="ph">Cut &amp; style</div><div class="ph">Color</div><div class="ph">Straightening</div><div class="ph">Weave</div></div>
+</div></section>
+<section class="band" id="visit"><div class="wrap visit">
+  <div>
+    <div class="head" style="margin-bottom:16px"><h2>Visit us</h2></div>
+    <dl>
+      <dt>Where</dt><dd>6770 Barrington Rd<br>Hanover Park, IL 60133</dd>
+      <dt>Phone</dt><dd>(847) 318-3188</dd>
+      <dt>Hours</dt><dd>Call for today's hours</dd>
+    </dl>
+    <div class="actions"><a class="btn" href="https://www.google.com/maps/search/?api=1&amp;query=6770+Barrington+Rd+Hanover+Park+IL+60133" target="_blank" rel="noopener">Get directions</a></div>
+  </div>
+  <div class="panel">
+    <h3>Time for something new?</h3>
+    <p>Give us a call to book your appointment.</p>
+    <div class="phone">(847) 318-3188</div>
+    <a class="btn solid" href="tel:+18473183188">Call now</a>
+  </div>
+</div></section>
+<footer><div class="wrap"><span>Rosy's Beauty Salon · Hanover Park, IL</span><span>Sample site by <a href="https://jacob00767.github.io" target="_blank" rel="noopener">JacobTheWebsiteGuy</a></span></div></footer>
+</body>
+</html>
