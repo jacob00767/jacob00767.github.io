@@ -354,9 +354,7 @@ footer .wrap { padding-block: 28px 44px; border-top: 1px solid var(--rule); disp
         <dt>Based in</dt><dd>Hoffman Estates, IL</dd>
       </dl>
     </div>
-    <form name="mockup-request" method="POST" action="/thanks.html" data-netlify="true" netlify-honeypot="company-website">
-      <input type="hidden" name="form-name" value="mockup-request">
-      <p class="hidden"><label>Leave this empty<input name="company-website" id="f-hp"></label></p>
+    <form name="mockup-request" id="mockup-form">
       <label>Your name<input id="f-name" name="name" autocomplete="name" required></label>
       <label>Business name<input id="f-business" name="business" required></label>
       <label>Phone<input id="f-phone" name="phone" type="tel" autocomplete="tel"></label>
@@ -370,6 +368,7 @@ footer .wrap { padding-block: 28px 44px; border-top: 1px solid var(--rule); disp
       <label class="full">Current website (if any)<input id="f-site" name="current-site" placeholder="Facebook page, booking link, or old site"></label>
       <label class="full">Anything I should know?<textarea id="f-notes" name="notes"></textarea></label>
       <button class="btn green full" type="submit">Request my free mockup</button>
+      <p class="full" style="color:var(--muted);font-size:14px">This opens your email app with your details filled in. Just hit send.</p>
     </form>
   </div>
 </section>
@@ -405,5 +404,16 @@ footer .wrap { padding-block: 28px 44px; border-top: 1px solid var(--rule); disp
 })();
 </script>
 
+<script>
+document.getElementById('mockup-form').addEventListener('submit', function (e) {
+  e.preventDefault();
+  var f = e.target;
+  function v(n) { return ((f.elements[n] && f.elements[n].value) || '').trim(); }
+  var body = ['Name: ' + v('name'), 'Business: ' + v('business'), 'Phone: ' + v('phone'), 'Email: ' + v('email'),
+    'Type of business: ' + v('type'), 'Current website: ' + v('current-site'), '', v('notes')].join('\n');
+  window.location.href = 'mailto:jacobthewebsiteguy@gmail.com?subject=' +
+    encodeURIComponent('Free mockup request: ' + (v('business') || v('name'))) + '&body=' + encodeURIComponent(body);
+});
+</script>
 </body>
 </html>

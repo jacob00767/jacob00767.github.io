@@ -272,8 +272,7 @@ footer small { color: var(--muted); font-size: 12px; }
       <h2 class="script">Let's refresh your space</h2>
       <p>Send a few details and I'll get back to you to set up a free walkthrough.</p>
     </div>
-    <form name="estimate" method="POST" action="/thanks.html" data-netlify="true" netlify-honeypot="website">
-      <input type="hidden" name="form-name" value="estimate">
+    <form name="estimate" id="estimate-form">
       <p class="hp"><label>Leave empty<input id="f-hp" name="website"></label></p>
       <label>Name<input id="f-name" name="name" autocomplete="name" required></label>
       <label>Phone<input id="f-phone" name="phone" type="tel" autocomplete="tel" required></label>
@@ -285,6 +284,7 @@ footer small { color: var(--muted); font-size: 12px; }
       </label>
       <label class="full">Tell me about your space<textarea id="f-notes" name="notes" placeholder="Which rooms, how big, and what you'd like to change"></textarea></label>
       <button class="btn solid full" type="submit">Request my free estimate</button>
+      <p class="full" id="sent" hidden style="color:var(--purple);font-weight:600">Thanks! This form goes live once Domenica's contact details are added.</p>
     </form>
   </div>
 </section>
@@ -300,5 +300,6 @@ footer small { color: var(--muted); font-size: 12px; }
   </div>
 </footer>
 
+<script>document.getElementById("estimate-form").addEventListener("submit", function (e) { e.preventDefault(); document.getElementById("sent").hidden = false; });</script>
 </body>
 </html>
