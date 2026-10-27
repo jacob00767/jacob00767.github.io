@@ -1,0 +1,422 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex">
+<title>Nicole Scheet Hair</title>
+<meta name="description" content="Nicole Scheet: haircuts, blowouts, bridal and special occasion hair, keratin and scalp treatments at Salon Lofts Schaumburg.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Italiana&family=Jost:wght@300;400;500;600&display=swap">
+<style>
+/* Layout: a blowout and bridal stylist's studio, after dark. Silky strands of hair flow across the hero and follow the pointer;
+   a before/after slider turns frizz into a smooth blowout; a wedding-morning timeline; a tabbed menu; a booking card.
+   Espresso, champagne and blush. Dark by design. */
+:root {
+  --bg: #110d0c;
+  --bg-2: #171211;
+  --panel: #1c1615;
+  --panel-2: #241c1a;
+  --ink: #f6eee6;
+  --muted: #b7a89c;
+  --rule: #332824;
+  --champagne: #e8c9a0;
+  --gold: #c99a5b;
+  --blush: #f0b7b1;
+  --on-champagne: #1a120c;
+  --font-display: "Italiana", "Didot", Georgia, serif;
+  --font-body: "Jost", system-ui, -apple-system, "Segoe UI", sans-serif;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { margin: 0; background: var(--bg); color: var(--ink); font-family: var(--font-body); font-size: 17px; font-weight: 300; line-height: 1.65; overflow-x: hidden; }
+b, strong { font-weight: 500; }
+.wrap { max-width: 1120px; margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+h1, h2, h3 { font-family: var(--font-display); font-weight: 400; margin: 0; line-height: 1.02; text-wrap: balance; letter-spacing: 0.01em; }
+p { margin: 0; }
+a { color: inherit; }
+:focus-visible { outline: 1.5px solid var(--champagne); outline-offset: 4px; }
+.eyebrow { font-size: 12px; font-weight: 500; letter-spacing: 0.34em; text-transform: uppercase; color: var(--champagne); }
+.reveal { transition: opacity 0.9s ease, transform 0.9s cubic-bezier(.2,.8,.2,1); }
+.js .reveal.pre { opacity: 0; transform: translateY(26px); }
+
+.sample { position: relative; z-index: 5; background: #231a14; border-bottom: 1px solid rgba(232,201,160,0.3); font-size: 13.5px; line-height: 1.45; text-align: center; }
+.sample .wrap { padding-block: 10px; }
+.sample b, .sample a { color: var(--champagne); }
+
+.nav { position: fixed; z-index: 40; left: 50%; transform: translateX(-50%); top: calc(env(safe-area-inset-top, 0px) + 14px);
+  display: flex; align-items: center; gap: 4px; padding: 6px; border-radius: 999px; background: rgba(23,18,17,0.72);
+  backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); border: 1px solid rgba(232,201,160,0.2); opacity: 0; pointer-events: none; transition: opacity 0.35s; }
+.nav.show { opacity: 1; pointer-events: auto; }
+.nav a { text-decoration: none; font-size: 13px; font-weight: 500; letter-spacing: 0.08em; color: var(--muted); padding: 9px 14px; border-radius: 999px; white-space: nowrap; }
+.nav a:hover { color: var(--ink); }
+.nav .brand { font-family: var(--font-display); font-size: 20px; letter-spacing: 0.04em; color: var(--ink); }
+.nav .book { background: var(--champagne); color: var(--on-champagne); }
+
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; font: 500 13.5px/1 var(--font-body); letter-spacing: 0.2em; text-transform: uppercase; padding: 18px 26px; border-radius: 999px; text-decoration: none; border: 1px solid rgba(232,201,160,0.55); color: var(--ink); background: rgba(23,18,17,0.5); cursor: pointer; }
+.btn.gold { background: linear-gradient(180deg, #f1d6b0, var(--gold)); border-color: transparent; color: var(--on-champagne); box-shadow: 0 14px 40px -14px rgba(201,154,91,0.8); }
+.btn:hover { transform: translateY(-2px); }
+
+/* Hero */
+.hero { position: relative; min-height: 100vh; min-height: 100svh; display: grid; align-items: center; overflow: hidden; isolation: isolate; }
+.hero canvas { position: absolute; inset: 0; width: 100%; height: 100%; z-index: -1; }
+.hero::before { content: ""; position: absolute; inset: 0; z-index: -2; background: radial-gradient(ellipse 60% 70% at 70% 40%, rgba(240,183,177,0.10), transparent 70%), radial-gradient(ellipse 50% 60% at 20% 80%, rgba(232,201,160,0.08), transparent 70%), var(--bg); }
+.hero::after { content: ""; position: absolute; inset: auto 0 0; height: 30%; z-index: -1; background: linear-gradient(transparent, var(--bg)); pointer-events: none; }
+.hero .wrap { padding-block: 120px 100px; }
+.hero h1 { font-size: clamp(76px, 14vw, 200px); line-height: 0.88; margin-block: 22px 26px; }
+.hero h1 span { display: block; padding-left: 0.6em; background: linear-gradient(100deg, var(--champagne), var(--blush) 60%, var(--champagne)); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.lede { font-size: 19px; color: var(--muted); max-width: 31em; }
+.cta { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 34px; }
+.specs { display: flex; flex-wrap: wrap; gap: 24px; margin-top: 46px; padding-top: 24px; border-top: 1px solid var(--rule); max-width: 640px; }
+.specs div { min-width: 0; }
+.specs b { display: block; font-family: var(--font-display); font-size: 30px; font-weight: 400; color: var(--ink); line-height: 1; }
+.specs span { font-size: 12px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted); }
+
+/* Sections */
+section.band .wrap { padding-block: 110px; }
+.head { margin-bottom: 46px; }
+.head.center { text-align: center; }
+.head h2 { font-size: clamp(54px, 8vw, 104px); margin-top: 14px; }
+.head h2 em { font-style: normal; color: var(--champagne); }
+.head p { color: var(--muted); max-width: 34em; margin-top: 16px; }
+.head.center p { margin-inline: auto; }
+
+/* Before / after blowout slider */
+.ba-wrap { display: grid; grid-template-columns: 0.9fr 1.1fr; gap: 50px; align-items: center; }
+.ba { position: relative; aspect-ratio: 4 / 5; max-width: 100%; border-radius: 24px; overflow: hidden; border: 1px solid var(--rule); background: var(--panel); touch-action: none; user-select: none; cursor: ew-resize; }
+.ba canvas { position: absolute; inset: 0; width: 100%; height: 100%; }
+.ba .handle { position: absolute; top: 0; bottom: 0; width: 2px; background: var(--champagne); left: var(--x, 50%); transform: translateX(-1px); box-shadow: 0 0 16px rgba(232,201,160,0.8); pointer-events: none; }
+.ba .handle::after { content: "⟷"; position: absolute; top: 50%; left: 50%; width: 46px; height: 46px; margin: -23px 0 0 -23px; border-radius: 50%; background: var(--champagne); color: var(--on-champagne); display: grid; place-items: center; font-size: 20px; }
+.ba .lab { position: absolute; top: 18px; font-size: 11.5px; font-weight: 500; letter-spacing: 0.24em; text-transform: uppercase; padding: 7px 12px; border-radius: 999px; background: rgba(17,13,12,0.7); pointer-events: none; }
+.ba .lab.l { left: 18px; } .ba .lab.r { right: 18px; color: var(--champagne); }
+.ba-copy ul { list-style: none; margin: 26px 0 0; padding: 0; display: grid; gap: 14px; }
+.ba-copy li { display: flex; gap: 14px; align-items: baseline; color: var(--ink); }
+.ba-copy li::before { content: ""; flex: none; width: 22px; height: 1px; background: var(--champagne); transform: translateY(-5px); }
+
+/* Bridal timeline */
+.bridal { position: relative; border-radius: 30px; overflow: hidden; border: 1px solid rgba(232,201,160,0.3); background: radial-gradient(ellipse at 80% 0%, rgba(240,183,177,0.14), transparent 60%), linear-gradient(160deg, #221917, #141010); padding: 64px 48px; }
+.timeline { position: relative; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 24px; margin-top: 46px; }
+.timeline::before { content: ""; position: absolute; left: 0; right: 0; top: 24px; height: 1px; background: linear-gradient(90deg, transparent, var(--champagne), transparent); }
+.stop { position: relative; min-width: 0; }
+.stop .dot { width: 48px; height: 48px; border-radius: 50%; border: 1px solid var(--champagne); background: var(--bg); display: grid; place-items: center; font-family: var(--font-display); font-size: 20px; color: var(--champagne); position: relative; }
+.stop .when { margin-top: 18px; font-size: 12px; font-weight: 500; letter-spacing: 0.24em; text-transform: uppercase; color: var(--blush); }
+.stop h3 { font-size: 30px; margin-block: 6px 8px; }
+.stop p { color: var(--muted); font-size: 15.5px; }
+.bridal-prices { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 40px; }
+.bp { padding: 14px 18px; border-radius: 14px; border: 1px solid var(--rule); background: rgba(17,13,12,0.55); }
+.bp b { font-family: var(--font-display); font-size: 26px; font-weight: 400; color: var(--champagne); margin-left: 10px; }
+
+/* Menu */
+.menu { border-radius: 26px; border: 1px solid var(--rule); background: var(--panel); padding: 40px; }
+.tabs { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 30px; }
+.tabs button { font: 500 12.5px/1 var(--font-body); letter-spacing: 0.2em; text-transform: uppercase; padding: 13px 18px; border-radius: 999px; border: 1px solid var(--rule); background: transparent; color: var(--muted); cursor: pointer; }
+.tabs button[aria-selected="true"] { background: var(--champagne); border-color: var(--champagne); color: var(--on-champagne); }
+.items[hidden] { display: none; }
+.items { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 56px; animation: rise 0.45s ease; }
+@keyframes rise { from { opacity: 0; transform: translateY(8px); } }
+.item { display: flex; align-items: baseline; gap: 14px; padding-block: 18px; border-bottom: 1px solid var(--rule); min-width: 0; }
+.item .name { font-family: var(--font-display); font-size: 27px; line-height: 1.1; }
+.item .name small { display: block; font-family: var(--font-body); font-size: 14px; color: var(--muted); margin-top: 4px; }
+.item .leader { flex: 1; border-bottom: 1px dotted rgba(232,201,160,0.35); transform: translateY(-6px); min-width: 16px; }
+.item .price { font-family: var(--font-display); font-size: 26px; color: var(--champagne); white-space: nowrap; }
+.menu-note { color: var(--muted); font-size: 14px; margin-top: 22px; }
+
+/* Book */
+.book { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 24px; align-items: stretch; }
+.card { border-radius: 26px; border: 1px solid var(--rule); background: linear-gradient(170deg, var(--panel-2), var(--panel)); padding: 38px; min-width: 0; }
+.card h3 { font-size: clamp(44px, 6vw, 64px); }
+.card p { color: var(--muted); margin-top: 14px; }
+.reach { display: grid; gap: 14px; margin-top: 28px; }
+.reach a { display: flex; justify-content: space-between; align-items: center; gap: 16px; padding: 18px 20px; border-radius: 16px; border: 1px solid var(--rule); text-decoration: none; transition: border-color 0.2s, background 0.2s; min-width: 0; }
+.reach a:hover { border-color: rgba(232,201,160,0.6); background: rgba(232,201,160,0.06); }
+.reach span { font-size: 12px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--muted); }
+.reach b { font-family: var(--font-body); font-size: 18px; font-weight: 500; letter-spacing: 0.02em; overflow-wrap: anywhere; text-align: right; }
+.studio .addr { font-family: var(--font-body); font-weight: 300; font-size: 22px; line-height: 1.45; margin-top: 18px; color: var(--ink); }
+.studio .loft { display: inline-block; margin-top: 18px; font-size: 12px; letter-spacing: 0.24em; text-transform: uppercase; color: var(--on-champagne); background: var(--champagne); padding: 7px 12px; border-radius: 999px; }
+
+footer { border-top: 1px solid var(--rule); background: var(--bg-2); }
+footer .wrap { padding-block: 44px 54px; display: grid; justify-items: center; gap: 8px; text-align: center; color: var(--muted); font-size: 14px; }
+footer .sig { font-family: var(--font-display); font-size: 46px; color: var(--ink); }
+
+@media (max-width: 900px) {
+  .ba-wrap, .book { grid-template-columns: 1fr; }
+  .ba { max-width: 460px; margin: 0 auto; width: 100%; }
+  .timeline { grid-template-columns: 1fr 1fr; }
+  .timeline::before { display: none; }
+  .items { grid-template-columns: 1fr; }
+  .bridal { padding: 44px 22px; }
+  .menu, .card { padding: 26px 20px; }
+  .nav .hide-sm { display: none; }
+}
+@media (max-width: 520px) { .timeline { grid-template-columns: 1fr; } .hero h1 span { padding-left: 0.3em; } }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } .reveal { transition: none; } .js .reveal.pre { opacity: 1; transform: none; } .btn:hover { transform: none; } }
+</style>
+</head>
+<body>
+
+<div class="sample"><div class="wrap"><b>This is a free sample</b> made for Nicole Scheet by <a href="https://jacob00767.github.io" target="_blank" rel="noopener">JacobTheWebsiteGuy</a>. Every color, photo, word and section can be changed to fit exactly what you want.</div></div>
+
+<nav class="nav" id="nav" aria-label="Main">
+  <a class="brand" href="#top">Nicole Scheet</a>
+  <a class="hide-sm" href="#blowout">Blowouts</a>
+  <a class="hide-sm" href="#bridal">Bridal</a>
+  <a href="#menu">Menu</a>
+  <a class="book" href="#book">Book</a>
+</nav>
+
+<main id="top">
+<section class="hero" aria-label="Nicole Scheet">
+  <canvas id="silk" aria-hidden="true"></canvas>
+  <div class="wrap">
+    <div class="eyebrow">Hair stylist · Salon Lofts Schaumburg</div>
+    <h1>Nicole<span>Scheet</span></h1>
+    <p class="lede">Cuts for women, men and kids, glossy blowouts, bridal and special-occasion hair, and keratin and scalp treatments, in a private loft in Schaumburg.</p>
+    <div class="cta">
+      <a class="btn gold" href="#book">Book an appointment</a>
+      <a class="btn" href="#menu">See the menu</a>
+    </div>
+    <div class="specs">
+      <div><b>Blowouts</b><span>Smooth &amp; full</span></div>
+      <div><b>Bridal</b><span>Trial &amp; day-of</span></div>
+      <div><b>Keratin</b><span>Frizz-free for months</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="band" id="blowout">
+  <div class="wrap ba-wrap">
+    <div class="ba reveal" id="ba" aria-label="Drag to compare frizzy hair with a smooth blowout" role="slider" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50" tabindex="0">
+      <canvas id="baCanvas" aria-hidden="true"></canvas>
+      <span class="lab l">Before</span><span class="lab r">After</span>
+      <div class="handle"></div>
+    </div>
+    <div class="ba-copy reveal">
+      <div class="eyebrow">Drag the line</div>
+      <h2 style="font-size:clamp(52px,7vw,92px);margin-top:14px">From frizz<br>to <span style="color:var(--champagne)">glass.</span></h2>
+      <p style="color:var(--muted);margin-top:18px;max-width:30em">A great blowout changes your whole week. Nicole's blowouts and keratin treatments leave hair smooth, shiny and easy to style.</p>
+      <ul>
+        <li>Shampoo &amp; blow dry from $55</li>
+        <li>Keratin express from $175</li>
+        <li>Full keratin from $325</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="band" id="bridal" style="padding-top:0">
+  <div class="wrap">
+    <div class="bridal reveal">
+      <div class="eyebrow">Bridal · Prom · Special occasions</div>
+      <h2 style="font-size:clamp(52px,8vw,100px);margin-top:14px">Your big day, <em style="font-style:normal;color:var(--blush)">calm.</em></h2>
+      <p style="color:var(--muted);max-width:34em;margin-top:16px">Bridal hair is planned, not rushed. Here's how a wedding with Nicole comes together.</p>
+      <div class="timeline">
+        <div class="stop"><div class="dot">1</div><div class="when">Months before</div><h3>Consult</h3><p>Share inspiration photos, your dress and your venue.</p></div>
+        <div class="stop"><div class="dot">2</div><div class="when">Weeks before</div><h3>Trial run</h3><p>Try the look, tweak it and lock it in.</p></div>
+        <div class="stop"><div class="dot">3</div><div class="when">Wedding morning</div><h3>Day-of styling</h3><p>Your updo or curls, done on schedule.</p></div>
+        <div class="stop"><div class="dot">4</div><div class="when">All night</div><h3>It holds</h3><p>Built to last from the ceremony to the last dance.</p></div>
+      </div>
+      <div class="bridal-prices">
+        <div class="bp">Bridal trial run <b>$100+</b></div>
+        <div class="bp">Bridal day-of <b>$100+</b></div>
+        <div class="bp">Updo &amp; special occasion <b>$85+</b></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="band" id="menu" style="padding-top:0">
+  <div class="wrap">
+    <div class="head reveal">
+      <div class="eyebrow">Services</div>
+      <h2>The <em>menu</em></h2>
+      <p>Starting prices from Nicole's Salon Lofts page. Your exact price depends on length, thickness and the look you want.</p>
+    </div>
+    <div class="menu reveal">
+      <div class="tabs" role="tablist" aria-label="Menu sections">
+        <button role="tab" id="t-cuts" aria-selected="true" aria-controls="p-cuts">Cuts &amp; blowouts</button>
+        <button role="tab" id="t-occ" aria-selected="false" aria-controls="p-occ">Occasion &amp; bridal</button>
+        <button role="tab" id="t-tx" aria-selected="false" aria-controls="p-tx">Treatments</button>
+      </div>
+      <div class="items" role="tabpanel" id="p-cuts" aria-labelledby="t-cuts">
+        <div class="item"><span class="name">Women's cut<small>With shampoo and blow dry</small></span><span class="leader"></span><span class="price">$65+</span></div>
+        <div class="item"><span class="name">Men's cut<small>With shampoo and finish</small></span><span class="leader"></span><span class="price">$60+</span></div>
+        <div class="item"><span class="name">Children's cut<small>Patient, quick and kid-friendly</small></span><span class="leader"></span><span class="price">$35+</span></div>
+        <div class="item"><span class="name">Shampoo &amp; blow dry<small>Smooth, full and shiny</small></span><span class="leader"></span><span class="price">$55+</span></div>
+      </div>
+      <div class="items" role="tabpanel" id="p-occ" aria-labelledby="t-occ" hidden>
+        <div class="item"><span class="name">Curling or flat iron<small>Polished waves or sleek and straight</small></span><span class="leader"></span><span class="price">$65+</span></div>
+        <div class="item"><span class="name">Updo &amp; special occasion<small>Prom, events and photos</small></span><span class="leader"></span><span class="price">$85+</span></div>
+        <div class="item"><span class="name">Bridal trial run<small>Try your wedding look</small></span><span class="leader"></span><span class="price">$100+</span></div>
+        <div class="item"><span class="name">Bridal day-of<small>Wedding-day styling</small></span><span class="leader"></span><span class="price">$100+</span></div>
+      </div>
+      <div class="items" role="tabpanel" id="p-tx" aria-labelledby="t-tx" hidden>
+        <div class="item"><span class="name">Scalp treatment<small>With blow dry</small></span><span class="leader"></span><span class="price">$130+</span></div>
+        <div class="item"><span class="name">Keratin express<small>Quicker smoothing</small></span><span class="leader"></span><span class="price">$175+</span></div>
+        <div class="item"><span class="name">Full keratin<small>Long-lasting frizz control</small></span><span class="leader"></span><span class="price">$325+</span></div>
+      </div>
+      <p class="menu-note">Sample prices from Nicole's current listing. The finished site shows her full, up-to-date menu.</p>
+    </div>
+  </div>
+</section>
+
+<section class="band" id="book" style="padding-top:0">
+  <div class="wrap book">
+    <div class="card reveal">
+      <div class="eyebrow">Book with Nicole</div>
+      <h3 style="margin-top:14px">Let's do your hair.</h3>
+      <p>Call or text to book, or send an email with what you have in mind.</p>
+      <div class="reach">
+        <a href="tel:+16306994705"><span>Call or text</span><b>(630) 699-4705</b></a>
+        <a href="mailto:nicole.scheet@salonlofts.com"><span>Email</span><b>nicole.scheet@salonlofts.com</b></a>
+      </div>
+    </div>
+    <div class="card studio reveal">
+      <div class="eyebrow">The studio</div>
+      <p class="addr">Salon Lofts Schaumburg<br>1289 E Higgins Rd<br>Schaumburg, IL 60173</p>
+      <span class="loft">Loft 7</span>
+      <div class="cta" style="margin-top:26px"><a class="btn" href="https://www.google.com/maps/search/?api=1&amp;query=1289+E+Higgins+Rd+Schaumburg+IL+60173" target="_blank" rel="noopener">Get directions</a></div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="sig">Nicole Scheet</div>
+    <span>Hair stylist · Loft 7, Salon Lofts Schaumburg · (630) 699-4705</span>
+    <span>Sample site by <a href="https://jacob00767.github.io" target="_blank" rel="noopener">JacobTheWebsiteGuy</a></span>
+  </div>
+</footer>
+
+<script>
+(function () {
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  document.documentElement.classList.add('js');
+
+  /* ---------- Silk strands in the hero ---------- */
+  var cv = document.getElementById('silk'), ctx = cv.getContext('2d'), dpr = Math.min(window.devicePixelRatio || 1, 2);
+  var W = 0, H = 0, px = 0.6, py = 0.5, tx = 0.6, ty = 0.5, strands = [];
+  function size() {
+    W = cv.clientWidth; H = cv.clientHeight; cv.width = W * dpr; cv.height = H * dpr; ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    var n = W < 600 ? 36 : 64; strands = [];
+    for (var i = 0; i < n; i++) strands.push({ o: i / n, p: Math.random() * 6.28, w: 0.6 + Math.random() * 1.4, hue: Math.random() });
+  }
+  var heroOn = true;
+  function draw(now) {
+    var t = now / 1000;
+    px += (tx - px) * 0.04; py += (ty - py) * 0.04;
+    ctx.clearRect(0, 0, W, H);
+    for (var i = 0; i < strands.length; i++) {
+      var s = strands[i], baseY = H * (0.05 + s.o * 0.95);
+      var g = ctx.createLinearGradient(0, 0, W, 0);
+      var c1 = s.hue < 0.6 ? '232,201,160' : '240,183,177';
+      g.addColorStop(0, 'rgba(' + c1 + ',0)'); g.addColorStop(0.45, 'rgba(' + c1 + ',' + (0.09 + s.w * 0.05) + ')'); g.addColorStop(1, 'rgba(' + c1 + ',0.02)');
+      ctx.strokeStyle = g; ctx.lineWidth = s.w; ctx.beginPath();
+      for (var x = -20; x <= W + 20; x += 18) {
+        var k = x / W;
+        var pull = Math.exp(-Math.pow((k - px) * 3, 2)) * (py - 0.5) * H * 0.35;
+        var y = baseY + Math.sin(k * 3.2 + t * 0.5 + s.p) * 34 + Math.sin(k * 7 + t * 0.9 + s.o * 4) * 10 + pull * (1 - Math.abs(s.o - py));
+        if (x === -20) ctx.moveTo(x, y); else ctx.lineTo(x, y);
+      }
+      ctx.stroke();
+    }
+    if (!reduce && heroOn) requestAnimationFrame(draw);
+  }
+  size(); requestAnimationFrame(draw);
+  window.addEventListener('resize', function () { size(); if (reduce) requestAnimationFrame(draw); });
+  window.addEventListener('pointermove', function (e) { tx = e.clientX / window.innerWidth; ty = e.clientY / window.innerHeight; }, { passive: true });
+  if ('IntersectionObserver' in window) new IntersectionObserver(function (es) { var v = es[0].isIntersecting; if (v && !heroOn && !reduce) { heroOn = true; requestAnimationFrame(draw); } heroOn = v; }).observe(cv);
+
+  /* ---------- Before / after: frizz vs blowout ---------- */
+  var ba = document.getElementById('ba'), bc = document.getElementById('baCanvas'), bx = bc.getContext('2d'), split = 0.5, bw = 0, bh = 0, hair = [];
+  function baSize() {
+    bw = bc.clientWidth; bh = bc.clientHeight; bc.width = bw * dpr; bc.height = bh * dpr; bx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    hair = []; var n = 140;
+    for (var i = 0; i < n; i++) hair.push({ a: -Math.PI * 0.95 + (i / n) * Math.PI * 0.9 + (Math.random() - 0.5) * 0.04, len: 0.75 + Math.random() * 0.25, ph: Math.random() * 6.28, f: 0.5 + Math.random(), c: Math.random() });
+  }
+  function baDraw(now) {
+    var t = now / 1000, cx = bw / 2, cy = bh * 0.34, R = Math.min(bw, bh) * 0.2;
+    bx.clearRect(0, 0, bw, bh);
+    var bg = bx.createLinearGradient(0, 0, 0, bh); bg.addColorStop(0, '#241c1a'); bg.addColorStop(1, '#151110'); bx.fillStyle = bg; bx.fillRect(0, 0, bw, bh);
+    // head and shoulders silhouette
+    bx.fillStyle = '#3a2c27';
+    bx.beginPath(); bx.ellipse(cx, cy + R * 0.15, R * 0.78, R * 0.98, 0, 0, 6.283); bx.fill();
+    bx.beginPath(); bx.moveTo(cx - R * 2.2, bh); bx.quadraticCurveTo(cx - R * 1.6, cy + R * 2.1, cx - R * 0.35, cy + R * 1.4); bx.lineTo(cx + R * 0.35, cy + R * 1.4); bx.quadraticCurveTo(cx + R * 1.6, cy + R * 2.1, cx + R * 2.2, bh); bx.fill();
+    var sx = bw * split;
+    for (var side = 0; side < 2; side++) {
+      bx.save(); bx.beginPath(); if (side === 0) bx.rect(0, 0, sx, bh); else bx.rect(sx, 0, bw - sx, bh); bx.clip();
+      for (var i = 0; i < hair.length; i++) {
+        var hh = hair[i], ang = hh.a;
+        var col = side === 0 ? 'rgba(150,108,78,' + (0.55 + hh.c * 0.35) + ')' : 'rgba(' + (205 + hh.c * 40 | 0) + ',' + (160 + hh.c * 35 | 0) + ',' + (112 + hh.c * 30 | 0) + ',0.85)';
+        bx.strokeStyle = col; bx.lineWidth = side === 0 ? 1.1 : 1.4; bx.beginPath();
+        var x0 = cx + Math.cos(ang) * R * 0.95, y0 = cy + Math.sin(ang) * R * 0.95; bx.moveTo(x0, y0);
+        if (side === 0) {
+          // frizz: hair puffs outward and kinks
+          var L = R * (1.6 + hh.len * 1.2), steps = 10;
+          for (var s = 1; s <= steps; s++) {
+            var k = s / steps, r = R * 0.95 + L * k;
+            var jitter = Math.sin(k * 14 * hh.f + hh.ph + t * 1.5) * 12 * k + Math.sin(k * 31 + hh.ph) * 6 * k;
+            var aa = ang + jitter / (r + 1) + (ang < -Math.PI / 2 ? -0.25 : 0.25) * k;
+            bx.lineTo(cx + Math.cos(aa) * r, cy + Math.sin(aa) * r + k * k * R * 0.6);
+          }
+        } else {
+          // blowout: hair falls smooth, curves under at the ends, with a soft sway
+          var leftSide = Math.cos(ang) < 0, sideSign = leftSide ? -1 : 1, spread = Math.abs(Math.cos(ang));
+          var startX = x0, startY = y0;
+          var endX = cx + sideSign * (R * (0.9 + spread * 0.6)) + Math.sin(t * 0.8 + hh.ph) * 2, endY = cy + R * (2.6 + hh.len * 0.6);
+          bx.bezierCurveTo(cx + sideSign * R * (1.15 + spread * 0.3), startY + R * 0.4, endX + sideSign * R * 0.25, endY - R * 1.2, endX, endY);
+          bx.quadraticCurveTo(endX - sideSign * R * 0.05, endY + R * 0.22, endX - sideSign * R * 0.3, endY + R * 0.12);
+        }
+        bx.stroke();
+      }
+      if (side === 1) { // shine band
+        var sh = bx.createLinearGradient(cx - R, cy - R, cx + R, cy + R); sh.addColorStop(0.35, 'rgba(255,240,220,0)'); sh.addColorStop(0.5, 'rgba(255,240,220,0.22)'); sh.addColorStop(0.65, 'rgba(255,240,220,0)');
+        bx.fillStyle = sh; bx.beginPath(); bx.ellipse(cx, cy + R * 0.4, R * 1.5, R * 1.9, 0, 0, 6.283); bx.fill();
+      }
+      bx.restore();
+    }
+    if (!reduce) requestAnimationFrame(baDraw);
+  }
+  function setSplit(clientX) {
+    var r = ba.getBoundingClientRect(); split = Math.max(0.04, Math.min(0.96, (clientX - r.left) / r.width));
+    ba.style.setProperty('--x', (split * 100) + '%'); ba.setAttribute('aria-valuenow', Math.round(split * 100));
+    if (reduce) requestAnimationFrame(baDraw);
+  }
+  var dragging = false;
+  ba.addEventListener('pointerdown', function (e) { dragging = true; ba.setPointerCapture(e.pointerId); setSplit(e.clientX); });
+  ba.addEventListener('pointermove', function (e) { if (dragging || e.pointerType === 'mouse') setSplit(e.clientX); });
+  ba.addEventListener('pointerup', function () { dragging = false; });
+  ba.addEventListener('keydown', function (e) {
+    if (e.key === 'ArrowLeft' || e.key === 'ArrowRight') { var r = ba.getBoundingClientRect(); split = Math.max(0.04, Math.min(0.96, split + (e.key === 'ArrowLeft' ? -0.05 : 0.05))); setSplit(r.left + split * r.width); e.preventDefault(); }
+  });
+  baSize(); requestAnimationFrame(baDraw);
+  window.addEventListener('resize', baSize);
+  // A gentle demo sweep the first time the slider scrolls into view
+  if ('IntersectionObserver' in window && !reduce) {
+    var swept = false;
+    new IntersectionObserver(function (es) {
+      if (es[0].isIntersecting && !swept) {
+        swept = true; var st = performance.now();
+        (function sweep(n) { var k = (n - st) / 1600; if (k > 1 || dragging) return; var r = ba.getBoundingClientRect(); setSplit(r.left + r.width * (0.5 + Math.sin(k * Math.PI * 2) * 0.28)); requestAnimationFrame(sweep); })(st);
+      }
+    }, { threshold: 0.6 }).observe(ba);
+  }
+
+  /* ---------- Floating nav, reveals, tabs ---------- */
+  var nav = document.getElementById('nav');
+  function navCheck() { nav.classList.toggle('show', window.scrollY > window.innerHeight * 0.6); }
+  window.addEventListener('scroll', navCheck, { passive: true }); navCheck();
+  var rev = document.querySelectorAll('.reveal');
+  if ('IntersectionObserver' in window && !reduce) {
+    rev.forEach(function (el) { if (el.getBoundingClientRect().top > window.innerHeight) el.classList.add('pre'); });
+    var io = new IntersectionObserver(function (es) { es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.remove('pre'); io.unobserve(e.target); } }); }, { threshold: 0.12 });
+    rev.forEach(function (el) { io.observe(el); });
+  }
+  var tabs = document.querySelectorAll('[role="tab"]');
+  tabs.forEach(function (t) { t.addEventListener('click', function () { tabs.forEach(function (o) { var on = o === t; o.setAttribute('aria-selected', String(on)); document.getElementById(o.getAttribute('aria-controls')).hidden = !on; }); }); });
+})();
+</script>
+</body>
+</html>
