@@ -1,0 +1,597 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Blue Ridge Construction builds custom wood and composite decks, stairs and railings, and handles small remodels anywhere in Illinois. Insured. Free written estimates. Call (910) 746-9082.">
+<meta property="og:title" content="Blue Ridge Construction">
+<meta property="og:description" content="Custom decks and small remodels anywhere in Illinois. Insured, free written estimates.">
+<title>Blue Ridge Construction</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Manrope:wght@400;500;700&display=swap">
+<style>
+/* Layout: a deck builder's site, black with blueprint blue. A live 3D deck assembles in the hero; a deck configurator rebuilds it to your size.
+   Deliberately dark-only: the brand is black and blue. */
+:root {
+  --bg: #06080b;
+  --panel: #0d1117;
+  --panel-2: #121821;
+  --ink: #eef2f7;
+  --muted: #94a0b0;
+  --rule: #1d2530;
+  --blue: #2f8cff;
+  --blue-bright: #7cc0ff;
+  --blue-deep: #0f3a73;
+  --on-blue: #04101f;
+  --font-display: "Oswald", "Arial Narrow", Impact, sans-serif;
+  --font-body: "Manrope", system-ui, -apple-system, "Segoe UI", sans-serif;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { margin: 0; background: var(--bg); color: var(--ink); font-family: var(--font-body); font-size: 16.5px; line-height: 1.6; }
+.wrap {
+  max-width: 1160px; margin: 0 auto;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+h1, h2, h3 { font-family: var(--font-display); font-weight: 600; margin: 0; line-height: 1.02; text-transform: uppercase; letter-spacing: 0.01em; text-wrap: balance; }
+p { margin: 0; }
+a { color: inherit; }
+:focus-visible { outline: 2px solid var(--blue-bright); outline-offset: 3px; }
+.eyebrow { font-size: 12.5px; font-weight: 700; letter-spacing: 0.24em; text-transform: uppercase; color: var(--blue-bright); }
+.blue { color: var(--blue); }
+
+/* Nav */
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 30; background: rgba(6,8,11,0.9); }
+.nav { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 20; background: rgba(6,8,11,0.78); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border-bottom: 1px solid var(--rule); }
+.nav .wrap { display: flex; align-items: center; justify-content: space-between; gap: 14px; padding-block: 14px; }
+.logo { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+.logo svg { width: 40px; height: 40px; flex: none; }
+.logo b { font-family: var(--font-display); font-weight: 700; font-size: 21px; letter-spacing: 0.06em; text-transform: uppercase; line-height: 1; display: block; }
+.logo span { display: block; font-size: 10.5px; font-weight: 700; letter-spacing: 0.32em; text-transform: uppercase; color: var(--blue-bright); margin-top: 3px; }
+.links { display: flex; align-items: center; gap: 26px; font-size: 14px; font-weight: 600; }
+.links a:not(.btn) { text-decoration: none; color: var(--muted); }
+.links a:not(.btn):hover { color: var(--ink); }
+.btn {
+  display: inline-flex; align-items: center; gap: 10px; font: 700 14.5px/1 var(--font-body); letter-spacing: 0.06em; text-transform: uppercase;
+  padding: 16px 22px; border-radius: 6px; text-decoration: none; border: 1.5px solid var(--rule); color: var(--ink); background: var(--panel); cursor: pointer;
+}
+.btn.blue-btn { background: var(--blue); border-color: var(--blue); color: var(--on-blue); box-shadow: 0 10px 40px -12px rgba(47,140,255,0.7); }
+.btn:hover { transform: translateY(-1px); border-color: var(--blue); }
+.links .btn { padding: 12px 16px; font-size: 13px; }
+
+/* Hero */
+.hero { position: relative; overflow: hidden; border-bottom: 1px solid var(--rule); }
+.hero::before { content: ""; position: absolute; inset: 0; pointer-events: none;
+  background: radial-gradient(ellipse 50% 60% at 72% 45%, rgba(47,140,255,0.16), transparent 70%),
+              linear-gradient(rgba(47,140,255,0.06) 1px, transparent 1px) 0 0 / 48px 48px,
+              linear-gradient(90deg, rgba(47,140,255,0.06) 1px, transparent 1px) 0 0 / 48px 48px; }
+.hero .wrap { position: relative; display: grid; grid-template-columns: 1fr 1.1fr; gap: 24px; align-items: center; min-height: min(760px, 88vh); padding-block: 40px; }
+.hero h1 { font-size: clamp(52px, 7.6vw, 104px); margin-block: 16px 22px; }
+.hero h1 em { font-style: normal; color: var(--blue); }
+.lede { font-size: 18.5px; color: var(--muted); max-width: 30em; }
+.actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 30px; }
+.chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 28px; }
+.chip { border: 1px solid var(--rule); background: rgba(13,17,23,0.7); border-radius: 999px; padding: 7px 13px; font-size: 13px; color: var(--muted); }
+.chip b { color: var(--ink); font-weight: 700; }
+
+.stage3d { position: relative; height: min(620px, 70vh); min-height: 360px; min-width: 0; touch-action: pan-y; cursor: grab; }
+.stage3d:active { cursor: grabbing; }
+.stage3d canvas { display: block; width: 100% !important; height: 100% !important; }
+.spec { position: absolute; font-size: 12px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--blue-bright);
+  background: rgba(6,8,11,0.75); border: 1px solid rgba(47,140,255,0.4); padding: 7px 10px; border-radius: 4px; pointer-events: none; }
+.spec.a { left: 4%; top: 12%; }
+.spec.b { right: 4%; bottom: 14%; }
+.drag { position: absolute; left: 50%; bottom: 10px; transform: translateX(-50%); font-size: 12px; color: var(--muted); letter-spacing: 0.12em; text-transform: uppercase; pointer-events: none; }
+.fallback { position: absolute; inset: 0; display: grid; place-items: center; color: var(--muted); }
+
+/* Sections */
+section.band .wrap { padding-block: 96px; }
+.head { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: end; gap: 16px; margin-bottom: 40px; }
+.head h2 { font-size: clamp(42px, 6vw, 72px); margin-top: 10px; }
+.head p { color: var(--muted); max-width: 34em; }
+
+.services { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+.svc { position: relative; background: var(--panel); border: 1px solid var(--rule); border-radius: 12px; padding: 28px; min-width: 0; overflow: hidden;
+  transform-style: preserve-3d; transition: transform 0.25s ease, border-color 0.25s; }
+.svc::after { content: ""; position: absolute; inset: 0; pointer-events: none; background: radial-gradient(400px circle at var(--mx, 50%) var(--my, 0%), rgba(47,140,255,0.16), transparent 60%); opacity: 0; transition: opacity 0.25s; }
+.svc:hover { border-color: rgba(47,140,255,0.55); }
+.svc:hover::after { opacity: 1; }
+.svc.big { grid-column: span 2; background: linear-gradient(140deg, #0f2240, var(--panel) 55%); border-color: rgba(47,140,255,0.4); }
+.svc .num { font-family: var(--font-display); font-size: 14px; letter-spacing: 0.2em; color: var(--blue-bright); }
+.svc h3 { font-size: 30px; margin-block: 14px 10px; }
+.svc.big h3 { font-size: clamp(34px, 4vw, 46px); }
+.svc p { color: var(--muted); }
+.svc ul { margin: 16px 0 0; padding: 0; list-style: none; display: grid; gap: 8px; }
+.svc li { display: flex; gap: 10px; color: var(--ink); font-size: 15px; }
+.svc li::before { content: ""; flex: none; width: 14px; height: 2px; background: var(--blue); margin-top: 11px; }
+
+/* Configurator */
+.config { display: grid; grid-template-columns: 1fr 1.25fr; gap: 28px; align-items: stretch; }
+.controls { background: var(--panel); border: 1px solid var(--rule); border-radius: 12px; padding: 28px; display: grid; gap: 22px; align-content: start; min-width: 0; }
+.ctrl label { display: flex; justify-content: space-between; font-size: 13px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); }
+.ctrl label output { font-family: var(--font-display); font-size: 22px; color: var(--ink); letter-spacing: 0.02em; }
+input[type=range] { width: 100%; accent-color: var(--blue); margin-top: 10px; }
+.toggle { display: flex; gap: 8px; margin-top: 10px; }
+.toggle button { flex: 1; font: 700 13px/1 var(--font-body); letter-spacing: 0.08em; text-transform: uppercase; padding: 13px; border-radius: 6px; border: 1px solid var(--rule); background: var(--panel-2); color: var(--muted); cursor: pointer; }
+.toggle button[aria-pressed="true"] { border-color: var(--blue); color: var(--ink); background: rgba(47,140,255,0.14); }
+.readout { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; padding-top: 18px; border-top: 1px solid var(--rule); }
+.readout div { min-width: 0; }
+.readout b { display: block; font-family: var(--font-display); font-size: 30px; font-weight: 600; font-variant-numeric: tabular-nums; }
+.readout span { font-size: 12px; color: var(--muted); letter-spacing: 0.08em; text-transform: uppercase; }
+.config .stage3d { height: auto; min-height: 420px; background: var(--panel); border: 1px solid var(--rule); border-radius: 12px; overflow: hidden; }
+.fine { color: var(--muted); font-size: 13.5px; }
+
+/* Materials */
+.table-wrap { overflow-x: auto; border: 1px solid var(--rule); border-radius: 12px; }
+table { width: 100%; border-collapse: collapse; min-width: 560px; }
+th, td { text-align: left; padding: 16px 20px; border-bottom: 1px solid var(--rule); vertical-align: top; }
+thead th { font-family: var(--font-display); font-weight: 600; font-size: 20px; text-transform: uppercase; letter-spacing: 0.04em; background: var(--panel); }
+thead th:nth-child(3) { color: var(--blue-bright); }
+tbody th { color: var(--muted); font-weight: 600; font-size: 14px; letter-spacing: 0.06em; text-transform: uppercase; width: 24%; }
+tbody tr:last-child th, tbody tr:last-child td { border-bottom: 0; }
+
+/* Process */
+.steps { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0; counter-reset: s; border: 1px solid var(--rule); border-radius: 12px; overflow: hidden; }
+.steps li { counter-increment: s; padding: 28px 24px; border-right: 1px solid var(--rule); background: var(--panel); min-width: 0; }
+.steps li:last-child { border-right: 0; }
+.steps li::before { content: "0" counter(s); display: block; font-family: var(--font-display); font-size: 44px; font-weight: 700; color: transparent; -webkit-text-stroke: 1.2px var(--blue); margin-bottom: 14px; }
+.steps h3 { font-size: 24px; margin-bottom: 8px; }
+.steps p { color: var(--muted); font-size: 15px; }
+
+/* Gallery */
+.gallery { display: grid; grid-template-columns: 1.4fr 1fr 1fr; grid-auto-rows: 230px; gap: 12px; }
+.ph { border-radius: 12px; border: 1px dashed #2a3442; background: linear-gradient(160deg, #0f1724, var(--panel)); display: flex; align-items: flex-end; padding: 18px; min-width: 0; }
+.ph b { display: block; font-family: var(--font-display); font-weight: 600; font-size: 22px; text-transform: uppercase; }
+.ph span { color: var(--muted); font-size: 13.5px; }
+.ph.tall { grid-row: span 2; }
+
+/* Why */
+.why { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; }
+.why-card { background: var(--panel); border: 1px solid var(--rule); border-radius: 12px; padding: 26px; min-width: 0; }
+.why-card svg { width: 40px; height: 40px; fill: none; stroke: var(--blue); stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; padding: 8px; border-radius: 10px; background: rgba(47,140,255,0.12); margin-bottom: 18px; }
+.why-card h3 { font-size: 24px; margin-bottom: 8px; }
+.why-card p { color: var(--muted); font-size: 15px; }
+.navphone { font-family: var(--font-display); font-size: 17px; letter-spacing: 0.04em; color: var(--ink) !important; }
+.reach { display: grid; grid-template-columns: auto 1fr; gap: 10px 20px; margin: 24px 0 0; padding: 20px 0; border-block: 1px solid var(--rule); }
+.reach dt { color: var(--muted); font-size: 13px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; padding-top: 2px; }
+.reach dd { margin: 0; min-width: 0; overflow-wrap: anywhere; font-weight: 600; }
+.reach a { color: var(--blue-bright); text-decoration: none; }
+footer a { color: var(--ink); text-decoration: none; }
+
+/* Contact */
+.contact { display: grid; grid-template-columns: 1fr 1.15fr; gap: 40px; align-items: start; }
+.contact h2 { font-size: clamp(44px, 6vw, 76px); margin-block: 10px 16px; }
+.contact .lede { font-size: 17px; }
+.checks { margin-top: 24px; display: grid; gap: 10px; }
+.checks div { display: flex; gap: 12px; align-items: center; color: var(--ink); }
+.checks i { width: 22px; height: 22px; border-radius: 50%; background: rgba(47,140,255,0.16); border: 1px solid var(--blue); display: grid; place-items: center; font-style: normal; font-size: 12px; color: var(--blue-bright); }
+form { background: var(--panel); border: 1px solid var(--rule); border-radius: 12px; padding: 26px; display: grid; grid-template-columns: 1fr 1fr; gap: 14px; min-width: 0; }
+form .full { grid-column: 1 / -1; }
+form label { display: grid; gap: 6px; font-size: 12.5px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); min-width: 0; }
+input, select, textarea { font: 400 16px/1.4 var(--font-body); color: var(--ink); background: var(--bg); border: 1px solid var(--rule); border-radius: 8px; padding: 13px 14px; width: 100%; letter-spacing: 0; text-transform: none; }
+input:focus, select:focus, textarea:focus { border-color: var(--blue); outline: none; }
+textarea { min-height: 110px; resize: vertical; }
+.sent { grid-column: 1 / -1; background: rgba(47,140,255,0.12); border: 1px solid var(--blue); color: var(--ink); padding: 12px 14px; border-radius: 8px; font-weight: 600; }
+
+footer .wrap { padding-block: 34px 48px; border-top: 1px solid var(--rule); display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 14px; color: var(--muted); font-size: 14px; }
+
+@media (max-width: 920px) {
+  .links a:not(.btn) { display: none; }
+  .hero .wrap, .config, .contact { grid-template-columns: 1fr; }
+  .hero .wrap { min-height: 0; }
+  .stage3d { height: 380px; }
+  .services, .why { grid-template-columns: 1fr 1fr; }
+  .svc.big { grid-column: 1 / -1; }
+  .steps { grid-template-columns: 1fr 1fr; }
+  .steps li:nth-child(2) { border-right: 0; }
+  .steps li:nth-child(-n+2) { border-bottom: 1px solid var(--rule); }
+  .gallery { grid-template-columns: 1fr 1fr; grid-auto-rows: 180px; }
+  .ph.tall { grid-row: auto; grid-column: 1 / -1; }
+}
+@media (max-width: 560px) {
+  .services, .steps, .why { grid-template-columns: 1fr; }
+  .steps li { border-right: 0; border-bottom: 1px solid var(--rule); }
+  .steps li:last-child { border-bottom: 0; }
+  form { grid-template-columns: 1fr; }
+  .readout b { font-size: 24px; }
+  .spec { display: none; }
+}
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } .btn:hover { transform: none; } .svc { transition: none; } }
+</style>
+</head>
+<body style="margin:0">
+<nav class="nav" aria-label="Main">
+  <div class="wrap">
+    <a class="logo" href="#top" aria-label="Blue Ridge Construction home">
+      <svg viewBox="0 0 40 40" aria-hidden="true"><rect width="40" height="40" rx="8" fill="#0d1117" stroke="#1d2530"/><path d="M6 28 L15 15 L21 22 L26 16 L34 28 Z" fill="none" stroke="#2f8cff" stroke-width="2.4" stroke-linejoin="round"/><path d="M6 32 H34" stroke="#7cc0ff" stroke-width="2.4" stroke-linecap="round"/></svg>
+      <div><b>Blue Ridge</b><span>Construction</span></div>
+    </a>
+    <div class="links">
+      <a href="#services">Services</a>
+      <a href="#build">Build your deck</a>
+      <a href="#process">Process</a>
+      <a href="tel:+19107469082" class="navphone">(910) 746-9082</a>
+      <a class="btn blue-btn" href="#contact">Free estimate</a>
+    </div>
+  </div>
+</nav>
+
+<main id="top">
+<section class="hero">
+  <div class="wrap">
+    <div>
+      <div class="eyebrow">Custom decks · Small remodels · Serving all of Illinois</div>
+      <h1>Decks built <em>to last.</em> Remodels done right.</h1>
+      <p class="lede">Blue Ridge Construction designs and builds custom decks in wood and composite, and handles the small remodels that make a home work better, anywhere in Illinois. Solid framing, clean finish work and a crew that shows up when we say we will.</p>
+      <div class="actions">
+        <a class="btn blue-btn" href="#contact">Get a free estimate</a>
+        <a class="btn" href="#build">Build your deck in 3D</a>
+      </div>
+      <div class="chips">
+        <span class="chip"><b>Fully</b> insured</span>
+        <span class="chip"><b>2 years</b> in business</span>
+        <span class="chip"><b>Free</b> written estimates</span>
+      </div>
+    </div>
+    <div class="stage3d" id="hero3d" aria-label="3D model of a deck being built">
+      <span class="spec a">Joists 16" on center</span>
+      <span class="spec b">Composite decking</span>
+      <span class="drag">Drag to rotate</span>
+    </div>
+  </div>
+</section>
+
+<section class="band" id="services">
+  <div class="wrap">
+    <div class="head">
+      <div><div class="eyebrow">What we build</div><h2>Services</h2></div>
+      <p>Decks are our specialty. We also take on the small remodel projects bigger contractors pass on.</p>
+    </div>
+    <div class="services">
+      <article class="svc big">
+        <span class="num">01 / Our specialty</span>
+        <h3>Custom decks</h3>
+        <p>New decks designed around your yard and how you'll use it, from simple platforms to multi-level builds.</p>
+        <ul>
+          <li>Pressure-treated wood or low-maintenance composite</li>
+          <li>Built-in stairs, landings and railings</li>
+          <li>Framing built to code, with permits handled</li>
+        </ul>
+      </article>
+      <article class="svc">
+        <span class="num">02</span>
+        <h3>Deck repair</h3>
+        <p>Replace rotted boards, rebuild stairs, tighten loose railings and refinish tired wood.</p>
+      </article>
+      <article class="svc">
+        <span class="num">03</span>
+        <h3>Stairs &amp; railings</h3>
+        <p>New stairs, landings and railing systems, including cable and composite rail.</p>
+      </article>
+      <article class="svc">
+        <span class="num">04</span>
+        <h3>Bathroom updates</h3>
+        <p>Vanities, tile, fixtures and lighting to refresh a tired bathroom.</p>
+      </article>
+      <article class="svc">
+        <span class="num">05</span>
+        <h3>Small remodels</h3>
+        <p>Basements, trim, doors, drywall and the punch list that's been waiting too long.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="band" id="build" style="background:linear-gradient(#06080b,#08101c 50%,#06080b)">
+  <div class="wrap">
+    <div class="head">
+      <div><div class="eyebrow">Interactive</div><h2>Build your deck</h2></div>
+      <p>Set the size and height, pick a material, and watch it frame up. Bring these numbers to your free estimate.</p>
+    </div>
+    <div class="config">
+      <div class="controls">
+        <div class="ctrl"><label for="w">Width <output id="wv">16 ft</output></label><input id="w" type="range" min="8" max="30" step="1" value="16"></div>
+        <div class="ctrl"><label for="d">Depth <output id="dv">12 ft</output></label><input id="d" type="range" min="6" max="20" step="1" value="12"></div>
+        <div class="ctrl"><label for="h">Height off ground <output id="hv">3 ft</output></label><input id="h" type="range" min="1" max="10" step="1" value="3"></div>
+        <div class="ctrl"><label>Decking</label>
+          <div class="toggle" role="group" aria-label="Decking material">
+            <button type="button" id="m-comp" aria-pressed="true">Composite</button>
+            <button type="button" id="m-wood" aria-pressed="false">Wood</button>
+          </div>
+        </div>
+        <div class="readout">
+          <div><b id="sqft">192</b><span>Square feet</span></div>
+          <div><b id="joists">13</b><span>Joists</span></div>
+          <div><b id="steps">5</b><span>Stair steps</span></div>
+        </div>
+        <p class="fine">Joists at 16" on center, steps at about 7" rise. These are planning numbers; your estimate is based on an on-site measurement.</p>
+      </div>
+      <div class="stage3d" id="config3d" aria-label="3D preview of your deck"><span class="drag">Drag to rotate</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="band" id="materials">
+  <div class="wrap">
+    <div class="head">
+      <div><div class="eyebrow">Choosing materials</div><h2>Wood or composite?</h2></div>
+      <p>Both make a great deck. Here's how they compare so you can pick what fits your budget and your weekends.</p>
+    </div>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th></th><th>Pressure-treated wood</th><th>Composite</th></tr></thead>
+        <tbody>
+          <tr><th>Upfront cost</th><td>Lower</td><td>Higher</td></tr>
+          <tr><th>Upkeep</th><td>Clean, stain and seal every few years</td><td>Occasional wash, no staining</td></tr>
+          <tr><th>Look</th><td>Classic natural wood grain</td><td>Wood-look boards in many colors</td></tr>
+          <tr><th>Splinters &amp; rot</th><td>Can splinter, check, and rot if neglected</td><td>Resists splintering, rot and insects</td></tr>
+          <tr><th>Best for</th><td>Tighter budgets and traditional style</td><td>Low maintenance over the long haul</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<section class="band" id="process" style="border-top:1px solid var(--rule)">
+  <div class="wrap">
+    <div class="head">
+      <div><div class="eyebrow">How we work</div><h2>The process</h2></div>
+      <p>No surprises. You know the plan, the price and the schedule before we pick up a tool.</p>
+    </div>
+    <ol class="steps">
+      <li><h3>Free estimate</h3><p>We visit, measure and talk through what you want.</p></li>
+      <li><h3>Design &amp; quote</h3><p>A clear plan and a written, itemized price.</p></li>
+      <li><h3>Permits &amp; build</h3><p>We pull permits and build it right, start to finish.</p></li>
+      <li><h3>Walkthrough</h3><p>We walk the finished job with you and clean up.</p></li>
+    </ol>
+  </div>
+</section>
+
+<section class="band" id="why">
+  <div class="wrap">
+    <div class="head">
+      <div><div class="eyebrow">Why Blue Ridge</div><h2>Built on trust</h2></div>
+      <p>A smaller crew means you deal with the person doing the work, from the first call to the final walkthrough.</p>
+    </div>
+    <div class="why">
+      <div class="why-card"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l8 3v6c0 4.5-3.4 8.3-8 9-4.6-.7-8-4.5-8-9V6z"/><path d="M8.5 12l2.5 2.5 4.5-5"/></svg><h3>Fully insured</h3><p>Your home and your project are covered while we work.</p></div>
+      <div class="why-card"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg><h3>2 years in business</h3><p>Building decks and finishing remodels for Illinois homeowners.</p></div>
+      <div class="why-card"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7-6.2-7-12a7 7 0 0114 0c0 5.8-7 12-7 12z"/><circle cx="12" cy="9" r="2.5"/></svg><h3>All of Illinois</h3><p>From the suburbs to downstate, we'll come to you.</p></div>
+      <div class="why-card"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h9l3 3v15H6z"/><path d="M9 10h6M9 14h6M9 18h4"/></svg><h3>Written quotes</h3><p>A free, itemized estimate before any work starts.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="band" id="contact" style="border-top:1px solid var(--rule)">
+  <div class="wrap contact">
+    <div>
+      <div class="eyebrow">Free estimate</div>
+      <h2>Let's build <span class="blue">something solid.</span></h2>
+      <p class="lede">Tell us about your project and we'll set up a time to come out, measure and give you a written quote.</p>
+      <dl class="reach">
+        <dt>Call or text</dt><dd><a href="tel:+19107469082">(910) 746-9082</a></dd>
+        <dt>Email</dt><dd><a href="mailto:BlueRidgeandConstruction@gmail.com">BlueRidgeandConstruction@gmail.com</a></dd>
+        <dt>Service area</dt><dd>All of Illinois</dd>
+      </dl>
+      <div class="checks">
+        <div><i>✓</i>Free on-site estimate</div>
+        <div><i>✓</i>Written, itemized quote</div>
+        <div><i>✓</i>Permits handled for you</div>
+        <div><i>✓</i>Fully insured</div>
+      </div>
+    </div>
+    <form id="estimate">
+      <label>Name<input id="f-name" name="name" autocomplete="name" required></label>
+      <label>Phone<input id="f-phone" name="phone" type="tel" autocomplete="tel" required></label>
+      <label class="full">Email<input id="f-email" name="email" type="email" autocomplete="email"></label>
+      <label class="full">Project
+        <select id="f-type" name="type"><option>New deck</option><option>Deck repair or refinish</option><option>Stairs or railing</option><option>Bathroom update</option><option>Other remodel</option></select>
+      </label>
+      <label class="full">Details<textarea id="f-notes" name="notes" placeholder="Size, material, timeline, anything we should know"></textarea></label>
+      <button class="btn blue-btn full" type="submit" style="justify-content:center">Request my free estimate</button>
+      <p class="full fine">This opens your email app with your details filled in.</p>
+      <div class="sent" id="sent" hidden>Your email app should open with your request filled in. Just hit send. Prefer to talk? Call or text (910) 746-9082.</div>
+    </form>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <a class="logo" href="#top"><svg viewBox="0 0 40 40" aria-hidden="true"><rect width="40" height="40" rx="8" fill="#0d1117" stroke="#1d2530"/><path d="M6 28 L15 15 L21 22 L26 16 L34 28 Z" fill="none" stroke="#2f8cff" stroke-width="2.4" stroke-linejoin="round"/><path d="M6 32 H34" stroke="#7cc0ff" stroke-width="2.4" stroke-linecap="round"/></svg><div><b>Blue Ridge</b><span>Construction</span></div></a>
+    <span>Decks · Stairs &amp; railings · Small remodels · Serving all of Illinois</span>
+    <span><a href="tel:+19107469082">(910) 746-9082</a> · <a href="mailto:BlueRidgeandConstruction@gmail.com">BlueRidgeandConstruction@gmail.com</a></span>
+    <span>© 2026 Blue Ridge Construction · Insured</span>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script>
+(function () {
+  // Glow that follows the pointer on service cards
+  document.querySelectorAll('.svc').forEach(function (c) {
+    c.addEventListener('pointermove', function (e) {
+      var r = c.getBoundingClientRect();
+      c.style.setProperty('--mx', (e.clientX - r.left) + 'px');
+      c.style.setProperty('--my', (e.clientY - r.top) + 'px');
+    });
+  });
+
+  document.getElementById('estimate').addEventListener('submit', function (e) {
+    e.preventDefault();
+    var f = e.target;
+    function v(n) { return ((f.elements[n] && f.elements[n].value) || '').trim(); }
+    var body = ['Name: ' + v('name'), 'Phone: ' + v('phone'), 'Email: ' + v('email'), 'Project: ' + v('type'), '', v('notes')].join('\n');
+    window.location.href = 'mailto:BlueRidgeandConstruction@gmail.com?subject=' + encodeURIComponent('Estimate request: ' + v('type') + ' (' + v('name') + ')') + '&body=' + encodeURIComponent(body);
+    document.getElementById('sent').hidden = false;
+  });
+
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (!window.THREE) {
+    document.querySelectorAll('.stage3d').forEach(function (s) { var f = document.createElement('div'); f.className = 'fallback'; f.textContent = '3D preview unavailable'; s.appendChild(f); });
+    return;
+  }
+
+  var MAT = {
+    composite: { board: 0x5a4c42, rail: 0x2b2f36 },
+    wood:      { board: 0x9a6f45, rail: 0x7d5a38 }
+  };
+
+  // Build a deck as a group of boxes. Units are feet. Every part records a delay so it can drop into place.
+  function buildDeck(W, D, H, material) {
+    var g = new THREE.Group();
+    var frame = new THREE.MeshStandardMaterial({ color: 0x6b5a48, roughness: 0.85 });
+    var board = new THREE.MeshStandardMaterial({ color: MAT[material].board, roughness: 0.7 });
+    var rail = new THREE.MeshStandardMaterial({ color: MAT[material].rail, roughness: 0.6 });
+    var blue = new THREE.MeshStandardMaterial({ color: 0x2f8cff, emissive: 0x2f8cff, emissiveIntensity: 0.6, roughness: 0.4 });
+    var parts = [];
+    function box(w, h, d, x, y, z, m, delay) {
+      var mesh = new THREE.Mesh(new THREE.BoxGeometry(w, h, d), m);
+      mesh.position.set(x, y, z);
+      mesh.castShadow = true; mesh.receiveShadow = true;
+      mesh.userData = { y: y, delay: delay };
+      g.add(mesh); parts.push(mesh);
+      return mesh;
+    }
+    var x0 = -W / 2, z0 = -D / 2, top = H;
+    var t = 0;
+    // Posts on a grid no more than 8 ft apart
+    var nx = Math.max(2, Math.ceil(W / 8) + 1), nz = Math.max(2, Math.ceil(D / 8) + 1);
+    for (var i = 0; i < nx; i++) for (var j = 0; j < nz; j++) {
+      box(0.5, top, 0.5, x0 + 0.25 + i * (W - 0.5) / (nx - 1), top / 2, z0 + 0.25 + j * (D - 0.5) / (nz - 1), frame, t); t += 0.02;
+    }
+    // Beams along the width at each post row
+    for (var j2 = 0; j2 < nz; j2++) { box(W, 0.8, 0.3, 0, top - 0.55, z0 + 0.25 + j2 * (D - 0.5) / (nz - 1), frame, t); t += 0.05; }
+    // Joists every 16 inches across the width, running front to back
+    var joistCount = Math.floor(W / (16 / 12)) + 1;
+    for (var k = 0; k < joistCount; k++) { box(0.13, 0.75, D, x0 + 0.07 + k * (W - 0.14) / (joistCount - 1), top - 0.2, 0, frame, t); t += 0.025; }
+    // Rim joists
+    box(W, 0.8, 0.13, 0, top - 0.2, z0, frame, t); box(W, 0.8, 0.13, 0, top - 0.2, -z0, frame, t); t += 0.06;
+    // Deck boards: 5.5 in wide with a small gap, running across the width
+    var pitch = 5.75 / 12, n = Math.floor(D / pitch);
+    for (var b = 0; b < n; b++) { box(W + 0.1, 0.1, 5.5 / 12, 0, top + 0.25, z0 + 0.24 + b * pitch, board, t); t += 0.018; }
+    // Railing on back and both sides
+    var rh = 3;
+    function railRun(x1, z1, x2, z2) {
+      var len = Math.hypot(x2 - x1, z2 - z1), cnt = Math.max(2, Math.ceil(len / 6) + 1);
+      for (var r = 0; r < cnt; r++) { var f = r / (cnt - 1); box(0.33, rh, 0.33, x1 + (x2 - x1) * f, top + 0.3 + rh / 2, z1 + (z2 - z1) * f, rail, t); }
+      var cap = box(Math.abs(x2 - x1) + 0.33, 0.12, Math.abs(z2 - z1) + 0.33, (x1 + x2) / 2, top + 0.3 + rh, (z1 + z2) / 2, rail, t + 0.05);
+      var glow = box(Math.abs(x2 - x1) + 0.05, 0.05, Math.abs(z2 - z1) + 0.05, (x1 + x2) / 2, top + 0.3 + rh - 0.12, (z1 + z2) / 2, blue, t + 0.1);
+      t += 0.12;
+    }
+    railRun(x0 + 0.2, z0 + 0.2, -x0 - 0.2, z0 + 0.2);
+    railRun(x0 + 0.2, z0 + 0.2, x0 + 0.2, -z0 - 0.2);
+    railRun(-x0 - 0.2, z0 + 0.2, -x0 - 0.2, -z0 - 0.2);
+    // Stairs off the front, about 7 inch rise
+    var steps = Math.max(1, Math.round((top + 0.3) / (7 / 12)));
+    var rise = (top + 0.3) / steps, run = 0.9, sw = Math.min(4, W * 0.4);
+    for (var s = 0; s < steps - 1; s++) {
+      box(sw, 0.12, run, 0, top + 0.3 - rise * (s + 1), -z0 + run * (s + 0.5), board, t); t += 0.03;
+    }
+    if (steps > 1) { var sl = Math.hypot(rise * (steps - 1), run * (steps - 1)); var stringer = box(0.15, 0.9, sl, -sw / 2, (top + 0.3) / 2, -z0 + run * (steps - 1) / 2, frame, t); stringer.rotation.x = Math.atan2(rise * (steps - 1), run * (steps - 1)); var s2 = stringer.clone(); s2.position.x = sw / 2; s2.userData = stringer.userData; g.add(s2); parts.push(s2); }
+    return { group: g, parts: parts, total: t, joists: joistCount, steps: steps };
+  }
+
+  function makeScene(el, opts) {
+    var renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
+    renderer.shadowMap.enabled = true;
+    el.appendChild(renderer.domElement);
+    var scene = new THREE.Scene();
+    var camera = new THREE.PerspectiveCamera(35, 1, 0.1, 400);
+    scene.add(new THREE.HemisphereLight(0xbfd8ff, 0x05070a, 0.55));
+    var key = new THREE.DirectionalLight(0xffffff, 0.9); key.position.set(20, 30, 18); key.castShadow = true;
+    key.shadow.mapSize.set(1024, 1024); key.shadow.camera.left = -30; key.shadow.camera.right = 30; key.shadow.camera.top = 30; key.shadow.camera.bottom = -30;
+    scene.add(key);
+    var rim = new THREE.PointLight(0x2f8cff, 1.6, 80); rim.position.set(-16, 10, -14); scene.add(rim);
+    var grid = new THREE.GridHelper(80, 40, 0x2f8cff, 0x14304f); grid.material.transparent = true; grid.material.opacity = 0.45; scene.add(grid);
+    var ground = new THREE.Mesh(new THREE.PlaneGeometry(80, 80), new THREE.ShadowMaterial({ opacity: 0.45 }));
+    ground.rotation.x = -Math.PI / 2; ground.receiveShadow = true; scene.add(ground);
+
+    var state = { deck: null, start: 0, yaw: opts.yaw || -0.65, pitch: 0.42, auto: opts.auto, dragging: false, lastX: 0, lastY: 0, dist: 34, idleAt: 0 };
+
+    function fit() {
+      var w = el.clientWidth, h = el.clientHeight; if (!w || !h) return;
+      renderer.setSize(w, h, false); camera.aspect = w / h; camera.updateProjectionMatrix();
+    }
+    function setDeck(d) {
+      if (state.deck) { scene.remove(state.deck.group); }
+      state.deck = d; scene.add(d.group); state.start = performance.now();
+      var span = Math.max(d.group.userData.W || 16, d.group.userData.D || 12);
+      state.dist = 14 + span * 1.3 + (d.group.userData.H || 3) * 0.9;
+    }
+    el.addEventListener('pointerdown', function (e) { state.dragging = true; state.lastX = e.clientX; state.lastY = e.clientY; el.setPointerCapture(e.pointerId); });
+    el.addEventListener('pointermove', function (e) {
+      if (!state.dragging) return;
+      state.yaw -= (e.clientX - state.lastX) * 0.008;
+      state.pitch = Math.max(0.12, Math.min(1.1, state.pitch + (e.clientY - state.lastY) * 0.005));
+      state.lastX = e.clientX; state.lastY = e.clientY; state.idleAt = performance.now();
+    });
+    el.addEventListener('pointerup', function () { state.dragging = false; });
+    el.addEventListener('pointercancel', function () { state.dragging = false; });
+    if ('ResizeObserver' in window) new ResizeObserver(fit).observe(el); else window.addEventListener('resize', fit);
+    fit();
+
+    var visible = true;
+    if ('IntersectionObserver' in window) new IntersectionObserver(function (es) { visible = es[0].isIntersecting; }).observe(el);
+
+    function frame(now) {
+      requestAnimationFrame(frame);
+      if (!visible || !state.deck) return;
+      var t = (now - state.start) / 1000;
+      state.deck.parts.forEach(function (p) {
+        var k = reduce ? 1 : Math.max(0, Math.min(1, (t - p.userData.delay * 1.4) / 0.45));
+        var e = 1 - Math.pow(1 - k, 3);
+        p.position.y = p.userData.y + (1 - e) * 6;
+        p.visible = k > 0;
+        p.scale.setScalar(0.6 + 0.4 * e);
+      });
+      if (state.auto && !reduce && !state.dragging && now - state.idleAt > 2500) state.yaw += 0.0025;
+      var H = state.deck.group.userData.H || 3;
+      camera.position.set(Math.sin(state.yaw) * Math.cos(state.pitch) * state.dist, Math.sin(state.pitch) * state.dist + H * 0.4, Math.cos(state.yaw) * Math.cos(state.pitch) * state.dist);
+      camera.lookAt(0, H * 0.55, 0);
+      renderer.render(scene, camera);
+    }
+    requestAnimationFrame(frame);
+    return { setDeck: setDeck };
+  }
+
+  function deck(W, D, H, m) { var d = buildDeck(W, D, H, m); d.group.userData = { W: W, D: D, H: H }; return d; }
+
+  // Hero: a deck that assembles, then slowly turns
+  var hero = makeScene(document.getElementById('hero3d'), { auto: true, yaw: -0.7 });
+  hero.setDeck(deck(16, 12, 4, 'composite'));
+
+  // Configurator
+  var cfg = makeScene(document.getElementById('config3d'), { auto: true, yaw: -0.5 });
+  var W = document.getElementById('w'), D = document.getElementById('d'), Hh = document.getElementById('h');
+  var material = 'composite', timer = null;
+  function rebuild() {
+    var w = +W.value, d = +D.value, h = +Hh.value;
+    document.getElementById('wv').textContent = w + ' ft';
+    document.getElementById('dv').textContent = d + ' ft';
+    document.getElementById('hv').textContent = h + ' ft';
+    var built = deck(w, d, h, material);
+    document.getElementById('sqft').textContent = (w * d).toLocaleString();
+    document.getElementById('joists').textContent = built.joists;
+    document.getElementById('steps').textContent = built.steps;
+    cfg.setDeck(built);
+  }
+  function soon() { clearTimeout(timer); timer = setTimeout(rebuild, 120); }
+  [W, D, Hh].forEach(function (r) { r.addEventListener('input', soon); });
+  function pick(m) {
+    material = m;
+    document.getElementById('m-comp').setAttribute('aria-pressed', String(m === 'composite'));
+    document.getElementById('m-wood').setAttribute('aria-pressed', String(m === 'wood'));
+    rebuild();
+  }
+  document.getElementById('m-comp').addEventListener('click', function () { pick('composite'); });
+  document.getElementById('m-wood').addEventListener('click', function () { pick('wood'); });
+  rebuild();
+})();
+</script>
+</body>
+</html>
